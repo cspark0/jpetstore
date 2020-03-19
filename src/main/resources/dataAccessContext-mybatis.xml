@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Application context definition for JPetStore's data access layer.
+  - Accessed by business layer objects defined in "applicationContext.xml"
+  - (see web.xml's "contextConfigLocation").
+  - This version of the data access layer works on a combined database,
+  - using a local DataSource with DataSourceTransactionManager. It does not
+  - need any JTA support in the container: It will run as-is in plain Tomcat.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+     xsi:schemaLocation="http://www.springframework.org/schema/context 
+	     http://www.springframework.org/schema/context/spring-context.xsd
+	     http://www.springframework.org/schema/beans 
+	     http://www.springframework.org/schema/beans/spring-beans.xsd
+	     http://www.springframework.org/schema/jdbc 
+	     http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	     http://www.springframework.org/schema/tx 
+	     http://www.springframework.org/schema/tx/spring-tx.xsd
+	     http://mybatis.org/schema/mybatis-spring 
+	     http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<context:component-scan base-package="com.example.jpetstore.dao" />
+		
+	<!-- Configurer that replaces ${...} placeholders with values from properties files -->
+	<!-- (in this case, mail and JDBC related properties) -->
+	<context:property-placeholder location="classpath:jdbc.hsqldb.properties" />
+	<!-- 
+	<bean id="propertyConfigurer" 
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.hsqldb.properties</value> 				
+			</list>
+		</property>
+	</bean> 
+	 -->
+	 
+	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
+
+	<!-- Local Apache Commons DBCP2 DataSource that refers to a combined database -->
+	<!-- The placeholders are resolved from jdbc.hsqldb.properties through -->
+	<!-- the PropertyPlaceholderConfigurer in applicationContext.xml -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+    <!-- enable transaction demarcation with annotations -> refer to applicationContext.xml -->
+	<!-- <tx:annotation-driven /> -->
+
+    <!-- define the SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.example.jpetstore.domain" />
+    </bean>
+
+    <!-- scan for mappers and let them be autowired -->
+    <mybatis:scan base-package="com.example.jpetstore.dao.mybatis.mapper" />
+    <!-- 
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.jpetstore.dao.mybatis.mapper" />
+    </bean> 
+    -->
+</beans>

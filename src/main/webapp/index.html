@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="stylesheet" href="style/petstore.css" type="text/css" />
+<title>JPetStore Demo</title>
+</head>
+<body bgcolor="white">
+  <table class="top">
+    <tr>
+      <td>
+        <a href="shop/index.do">
+          <img border="0" src="images/logo-topbar.gif" /></a>
+      </td>
+      <td style="text-align:right">
+        <a href="shop/viewCart.do">
+          <img border="0" name="img_cart" src="images/cart.gif" /></a>
+        <img border="0" src="images/separator.gif" />
+          <a href="shop/signonForm.do">
+            <img border="0" name="img_signin" src="images/sign-in.gif" /></a>
+        <img border="0" src="images/separator.gif" />&nbsp;
+        <a href="help.html"><img border="0" name="img_help" src="images/help.gif" /></a>
+      </td>
+      <td style="text-align:left">
+        <form action="shop/searchProducts.do" method="post">
+          <input name="keyword" size="14" />&nbsp;
+          <input src="images/search.gif" type="image"/>
+        </form>
+      </td>
+    </tr>
+  </table>  
+  <table class="t1">
+    <tr>
+      <td valign="top" width="100%">
+        <p>&nbsp;</p>
+        <p align="center">
+          <b>Welcome to the Spring JPetStore, by Juergen Hoeller</b>
+        </p>
+        <p align="center">Based on the iBATIS JPetStore, by Clinton Begin</p>
+        <p align="center">
+          <i> This application demonstrates the use of Spring for the middle
+            tier, including declarative transaction management applied to POJO
+            business objects. This application can easily be configured to use
+            JTA or JDBC for transaction management, so it allows declarative
+            transaction management in a web container without JTA. <br> <br>There
+            are alternative Spring and Struts MVC layers built on a shared
+            Spring middle tier.
+          </i>
+        </p>
+        <p align="center">
+          <a href="shop/index.do"><font size="5">Enter the Store</font></a>
+        </p>
+      </td>
+    </tr>
+  </table>
+  <div align="center">
+    <table>
+      <tr>
+        <td><a href="http://www.springframework.org"> 
+          <img border="0" src="images/spring-logo.png"
+              alt="Powered by the Spring Framework" /></a>
+        </td>
+        <td><a href="http://www.ibatis.com"> 
+          <img border="0" src="images/mybatis-logo.png"
+              alt="Powered by MyBatis" /></a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

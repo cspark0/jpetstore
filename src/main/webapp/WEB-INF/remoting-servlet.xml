@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  - Dispatcher servlet for HTTP remoting via Spring's HTTP invoker 
+  - (see remoting-servlet.xml for the controllers).
+  -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       	http://www.springframework.org/schema/beans/spring-beans.xsd
+       	http://www.springframework.org/schema/context
+       	http://www.springframework.org/schema/context/spring-context.xsd"> 
+
+	<context:component-scan base-package="com.example.jpetstore.service">
+		<context:exclude-filter type="regex" expression=".*(PetStoreImpl|AccountFormValidator)"/>
+	</context:component-scan>
+		
+	<!-- HTTP invoker exporter for the JPetStore OrderService -->
+	<!-- Spring's HTTP invoker uses Java serialization via HTTP  -->
+	<bean id="httpInvokerOrderServiceController"
+   		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"
+    	p:service-ref="orderServiceImpl"			
+		p:serviceInterface="com.example.jpetstore.service.OrderService" />
+	
+	<!-- Handler Mapping for HttpInvokerServiceExporter - -->
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="order.service">httpInvokerOrderServiceController</prop>
+			</props>
+		</property>
+	</bean> 
+	
+	<!-- ========================= Other Remote Exporter Definitions ======================== -->
+	<!-- JAX-WS Web Service exporter for the JPetStore OrderService -->
+	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
+		p:baseAddress="http://localhost:8081/services/" />
+
+	<!-- RMI exporter for the JPetStore OrderService -->
+	<bean class="org.springframework.remoting.rmi.RmiServiceExporter"
+		p:service-ref="orderServiceImpl" 
+		p:serviceName="RmiOrderService"
+		p:serviceInterface="com.example.jpetstore.service.OrderService" />
+</beans>
