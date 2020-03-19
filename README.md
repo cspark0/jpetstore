@@ -1,9 +1,9 @@
-## JPetStore
+# JPetStore
 Sample Spring MVC project for the SSD class in 2020-1
 
 __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토리(https://github.com/cspark0/jpetstore)를 자신의 Github 계정으로 Fork(복사) 한 후 이용하기 바랍니다.__
 
-#### STS 또는 Eclipse에 import하는 방법 (local repository 생성)
+### STS 또는 Eclipse에 import하는 방법 (local repository 생성)
 
 File >> Import... >> Git - Projects from Git >> Clone URI >>  
 fork된  URI 입력(예: https://github.com/your_Github_username/jpetstore.git), username & password 입력 >>   
@@ -12,7 +12,7 @@ fork된  URI 입력(예: https://github.com/your_Github_username/jpetstore.git),
 "Importing existing Eclipse projects" (첫번째 옵션) 선택 >> Finish    
 (pom.xml에 등록된 library들이 모두 다운로드되고 프로젝트가 빌드 완료될 때까지 기다림)
 
-#### 프로젝트 실행 방법
+### 프로젝트 실행 방법
 1. Apache Tomcat v9.0을 다운로드 및 설치하고, Eclipse의 Servers 창에 등록함
 2. 프로젝트에 포함되어 있는  HSQL DB 서버를 실행 
     * src/main/resources/db/hsqldb 폴더에 대해 Properties 메뉴(Alt + Enter)를 실행하여 절대경로 확인 (copy)
@@ -26,7 +26,7 @@ fork된  URI 입력(예: https://github.com/your_Github_username/jpetstore.git),
 4. 프로젝트 이름을 right-click 후 Run As > Run On Server를 실행하여  웹 브라우저를 띄우고 접속함     
 (URL을 외부의 Chrome brower 등에서 직접 입력해도 됨)
 
-#### 주의사항
+### 주의사항
 1. hsqldb/server.bat에서는 %JAVA_HOME%을 참조하여 java를 찾으므로 시스템에 JAVA_HOME 환경변수가 정확하게 설정되어 있어야 함
     * 내PC right-click > 속성 > 고급 시스템 설정 > 환경변수 > 시스템 변수의 새로만들기 click
       변수이름: JAVA_HOME, 변수 값: JDK 설치폴더 경로(예: C:\Program Files\Java\jdk1.8.x_xx) 입력 > 확인
@@ -35,7 +35,7 @@ fork된  URI 입력(예: https://github.com/your_Github_username/jpetstore.git),
 2. HSQL DB 서버가 실행되면 hsqldb 폴더에 jpetstore.log, jpetstore.lck, jpetstore.tmp 등 임시파일이 생성되며, 이 경우 Eclipse에서 프로젝트 삭제, export 등이 제대로 실행되지 않음. 이를 위해서는 cmd 창에서 HSQL DB 서버를 종료하고(Ctrl+C) cmd 창도 종료해야 함
 
 
-#### Git 사용법 참조
+### Git 사용법 참조
 
 * 윤웅식, 만들면서 배우는 Git+GitHub 입문, 한빛미디어, 2015.  
 * 오오츠카 히로키, 소셜 코딩으로 이끄는 GitHub 실천 기술, 제이펍, 2015.  
