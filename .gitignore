@@ -86,6 +86,7 @@ local.properties
 
 # Package Files #
 *.jar
+!hsqldb-*.jar
 *.war
 *.nar
 *.ear
