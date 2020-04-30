@@ -19,7 +19,6 @@ __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토�
 ### 프로젝트 실행 방법
 1. Apache Tomcat v9.0을 다운로드 및 설치하고, Eclipse의 Servers 창에 등록함
 2. 프로젝트에 포함되어 있는  HSQL DB 서버를 실행 
-    * __Maven local 저장소(예: C:\Users\(사용자이름)\.m2\repository) 아래의 org\hsqldb\hsqldb\2.3.5에 있는 hsqldb-2.3.5.jar 파일을  프로젝트의 src\main\resources\db\hsqldb 폴더에 복사해 넣음__
     * src/main/resources/db/hsqldb 폴더에 대해 Properties 메뉴(Alt + Enter)를 실행하여 절대경로 확인 (copy)
     * Windows 명령 프롬프트(cmd.exe)를 실행하고 cd 명령을 이용하여 위에서 확인한 경로로 이동 (paste)
     * server.bat 실행 
@@ -49,21 +48,3 @@ __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토�
 * <http://itmir.tistory.com/461>  
 * <http://jwgye.tistory.com/38?category=689862>  
 * 그밖의 온라인 자료들  
-
-Maven local 저장소(예: C:\Users\(사용자이름)\.m2) 밑의 repository\org\hsqldb\hsqldb\2.3.5에 있는 hsqldb-2.3.5.jar 파일을  프로젝트의 src\main\resources\db\hsqldb 폴더에 복사해 넣음
-
- 
-
-폴더에 가면 hsqldb-2.3.5.jar 파일이 있을 것입니다.
-
-(또는 아래에 첨부한 hsqldb-2.3.5.jar 파일을 다운로드해서 사용해도 됩니다)
-
- 
-
-이 파일을 import한 jpetstore 프로젝트의  src\main\resources\db\hsqldb 폴더에 복사해 넣기 바랍니다.
-
-그리고 나서 cmd 창을 띄우고 위 폴더로 이동한후 Server.bat 프로그램을 실행시키면 HSQLDB가 실행될 것 입니다.
-
- 
-
-첨부된 jpetstore.zip 파일에는 이 jar 파일을 폴더에 넣어놓았으니, 직접 import할 경우에는 이 파일을 다운로드 해서 사용하기 바랍니다.
