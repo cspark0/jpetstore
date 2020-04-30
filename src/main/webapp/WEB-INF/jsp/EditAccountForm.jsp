@@ -2,14 +2,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!-- <div style="text-align:center;">
-    <spring:hasBindErrors name="accountForm" />
-    <form:errors path="accountForm" cssClass="error" />
-</div>
- -->
- 
 <div align="center">
-<form:form commandName="accountForm" method="post">
+<form:form modelAttribute="accountForm" method="post">
   <form:errors cssClass="error" /> <br><br>
   
   <table id="account">

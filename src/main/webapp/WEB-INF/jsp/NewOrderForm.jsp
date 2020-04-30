@@ -2,18 +2,10 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<!-- Support for Spring errors holder -->
-<!-- 
-<div style="text-align:center;">
-    <spring:hasBindErrors name="orderForm" />
-    <form:errors path="orderForm" cssClass="error" />
-</div>
--->
-
 <c:set var="targetUrl"><c:url value="/shop/newOrderSubmitted.do" /></c:set>
 
 <div align="center">
-<form:form commandName="orderForm" action="${targetUrl}" method="post">
+<form:form modelAttribute="orderForm" action="${targetUrl}" method="post">
   <form:errors cssClass="error" /> <br><br>
   
   <table class="n13">

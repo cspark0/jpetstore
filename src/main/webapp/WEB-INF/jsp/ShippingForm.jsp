@@ -5,7 +5,7 @@
 <c:set var="targetUrl"><c:url value="/shop/newOrderSubmitted.do" /></c:set>
 
 <div align="center">
-<form:form commandName="orderForm" action="${targetUrl}" method="post">
+<form:form modelAttribute="orderForm" action="${targetUrl}" method="post">
   <form:errors cssClass="error" /><br><br>
 
   <table class="n13">
