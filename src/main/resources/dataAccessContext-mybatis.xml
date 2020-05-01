@@ -28,7 +28,9 @@
 		
 	<!-- Configurer that replaces ${...} placeholders with values from properties files -->
 	<!-- (in this case, mail and JDBC related properties) -->
-	<context:property-placeholder location="classpath:jdbc.hsqldb.properties" />
+	<context:property-placeholder location="classpath:jdbc.oracle.properties" />	
+	
+	<!-- <context:property-placeholder location="classpath:jdbc.hsqldb.properties" /> -->
 	<!-- 
 	<bean id="propertyConfigurer" 
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
