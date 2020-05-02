@@ -1,6 +1,6 @@
-<%@ page contentType="text/html" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<table> <!--  class="top"> -->
+
+<table> <!-- class="top"> -->
   <tr>
     <td>
       <a href="<c:url value="/shop/index.do"/>">
@@ -35,4 +35,3 @@
 </table>
 
 <%@ include file="IncludeQuickHeader.jsp" %>
-

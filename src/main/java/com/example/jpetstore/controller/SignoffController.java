@@ -15,6 +15,6 @@ public class SignoffController {
 	public String handleRequest(HttpSession session) throws Exception {
 		session.removeAttribute("userSession");
 		session.invalidate();
-		return "tiles/index";	// use Tiles
+		return "customtag/index";	// use Tiles
 	}
 }

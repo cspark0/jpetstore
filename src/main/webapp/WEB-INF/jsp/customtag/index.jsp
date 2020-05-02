@@ -1,5 +1,8 @@
-<%@ include file="IncludeTop.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<t:layoutWithBanner>
 <table style="border:none;border-collapse:collapse;width:100%">
   <tr>
     <td style="text-align:left;vertical-align:top;width:100%">
@@ -64,7 +67,4 @@
     </td>
   </tr>
 </table>
-
-<%@ include file="IncludeBanner.jsp" %>
-
-<%@ include file="IncludeBottom.jsp" %>
+</t:layoutWithBanner>

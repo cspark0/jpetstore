@@ -1,4 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:baseLayout>
 
 <c:if test="${!empty message}">
   <b><font color="red"><c:url value="${message}" /></font></b>
@@ -33,3 +37,5 @@
     <img border="0" src="../images/button_register_now.gif" alt="" />
   </a>
 </div>
+
+</t:baseLayout>

@@ -1,4 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:baseLayout>
 
 <table id="main-menu">
   <tr>
@@ -40,3 +44,5 @@
     </tr>
   </table>
 </div>
+
+</t:baseLayout>

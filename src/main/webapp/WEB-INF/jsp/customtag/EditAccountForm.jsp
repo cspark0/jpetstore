@@ -1,5 +1,9 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:baseLayout>
 
 <div align="center">
 <form:form modelAttribute="accountForm" method="post">
@@ -47,5 +51,7 @@
 </form:form>
 <p></p>
   <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a></b></h3>
-  
+ 
 </div>
+
+</t:baseLayout>

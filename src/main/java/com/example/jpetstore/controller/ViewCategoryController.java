@@ -38,7 +38,7 @@ public class ViewCategoryController {
 		productList.setPageSize(4);
 		model.put("category", category);
 		model.put("productList", productList);
-		return "tiles/Category";					// use Tiles
+		return "customtag/Category";					// use Tiles
 	}
 
 	@RequestMapping("/shop/viewCategory2.do")
@@ -52,6 +52,6 @@ public class ViewCategoryController {
 		}
 		if ("next".equals(page)) { productList.nextPage(); }
 		else if ("previous".equals(page)) { productList.previousPage(); }
-		return "tiles/Category";					// use Tiles
+		return "customtag/Category";					// use Tiles
 	}
 }

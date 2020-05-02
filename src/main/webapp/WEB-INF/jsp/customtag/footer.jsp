@@ -1,3 +1,4 @@
+<p>&nbsp;</p>
 <div align="center">
   <table>
     <tr>
@@ -15,10 +16,7 @@
                 alt="Powered by MyBatis" />
         </a>
       </td>
-      <td>
-        <img border="0" src="../images/tiles-logo.png" 
-             alt="Powered by Tiles" />
-      </td> 
+      <td><h1>JSP Custom Tag Layout</h1></td>
     </tr>
   </table>
 </div>

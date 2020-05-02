@@ -27,9 +27,9 @@ import com.example.jpetstore.service.PetStoreFacade;
 @RequestMapping({"/shop/newAccount.do","/shop/editAccount.do"})
 public class AccountFormController { 
 
-	@Value("tiles/EditAccountForm")	// use Tiles
+	@Value("customtag/EditAccountForm")	// use Tiles
 	private String formViewName;
-	@Value("tiles/index")			// use Tiles
+	@Value("customtag/index")			// use Tiles
 	private String successViewName;
 	private static final String[] LANGUAGES = {"english", "japanese"};
 	
