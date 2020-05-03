@@ -27,18 +27,22 @@ __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토�
 5. jpetstore 프로젝트가 import되었으면 pom.xml에 등록된 library들이 모두 다운로드되고 프로젝트가 빌드 완료될 때까지 기다림   
 6. Window > Perspective > Open Perspective > Other... > Git 선택하고 local repo가 제대로 생성되었는지 확인 후 사용
 
+### 새로운 branch를 본인의 repository로 가져오는 방법
+
+Eclipse에서 Git perspective를 열고 본인의 local repo에서 다음 작업들을 차례대로 실행함
+(또는 Git bash에서 git command를 이용)
+
+1. cspark0/jpetstore repo를 새로운 remote repo로 추가 
+    - 왼쪽의 Git Repositories 창에서 jpetstore [master] > Remotes 선택 후 마우스 우클릭 > Create Remote... 선택
+    - Remote name: "upstream" 입력, Configure fetch 옵션 선택 , Create 버튼 클릭
+    - Change 버튼 클릭 후 URI: "https://github.com/cspark0/jpetstore.git" 입력, Finish 버튼 클릭,  Save and Fetch 버튼 클릭
+2. upstream의 새로운 branch (tiles) 를 local repo로 fetch
+    - Branches > Remote Tracking > upstream/tiles를 선택 후 마우스 우클릭, Check Out.. 선택, Check out as a new local branch 버튼 클릭, Finish
+3. 가져온 local repo (tiles)를  본인의 remote repo로 push
+    - Branches > Local > tiles를 선택 후 마우스 우클릭, Push branch... 선택, Destination: Remote: 에서 본인의 remote repo 입력 또는 선택, Preview 버튼 클릭, Username&password 입력 > Log-in 클릭, Push 버튼 클릭, Username&password 입력 > Log-in 클릭, Close
+
 ### 프로젝트 실행 방법
 1. Apache Tomcat v9.0을 다운로드 및 설치하고, Eclipse의 Servers 창에 등록함
 2. 프로젝트를 Tomcat server에 deploy(drag&drop)하고 Synchronized 상태인지 확인한 후 server를 start함
 3. 프로젝트 이름을 right-click 후 Run As > Run On Server를 실행하여  웹 브라우저를 띄우고 접속함     
 (URL을 외부의 Chrome brower 등에서 직접 입력해도 됨)
-
-### Git 사용법 참조
-
-* 윤웅식, 만들면서 배우는 Git+GitHub 입문, 한빛미디어, 2015.  
-* 오오츠카 히로키, 소셜 코딩으로 이끄는 GitHub 실천 기술, 제이펍, 2015.  
-* <https://backlog.com/git-tutorial/kr/>  
-* <https://nolboo.kim/blog/2013/10/06/github-for-beginner/> 및 링크된 문서들  
-* <http://itmir.tistory.com/461>  
-* <http://jwgye.tistory.com/38?category=689862>  
-* 그밖의 온라인 자료들  
