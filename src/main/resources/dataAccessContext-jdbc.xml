@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  - Application context definition for JPetStore's data access layer.
+  - Accessed by business layer objects defined in "applicationContext.xml"
+  - (see web.xml's "contextConfigLocation").
+  -
+  - This version of the data access layer works on a combined database,
+  - using a local DataSource with DataSourceTransactionManager. It does not
+  - need any JTA support in the container: It will run as-is in plain Tomcat.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="http://www.springframework.org/schema/context 
+	     http://www.springframework.org/schema/context/spring-context.xsd
+	     http://www.springframework.org/schema/beans 
+	     http://www.springframework.org/schema/beans/spring-beans.xsd">
+	     
+	<context:component-scan base-package="com.example.jpetstore.dao.jdbc" />
+
+	<!-- "dataSource" bean은 dataAccessContext-mybatis.xml에 설정되어 있음 -->
+		
+	<!--===== 1. pure JDBC API를 이용한 CategoryDao 구현  ===========-->
+	<!-- 아래의 DAO bean은  component-scan에 의해 자동 생성됨  -->
+	<!-- 
+	<bean id="pureJdbcCategoryDao"
+		class="org.springframework.samples.jpetstore.dao.jdbc.PureJdbcCategoryDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean> 
+	-->
+		
+	<!--===== 2. JdbcTemplate을 이용한 CategoryDao 구현 =============-->
+	<bean id="jdbcTemplate"	class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />	  
+	</bean>		
+	<!-- 아래의 DAO bean은  component-scan에 의해 자동 생성됨  -->
+	<!-- 
+	<bean id="jdbcTemplateCategoryDao"
+		class="org.springframework.samples.jpetstore.dao.jdbc.JdbcTemplateCategoryDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean> 
+	-->
+		
+	<!--===== 3. NamedParameterJdbcTemplate을 이용한 CategoryDao 구현  ==-->
+	<bean id="namedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg><ref bean="dataSource"/></constructor-arg>
+	</bean>	
+	<!-- 아래의 DAO bean은  component-scan에 의해 자동 생성됨  -->
+	<!--
+	<bean id="namedParameterJdbcTemplateCategoryDao"
+		class="org.springframework.samples.jpetstore.dao.jdbc.NamedParamJdbcTemplateCategoryDao">
+		<property name="jdbcTemplate" ref="namedParameterJdbcTemplate" />
+	</bean> 
+	-->
+	
+	<!--===== 4. JdbcDaoSupport 클래스를 이용한 CategoryDao 구현  ======-->
+	<!-- 아래의 DAO bean은 dataSource bean의 명시적 DI 설정 필요  -->  
+	<bean id="jdbcDaoSupportCategoryDao"
+		class="com.example.jpetstore.dao.jdbc.JdbcDaoSupportCategoryDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

@@ -19,6 +19,7 @@
     <param-value>
        	classpath:applicationContext.xml
       	classpath:dataAccessContext-mybatis.xml 
+      	classpath:dataAccessContext-jdbc.xml
 	</param-value>
   </context-param>
   <listener>

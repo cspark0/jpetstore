@@ -2,6 +2,7 @@ package com.example.jpetstore.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
@@ -54,15 +55,31 @@ import com.example.jpetstore.domain.Product;
 @Service
 @Transactional
 public class PetStoreImpl implements PetStoreFacade { 
-	@Autowired
+	@Autowired	// @Qualifier("mybatisAccountDao")
 	private AccountDao accountDao;
-	@Autowired
+	
+	@Autowired @Qualifier("mybatisCategoryDao")  
 	private CategoryDao categoryDao;
-	@Autowired
+	
+	@Autowired @Qualifier("jdbcTemplateCategoryDao")   
+	private CategoryDao categoryDao1;
+	
+	@Autowired @Qualifier("namedParamJdbcTemplateCategoryDao")   
+	private CategoryDao categoryDao2;
+	
+	@Autowired @Qualifier("jdbcDaoSupportCategoryDao")  
+	private CategoryDao categoryDao3;
+	
+	@Autowired @Qualifier("pureJdbcCategoryDao")
+	private CategoryDao categoryDao4;	
+	
+	@Autowired  // @Qualifier("mybatisProductDao")
 	private ProductDao productDao;
-	@Autowired
+	
+	@Autowired	// @Qualifier("mybatisItemDao")
 	private ItemDao itemDao;
-	@Autowired
+	
+	@Autowired	// @Qualifier("mybatisOrderDao")
 	private OrderDao orderDao;
 
 	//-------------------------------------------------------------------------
@@ -94,7 +111,24 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Category getCategory(String categoryId) {
-		return categoryDao.getCategory(categoryId);
+		Category category = null;
+		switch (categoryId) {
+			case "FISH" :
+				category = categoryDao.getCategory(categoryId);
+				break;
+			case "DOGS" :
+				category = categoryDao1.getCategory(categoryId);
+				break;
+			case "REPTILES" :
+				category = categoryDao2.getCategory(categoryId);
+				break;
+			case "CATS" :
+				category = categoryDao3.getCategory(categoryId);
+				break;
+			case "BIRDS" :
+				category = categoryDao4.getCategory(categoryId);
+		}
+		return category;
 	}
 
 	public List<Product> getProductListByCategory(String categoryId) {
