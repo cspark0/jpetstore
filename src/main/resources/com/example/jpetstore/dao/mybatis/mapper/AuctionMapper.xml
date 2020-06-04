@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.jpetstore.dao.mybatis.mapper.AuctionMapper">
+  <cache />
+
+  <select id="getAuctionByUsername" resultType="Auction">
+    SELECT *
+    FROM AUCTION
+    WHERE USERNAME = #{value}
+  </select>
+
+
+  <select id="updateBiddingPrice">
+    UPDATE AUCTION 
+    SET BIDDINGPRICE = #{biddingPrice}
+    WHERE AUCTIONID = #{auctionId}
+  </select>
+
+  <select id="insertAuction">
+    INSERT INTO AUCTION (AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, BIDDINGDATE, ISSUCCESSFUL)
+    VALUES (#{auctionId}, #{itemId}, #{username}, #{biddingPrice}, #{biddingDate}, #{isSuccessful})
+  </select>
+
+  <update id="deleteAuctionbyItemId">
+    DELETE AUCTION
+    WHERE ITEMID = #{itemId}
+  </update>
+</mapper>
