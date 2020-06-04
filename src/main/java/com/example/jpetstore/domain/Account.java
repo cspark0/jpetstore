@@ -26,6 +26,8 @@ public class Account implements Serializable {
   private boolean listOption;
   private boolean bannerOption;
   private String bannerName;
+  
+  //private String acc;
 
   /* JavaBeans Properties */
 
