@@ -6,11 +6,11 @@ import com.example.jpetstore.domain.Auction;
 
 public interface AuctionMapper {
 	
-	int updateBiddingPrice(double price);
+	void updateBiddingPrice(double price);
 	
-	int insertAuction(Auction auction);
+	void insertAuction(Auction auction);
 	
-	int deleteAuctionbyAunctionId(Auction auction);
+	void deleteAuctionbyAunctionId(Auction auction);
 	
-	List <String> getAuctionByUsername(String username);
+	List <Auction> getAuctionByUsername(String username);
 }
