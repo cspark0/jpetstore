@@ -1,6 +1,7 @@
 package com.example.jpetstore.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Item implements Serializable {
@@ -18,8 +19,41 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
+ /* private boolean isAuction;
+  private Date deadline;
+  private double deposit;
+  private String auctionId;
+  
+  
+   
 
-  /* JavaBeans Properties */
+    public boolean isAuction() {
+	    return isAuction;
+	}
+	public void setAuction(boolean isAuction) {
+		this.isAuction = isAuction;
+	}
+	public Date getDeadline() {
+		return deadline;
+	}
+	public void setDeadline(Date deadline) {
+		this.deadline = deadline;
+	}
+	public double getDeposit() {
+		return deposit;
+	}
+	public void setDeposit(double deposit) {
+		this.deposit = deposit;
+	}
+	public String getAuctionId() {
+		return auctionId;
+	}
+	public void setAuctionId(String auctionId) {
+		this.auctionId = auctionId;
+	}*/
+	
+	
+/* JavaBeans Properties */
   public String getItemId() { return itemId; }
   public void setItemId(String itemId) { this.itemId = itemId.trim(); }
 
