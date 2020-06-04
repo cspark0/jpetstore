@@ -72,6 +72,7 @@
     ORDER BY ORDERDATE
   </select>
 
+
   <insert id="insertOrder">
   	<selectKey keyProperty = "orderId" resultType = "int" order = "BEFORE">
   		SELECT ordernum.nextval AS orderId FROM DUAL

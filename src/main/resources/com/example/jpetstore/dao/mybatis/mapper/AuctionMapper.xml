@@ -10,6 +10,7 @@
     WHERE USERNAME = #{value}
   </select>
 
+
   <select id="updateBiddingPrice">
     UPDATE AUCTION 
     SET BIDDINGPRICE = #{biddingPrice}
