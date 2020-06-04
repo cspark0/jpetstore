@@ -26,5 +26,6 @@ public class SellerInformController {
 		return new ModelAndView("SellerPage");
 	}
 
+	//
 
 }
