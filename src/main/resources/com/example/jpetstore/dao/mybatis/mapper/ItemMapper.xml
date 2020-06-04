@@ -61,4 +61,10 @@
     SET QTY = QTY - #{increment}
     WHERE ITEMID = #{itemId}
   </update>
+  
+  <select id="getIsAuction" resultType="int">
+  	SELECT ISAUCTION
+  	FROM ITEM
+  	WHERE ITEMID = #{itemId}
+  </select>
 </mapper>

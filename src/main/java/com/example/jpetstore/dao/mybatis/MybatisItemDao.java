@@ -42,4 +42,11 @@ public class MybatisItemDao implements ItemDao {
 	public Item getItem(String itemId) throws DataAccessException {
 		return itemMapper.getItem(itemId);
 	}
+
+	@Override
+	public boolean isAuction(String itemId) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return (itemMapper.getIsAuction(itemId) == 1);
+	}
+
 }
