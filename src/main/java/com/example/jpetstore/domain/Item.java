@@ -19,18 +19,17 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
- /* private boolean isAuction;
+ 
+  private int isAuction;
   private Date deadline;
   private double deposit;
   private String auctionId;
   
-  
-   
 
-    public boolean isAuction() {
+    public int isAuction() {
 	    return isAuction;
 	}
-	public void setAuction(boolean isAuction) {
+	public void setAuction(int isAuction) {
 		this.isAuction = isAuction;
 	}
 	public Date getDeadline() {
@@ -50,7 +49,7 @@ public class Item implements Serializable {
 	}
 	public void setAuctionId(String auctionId) {
 		this.auctionId = auctionId;
-	}*/
+	}
 	
 	
 /* JavaBeans Properties */
