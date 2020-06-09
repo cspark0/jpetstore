@@ -17,11 +17,12 @@
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
-
+import org.apache.ibatis.annotations.Delete;
 import com.example.jpetstore.domain.Order;
 
 /**
  * @author Eduardo Macarron
+ * @modified by Chang-Sup Park
  */
 public interface OrderMapper {
 
@@ -34,4 +35,10 @@ public interface OrderMapper {
   void insertOrderStatus(Order order);
 
   int msSqlServerInsertOrder(Order order);
+  
+  @Delete("delete from ORDERS where ORDERID = #{orderId}")
+  void deleteOrder(int orderId);
+  
+  @Delete("delete from ORDERSTATUS where ORDERID = #{orderId}")
+  void deleteOrderStatus(int orderId);
 }

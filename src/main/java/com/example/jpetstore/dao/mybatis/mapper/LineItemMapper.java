@@ -17,12 +17,12 @@
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
-
+import org.apache.ibatis.annotations.Delete;
 import com.example.jpetstore.domain.LineItem;
 
 /**
  * @author Eduardo Macarron
- *
+ * @modified by Chang-Sup Park
  */
 public interface LineItemMapper {
 
@@ -30,4 +30,6 @@ public interface LineItemMapper {
 
   void insertLineItem(LineItem lineItem);
 
+  @Delete("delete from LINEITEM where ORDERID = #{orderId}")
+  int deleteLineItems(int orderId);
 }

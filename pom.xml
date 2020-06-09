@@ -8,9 +8,9 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	
-	<name>jpetstore</name>
-	<description>Sample project for Spring and Mybatis</description>
-	
+	<name>jpetstore.rest</name>
+    <description>Sample project for Spring and Mybatis including RESTful services</description>
+    
 	<properties>
 		<java.version>1.8</java.version>
 		<spring.version>5.2.4.RELEASE</spring.version>
@@ -26,6 +26,7 @@
 		<junit.version>4.12</junit.version>
 		<commons-fileupload.version>1.3.3</commons-fileupload.version>
 		<urlrewrite.version>3.1.0</urlrewrite.version>
+        <jackson-databind.version>2.9.10.4</jackson-databind.version>       
 	</properties>
 	
 	<dependencies>
@@ -139,6 +140,13 @@
 			<scope>runtime</scope>
 		</dependency>
             
+		<!-- Jackson2 library to bind JSON to Java Object -->
+        <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson-databind.version}</version>
+        </dependency>
+           
 		<!-- for oracle jdbc driver -->
 		<!-- 
 		<dependency>

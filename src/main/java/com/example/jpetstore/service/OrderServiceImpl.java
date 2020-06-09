@@ -24,4 +24,8 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> getOrdersByUsername(String username) {
 		return orderDao.getOrdersByUsername(username);
 	}
+	
+	public Order removeOrder(int orderId) {
+        return orderDao.removeOrder(orderId);
+    }
 }
