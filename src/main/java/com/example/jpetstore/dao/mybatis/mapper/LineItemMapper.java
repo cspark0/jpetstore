@@ -17,6 +17,8 @@
 package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.CacheNamespaceRef;
 import org.apache.ibatis.annotations.Delete;
 import com.example.jpetstore.domain.LineItem;
 
@@ -24,6 +26,7 @@ import com.example.jpetstore.domain.LineItem;
  * @author Eduardo Macarron
  * @modified by Chang-Sup Park
  */
+@CacheNamespaceRef(value=LineItemMapper.class)
 public interface LineItemMapper {
 
   List<LineItem> getLineItemsByOrderId(int orderId);
