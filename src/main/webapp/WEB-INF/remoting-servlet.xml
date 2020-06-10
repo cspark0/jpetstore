@@ -19,35 +19,35 @@
     <mvc:annotation-driven/>   <!-- HttpMessageConverter beans 생성 포함 -->
 
 
-	<context:component-scan base-package="com.example.jpetstore.service">
+	<!-- <context:component-scan base-package="com.example.jpetstore.service">
 		<context:exclude-filter type="regex" expression=".*(PetStoreImpl|AccountFormValidator)"/>
 	</context:component-scan>
-		
+	 -->	
 	<!-- HTTP invoker exporter for the JPetStore OrderService -->
 	<!-- Spring's HTTP invoker uses Java serialization via HTTP  -->
-	<bean id="httpInvokerOrderServiceController"
+	<!-- <bean id="httpInvokerOrderServiceController"
    		class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter"
     	p:service-ref="orderServiceImpl"			
 		p:serviceInterface="com.example.jpetstore.service.OrderService" />
-	
+	 -->
 	<!-- Handler Mapping for HttpInvokerServiceExporter - -->
-	<bean id="urlMapping"
+	<!-- <bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
 				<prop key="order.service">httpInvokerOrderServiceController</prop>
 			</props>
 		</property>
-	</bean> 
+	</bean>  -->
 	
 	<!-- ========================= Other Remote Exporter Definitions ======================== -->
 	<!-- JAX-WS Web Service exporter for the JPetStore OrderService -->
-	<bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
-		p:baseAddress="http://localhost:8081/services/" />
+	<!-- <bean class="org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
+		p:baseAddress="http://localhost:8081/services/" /> -->
 
 	<!-- RMI exporter for the JPetStore OrderService -->
-	<bean class="org.springframework.remoting.rmi.RmiServiceExporter"
+	<!-- <bean class="org.springframework.remoting.rmi.RmiServiceExporter"
 		p:service-ref="orderServiceImpl" 
 		p:serviceName="RmiOrderService"
-		p:serviceInterface="com.example.jpetstore.service.OrderService" />
+		p:serviceInterface="com.example.jpetstore.service.OrderService" /> -->
 </beans>
