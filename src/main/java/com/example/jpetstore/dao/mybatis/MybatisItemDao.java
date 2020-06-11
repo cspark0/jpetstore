@@ -44,7 +44,7 @@ public class MybatisItemDao implements ItemDao {
 	}
 
 	@Override
-	public boolean isAuction(String itemId) throws DataAccessException {
+	public boolean getIsAuction(String itemId) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return (itemMapper.getIsAuction(itemId) == 1);
 	}

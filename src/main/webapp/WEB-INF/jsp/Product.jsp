@@ -42,6 +42,11 @@
             <c:param name="workingItemId" value="${item.itemId}"/></c:url>'>
               <img border="0" src="../images/button_add_to_cart.gif" alt="" />
           </a></td>
+           <td>
+        <c:if test="${item.getIsAuction()==\"1\"}">
+        	bidding
+          </c:if> 
+      </td>
       </tr>
     </c:forEach>
     <tr>

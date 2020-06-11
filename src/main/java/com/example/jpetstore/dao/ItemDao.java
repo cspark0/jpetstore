@@ -17,5 +17,5 @@ public interface ItemDao {
 
   Item getItem(String itemId) throws DataAccessException;
 
-  boolean isAuction(String auctionId) throws DataAccessException;
+  boolean getIsAuction(String auctionId) throws DataAccessException;
 }

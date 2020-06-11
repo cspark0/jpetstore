@@ -30,8 +30,9 @@ public class ViewItemController {
 			ModelMap model) throws Exception {
 		Item item = this.petStore.getItem(itemId);
 		model.put("item", item);
-		model.put("product", item.getProduct());
+	    model.put("product", item.getProduct());
 		return "Item";
+		
 	}
 
 }
