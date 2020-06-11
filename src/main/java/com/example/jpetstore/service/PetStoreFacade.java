@@ -53,5 +53,9 @@ public interface PetStoreFacade {
 
 	List<Order> getOrdersByUsername(String username);
 	
+
+	List<Item> getItemListIsAuction();
+
 	void testScheduler(Date closingTime);
+
 }
