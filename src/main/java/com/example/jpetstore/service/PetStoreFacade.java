@@ -51,5 +51,7 @@ public interface PetStoreFacade {
 	Order getOrder(int orderId);
 
 	List<Order> getOrdersByUsername(String username);
+	
+	List<Item> getItemListIsAuction();
 
 }
