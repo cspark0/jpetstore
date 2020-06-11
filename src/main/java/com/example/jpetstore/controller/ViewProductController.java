@@ -44,6 +44,7 @@ public class ViewProductController {
 		model.put("itemList", itemList);
 		model.put("product", product);
 		return "Product";
+		
 	}
 	
 	@RequestMapping("/shop/viewProduct2.do")
