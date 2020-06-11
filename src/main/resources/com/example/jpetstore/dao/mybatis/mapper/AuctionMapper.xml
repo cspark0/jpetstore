@@ -11,19 +11,22 @@
   </select>
 
 
-  <select id="updateBiddingPrice">
+  <update id="updateBiddingPrice">
     UPDATE AUCTION 
     SET BIDDINGPRICE = #{biddingPrice}
     WHERE AUCTIONID = #{auctionId}
-  </select>
+  </update>
 
-  <select id="insertAuction">
+  <insert id="insertAuction">
+  	<selectKey keyProperty = "auctionId" resultType = "int" order = "BEFORE">
+  		SELECT auctionnum.nextval AS auctionId FROM DUAL
+  	</selectKey>
     INSERT INTO AUCTION (AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, BIDDINGDATE, ISSUCCESSFUL)
     VALUES (#{auctionId}, #{itemId}, #{username}, #{biddingPrice}, #{biddingDate}, #{isSuccessful})
-  </select>
+  </insert>
 
-  <update id="deleteAuctionbyItemId">
+  <delete id="deleteAuctionbyItemId">
     DELETE AUCTION
     WHERE ITEMID = #{itemId}
-  </update>
+  </delete>
 </mapper>
