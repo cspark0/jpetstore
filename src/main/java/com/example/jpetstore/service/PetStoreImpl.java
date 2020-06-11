@@ -73,14 +73,13 @@ public class PetStoreImpl implements PetStoreFacade {
 	private AuctionDao auctionDao;
 
 	private EventDao eventDao;
-	@Autowired		// applicationContext.xml에 정의된 scheduler 객체를 주입 받음
+	@Autowired		// applicationContext.xml�뿉 �젙�쓽�맂 scheduler 媛앹껜瑜� 二쇱엯 諛쏆쓬
 	private ThreadPoolTaskScheduler scheduler;
 
 	//-------------------------------------------------------------------------
 	// Operation methods, implementing the PetStoreFacade interface
 	//-------------------------------------------------------------------------
 
-	@Override
 	public List<Item> getItemListIsAuction() {
 		// TODO Auto-generated method stub
 		return itemDao.getItemListIsAuction();
@@ -153,22 +152,22 @@ public class PetStoreImpl implements PetStoreFacade {
 public void testScheduler(Date closingTime) {
 		
 		Runnable updateTableRunner = new Runnable() {	
-			// anonymous class 정의
+			// anonymous class �젙�쓽
 			@Override
-			public void run() {   // 스케쥴러에 의해 미래의 특정 시점에 실행될 작업을 정의				
+			public void run() {   // �뒪耳�伊대윭�뿉 �쓽�빐 誘몃옒�쓽 �듅�젙 �떆�젏�뿉 �떎�뻾�맆 �옉�뾽�쓣 �젙�쓽				
 				Date curTime = new Date();
-				// 실행 시점의 시각을 전달하여 그 시각 이전의 closing time 값을 갖는 event의 상태를 변경 
-				eventDao.closeEvent(curTime);	// EVENTS 테이블의 레코드 갱신	
+				// �떎�뻾 �떆�젏�쓽 �떆媛곸쓣 �쟾�떖�븯�뿬 洹� �떆媛� �씠�쟾�쓽 closing time 媛믪쓣 媛뽯뒗 event�쓽 �긽�깭瑜� 蹂�寃� 
+				eventDao.closeEvent(curTime);	// EVENTS �뀒�씠釉붿쓽 �젅肄붾뱶 媛깆떊	
 				System.out.println("updateTableRunner is executed at " + curTime);
 			}
 		};
 		
 		HashMap<String, Date> hashMap = new HashMap<String, Date>();
-		hashMap.put("curTime", new Date());			// 현재 시각: PK 값으로 사용
-		hashMap.put("closingTime", closingTime);	// 미래의 종료 시각
-		eventDao.insertNewEvent(hashMap);	// EVENTS 테이블에 레코드 삽입
+		hashMap.put("curTime", new Date());			// �쁽�옱 �떆媛�: PK 媛믪쑝濡� �궗�슜
+		hashMap.put("closingTime", closingTime);	// 誘몃옒�쓽 醫낅즺 �떆媛�
+		eventDao.insertNewEvent(hashMap);	// EVENTS �뀒�씠釉붿뿉 �젅肄붾뱶 �궫�엯
 
-		// 스케줄 생성: closingTime에 updateTableRunner.run() 메소드 실행
+		// �뒪耳�以� �깮�꽦: closingTime�뿉 updateTableRunner.run() 硫붿냼�뱶 �떎�뻾
 		scheduler.schedule(updateTableRunner, closingTime);  
 		
 		System.out.println("updateTableRunner has been scheduled to execute at " + closingTime);
