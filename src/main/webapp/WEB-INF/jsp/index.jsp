@@ -47,7 +47,7 @@
               </tr>
               <tr>
               	<td>
-              		<a href="<c:url value="/shop/viewCategory.do?categoryId=FISH"/>"><h2>Auction</h2></a>
+              		<a href="<c:url value="/shop/viewProduct.do?productId=auction"/>"><h2>Auction</h2></a>
               	</td>
               </tr>
             </table>

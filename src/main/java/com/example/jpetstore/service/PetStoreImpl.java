@@ -8,6 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
+import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.dao.EventDao;
 import com.example.jpetstore.dao.ItemDao;
@@ -69,13 +70,20 @@ public class PetStoreImpl implements PetStoreFacade {
 	@Autowired
 	private OrderDao orderDao;
 	@Autowired
+	private AuctionDao auctionDao;
+
 	private EventDao eventDao;
-	@Autowired		// applicationContext.xml¿¡ Á¤ÀÇµÈ scheduler °´Ã¼¸¦ ÁÖÀÔ ¹ŞÀ½
+	@Autowired		// applicationContext.xmlï¿½ë¿‰ ï¿½ì ™ï¿½ì“½ï¿½ë§‚ scheduler åª›ì•¹ê»œç‘œï¿½ äºŒì‡±ì—¯ è«›ì†ì“¬
 	private ThreadPoolTaskScheduler scheduler;
-	
+
 	//-------------------------------------------------------------------------
 	// Operation methods, implementing the PetStoreFacade interface
 	//-------------------------------------------------------------------------
+
+	public List<Item> getItemListIsAuction() {
+		// TODO Auto-generated method stub
+		return itemDao.getItemListIsAuction();
+	}
 
 	public Account getAccount(String username) {
 		return accountDao.getAccount(username);
@@ -144,22 +152,22 @@ public class PetStoreImpl implements PetStoreFacade {
 public void testScheduler(Date closingTime) {
 		
 		Runnable updateTableRunner = new Runnable() {	
-			// anonymous class Á¤ÀÇ
+			// anonymous class ï¿½ì ™ï¿½ì“½
 			@Override
-			public void run() {   // ½ºÄÉÁì·¯¿¡ ÀÇÇØ ¹Ì·¡ÀÇ Æ¯Á¤ ½ÃÁ¡¿¡ ½ÇÇàµÉ ÀÛ¾÷À» Á¤ÀÇ				
+			public void run() {   // ï¿½ë’ªè€³ï¿½ä¼ŠëŒ€ìœ­ï¿½ë¿‰ ï¿½ì“½ï¿½ë¹ èª˜ëªƒì˜’ï¿½ì“½ ï¿½ë“…ï¿½ì ™ ï¿½ë–†ï¿½ì ï¿½ë¿‰ ï¿½ë–ï¿½ë»¾ï¿½ë§† ï¿½ì˜‰ï¿½ë¾½ï¿½ì“£ ï¿½ì ™ï¿½ì“½				
 				Date curTime = new Date();
-				// ½ÇÇà ½ÃÁ¡ÀÇ ½Ã°¢À» Àü´ŞÇÏ¿© ±× ½Ã°¢ ÀÌÀüÀÇ closing time °ªÀ» °®´Â eventÀÇ »óÅÂ¸¦ º¯°æ 
-				eventDao.closeEvent(curTime);	// EVENTS Å×ÀÌºíÀÇ ·¹ÄÚµå °»½Å	
+				// ï¿½ë–ï¿½ë»¾ ï¿½ë–†ï¿½ì ï¿½ì“½ ï¿½ë–†åª›ê³¸ì“£ ï¿½ìŸ¾ï¿½ë––ï¿½ë¸¯ï¿½ë¿¬ æ´¹ï¿½ ï¿½ë–†åª›ï¿½ ï¿½ì” ï¿½ìŸ¾ï¿½ì“½ closing time åª›ë¯ªì“£ åª›ë½¯ë’— eventï¿½ì“½ ï¿½ê¸½ï¿½ê¹­ç‘œï¿½ è¹‚ï¿½å¯ƒï¿½ 
+				eventDao.closeEvent(curTime);	// EVENTS ï¿½ë€’ï¿½ì” é‡‰ë¶¿ì“½ ï¿½ì …è‚„ë¶¾ë±¶ åª›ê¹†ë–Š	
 				System.out.println("updateTableRunner is executed at " + curTime);
 			}
 		};
 		
 		HashMap<String, Date> hashMap = new HashMap<String, Date>();
-		hashMap.put("curTime", new Date());			// ÇöÀç ½Ã°¢: PK °ªÀ¸·Î »ç¿ë
-		hashMap.put("closingTime", closingTime);	// ¹Ì·¡ÀÇ Á¾·á ½Ã°¢
-		eventDao.insertNewEvent(hashMap);	// EVENTS Å×ÀÌºí¿¡ ·¹ÄÚµå »ğÀÔ
+		hashMap.put("curTime", new Date());			// ï¿½ì½ï¿½ì˜± ï¿½ë–†åª›ï¿½: PK åª›ë¯ªì‘æ¿¡ï¿½ ï¿½ê¶—ï¿½ìŠœ
+		hashMap.put("closingTime", closingTime);	// èª˜ëªƒì˜’ï¿½ì“½ é†«ë‚…ì¦º ï¿½ë–†åª›ï¿½
+		eventDao.insertNewEvent(hashMap);	// EVENTS ï¿½ë€’ï¿½ì” é‡‰ë¶¿ë¿‰ ï¿½ì …è‚„ë¶¾ë±¶ ï¿½ê¶«ï¿½ì—¯
 
-		// ½ºÄÉÁÙ »ı¼º: closingTime¿¡ updateTableRunner.run() ¸Ş¼Òµå ½ÇÇà
+		// ï¿½ë’ªè€³ï¿½ä»¥ï¿½ ï¿½ê¹®ï¿½ê½¦: closingTimeï¿½ë¿‰ updateTableRunner.run() ï§ë¶¿ëƒ¼ï¿½ë±¶ ï¿½ë–ï¿½ë»¾
 		scheduler.schedule(updateTableRunner, closingTime);  
 		
 		System.out.println("updateTableRunner has been scheduled to execute at " + closingTime);

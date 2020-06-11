@@ -30,6 +30,12 @@ public class MybatisItemDao implements ItemDao {
 		}
 	}
 
+	@Override
+	public List<Item> getItemListIsAuction() {
+		// TODO Auto-generated method stub
+		return itemMapper.getItemListIsAuction();
+	}
+
 	public boolean isItemInStock(String itemId) throws DataAccessException {
 		return (itemMapper.getInventoryQuantity(itemId) > 0);
 	}

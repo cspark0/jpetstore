@@ -37,6 +37,8 @@ public interface ItemMapper {
   
   boolean isItemInStock(String itemId);
   
-  int getIsAuction(String itemId); 
+  int getIsAuction(String itemId);
+
+List<Item> getItemListIsAuction(); 
 
 }

@@ -33,7 +33,12 @@ public class ViewProductController {
 	public String handleRequest(
 			@RequestParam("productId") String productId,
 			ModelMap model) throws Exception {
-		PagedListHolder<Item> itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+		PagedListHolder<Item> itemList;
+		if(productId.equals("auction")) {
+			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+		}else {
+			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+		}
 		itemList.setPageSize(4);
 		Product product = this.petStore.getProduct(productId);
 		model.put("itemList", itemList);
