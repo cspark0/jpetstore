@@ -45,6 +45,11 @@
                     <img border="0" src="../images/birds_icon.gif" /></a>
                 </td>
               </tr>
+              <tr>
+              	<td>
+              		<a href="<c:url value="/shop/viewCategory.do?categoryId=FISH"/>"><h2>Auction</h2></a>
+              	</td>
+              </tr>
             </table>
           </td>
           <td style="text-align:center;background-color:white;height:300;width:100%">
