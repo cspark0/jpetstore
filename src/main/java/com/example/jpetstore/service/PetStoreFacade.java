@@ -1,5 +1,6 @@
 package com.example.jpetstore.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.example.jpetstore.domain.Account;
@@ -52,6 +53,9 @@ public interface PetStoreFacade {
 
 	List<Order> getOrdersByUsername(String username);
 	
+
 	List<Item> getItemListIsAuction();
+
+	void testScheduler(Date closingTime);
 
 }
