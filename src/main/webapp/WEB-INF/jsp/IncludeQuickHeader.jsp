@@ -14,5 +14,5 @@
   <a href="<c:url value="/shop/viewCategory.do?categoryId=BIRDS"/>">
     <img border="0" src="../images/sm_birds.gif" /></a>
   <img border="0" src="../images/separator.gif" />
-  <a href="<c:url value="/shop/viewCategory.do?categoryId=BIRDS"/>">Auction</a>
+  <a href="<c:url value="/shop/viewProduct.do?productId=auction"/>">Auction</a>
 </center>
