@@ -89,4 +89,18 @@
   	FROM ITEM
   	WHERE ITEMID = #{itemId}
   </select>
+  
+   <insert id="insertAuctionItem" parameterType="Item">
+    INSERT INTO ITEM
+      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, DEADLINE, DEPOSIT)
+    VALUES
+      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplier}, P, #{attribute1}, 1, #{deadline}, #{deposit})
+  </insert>
+  
+    <insert id="insertItem" parameterType="Item">
+    INSERT INTO ITEM
+      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION)
+    VALUES
+      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplier}, P, #{attribute1}, 0)
+  </insert>
 </mapper>

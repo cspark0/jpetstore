@@ -22,4 +22,8 @@ public interface ItemDao {
 
   public List<Item> getItemListIsAuction();
 
+public void insertAuctionItem(Item item);
+
+public void insertItem(Item item);
+
 }

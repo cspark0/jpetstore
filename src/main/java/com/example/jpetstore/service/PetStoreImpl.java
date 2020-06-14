@@ -77,6 +77,19 @@ public class PetStoreImpl implements PetStoreFacade {
 	// Operation methods, implementing the PetStoreFacade interface
 	//-------------------------------------------------------------------------
 
+	@Override
+	public void insertAuctionItem(Item item) {
+		// TODO Auto-generated method stub
+		itemDao.insertAuctionItem(item);
+	}
+
+	@Override
+	public void insertItem(Item item) {
+		// TODO Auto-generated method stub
+		itemDao.insertItem(item);
+		
+	}
+
 	public List<Item> getItemListIsAuction() {
 		// TODO Auto-generated method stub
 		return itemDao.getItemListIsAuction();

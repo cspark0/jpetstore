@@ -31,6 +31,12 @@ public class MybatisItemDao implements ItemDao {
 	}
 
 	@Override
+	public void insertItem(Item item) {
+		// TODO Auto-generated method stub
+		itemMapper.insertItem(item);
+	}
+
+	@Override
 	public List<Item> getItemListIsAuction() {
 		// TODO Auto-generated method stub
 		return itemMapper.getItemListIsAuction();
@@ -53,6 +59,12 @@ public class MybatisItemDao implements ItemDao {
 	public boolean getIsAuction(String itemId) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return (itemMapper.getIsAuction(itemId) == 1);
+	}
+
+	@Override
+	public void insertAuctionItem(Item item) {
+		// TODO Auto-generated method stub
+		itemMapper.insertAuctionItem(item);
 	}
 
 }
