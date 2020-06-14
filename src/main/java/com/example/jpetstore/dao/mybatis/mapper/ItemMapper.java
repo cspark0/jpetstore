@@ -39,6 +39,10 @@ public interface ItemMapper {
   
   int getIsAuction(String itemId);
 
-List<Item> getItemListIsAuction(); 
+List<Item> getItemListIsAuction();
+
+void insertAuctionItem(Item item);
+
+void insertItem(Item item);
 
 }

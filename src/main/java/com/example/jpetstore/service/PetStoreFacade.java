@@ -57,5 +57,9 @@ public interface PetStoreFacade {
 	List<Item> getItemListIsAuction();
 
 	void testScheduler(Date closingTime);
+	
+	void insertAuctionItem(Item item);
+	
+	void insertItem(Item item);
 
 }
