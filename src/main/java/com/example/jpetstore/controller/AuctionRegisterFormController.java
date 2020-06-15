@@ -26,7 +26,6 @@ import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
-@RequestMapping("/shop/auctionRegister.do")
 public class AuctionRegisterFormController {
 
 	
@@ -40,33 +39,32 @@ public class AuctionRegisterFormController {
 	public void setPetStore(PetStoreFacade petStore) {
 		this.petStore = petStore;
 	}
-
+/*
 	@Autowired
 	private AccountFormValidator validator;
 	public void setValidator(AccountFormValidator validator) {
 		this.validator = validator;
 	}
-
+*/
 	@ModelAttribute("categories")
 	public List<Category> getCategoryList() {
 		return petStore.getCategoryList();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping("/shop/auctionRegister.do")
 	public String showForm(Model model) {
 		 model.addAttribute("auctionForm", new AuctionForm());
 		return formViewName;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping("/shop/auctionRegisterSubmitted.do")
 	public String onSubmit(
-			HttpServletRequest request, HttpSession session,
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result) throws Exception {
 		
-		validator.validate(auctionForm, result);
+		//validator.validate(auctionForm, result);
 		
-		if (result.hasErrors()) return formViewName;
+		//if (result.hasErrors()) return formViewName;
 
 		petStore.insertAuctionItem(auctionForm.getAuctionItem());
 
