@@ -30,17 +30,17 @@
        <%--  <form:errors path="order.creditCard" /></td> --%>
     <tr>
       <td>경매 마감 기한:</td>
-      <td><form:input path="auctionItem.deadline" /> 
+      <td><form:input path="auctionItem.deadline" type="date" /> 
       <%--   <form:errors path="order.expiryDate" /></td> --%>
     </tr>
     <tr>
       <td>카테고리 선택:</td>
-      <td><form:select path="auctionItem.product.categoryId" items="${creditCardTypes}" /> 
+      <td><form:select path="auctionItem.product.categoryId" items="${categories}" /> 
        <%--  <form:errors path="order.billToFirstName" /></td> --%>
     </tr>
     <tr>
       <td>상세 카테고리 선택:</td>
-      <td><form:select path="auctionItem.productId" items="${creditCardTypes}" />
+      <td><form:select path="auctionItem.productId" items="${products}" />
       <%--   <form:errors path="order.billToLastName" /></td> --%>
     </tr>
     <tr>

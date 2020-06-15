@@ -51,6 +51,11 @@ public class AuctionRegisterFormController {
 		return petStore.getCategoryList();
 	}
 	
+	@ModelAttribute("products")
+	public List<Product> getProductList(){
+		return petStore.getProductList();
+	}
+	
 	@RequestMapping("/shop/auctionRegister.do")
 	public String showForm(Model model) {
 		 model.addAttribute("auctionForm", new AuctionForm());
