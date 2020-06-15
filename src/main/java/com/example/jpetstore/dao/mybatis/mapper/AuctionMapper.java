@@ -10,7 +10,7 @@ public interface AuctionMapper {
 	
 	void insertAuction(Auction auction);
 	
-	void deleteAuctionbyAunctionId(Auction auction);
+	void deleteAuctionbyAunctionId(String auctionId);
 	
 	List <Auction> getAuctionByUsername(String username);
 }

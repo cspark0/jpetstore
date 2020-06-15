@@ -27,6 +27,6 @@
 
   <delete id="deleteAuctionbyItemId">
     DELETE AUCTION
-    WHERE ITEMID = #{itemId}
+    WHERE AUCTIONID = #{auctionId}
   </delete>
 </mapper>

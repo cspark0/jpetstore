@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +53,8 @@ public class AuctionRegisterFormController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String showForm() {
+	public String showForm(Model model) {
+		 model.addAttribute("auctionForm", new AuctionForm());
 		return formViewName;
 	}
 	

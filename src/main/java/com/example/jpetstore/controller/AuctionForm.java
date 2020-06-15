@@ -9,9 +9,15 @@ import com.example.jpetstore.domain.Item;
 public class AuctionForm implements Serializable{
 	private Item auctionItem;
 	
-	public AuctionForm() {
-		this.auctionItem = auctionItem;
+	
+	public AuctionForm(Item auctionItem) {
+		this.auctionItem =  auctionItem;
 		auctionItem.setAuction(1);
+	}
+	
+	public AuctionForm() {
+		this.auctionItem = new Item();
+		
 	}
 
 	public Item getAuctionItem() {

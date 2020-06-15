@@ -18,5 +18,5 @@ public interface AuctionDao {
 	 List<Auction> getAuctionByUsername(String username) throws DataAccessException;
 	 void updateBiddingPrice(double price)throws DataAccessException;
 	 void insertAuction(Auction auction)throws DataAccessException;
-	 void deleteAuctionbyAuctionId(Auction auction)throws DataAccessException; // 경매후에 모두 삭제
+	void deleteAuctionbyAuctionId(String auctionId) throws DataAccessException;
 }

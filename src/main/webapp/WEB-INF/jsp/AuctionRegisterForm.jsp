@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="targetUrl"><c:url value="/shop/newRegisterSubmitted.do" /></c:set>
+<c:set var="targetUrl"><c:url value="/shop/index.do" /></c:set>
 
 <div align="center">
 <form:form modelAttribute="auctionForm" action="${targetUrl}" method="post">
@@ -16,36 +16,36 @@
     <tr>
       <td>상품 이름:</td>
       <td><form:input path="auctionItem.itemId" />
-        <form:errors path="order.cardType" /></td>
+       <%--  <form:errors path="order.cardType" /></td> --%>
     </tr>
     <tr>
       <td>가격:</td>
       <td><form:input path="auctionItem.listPrice" /> 
-        <form:errors path="order.creditCard" /></td>
+       <%--  <form:errors path="order.creditCard" /></td> --%>
     </tr>
     <tr>
     	<td>단위 가격:</td>
     	<td><form:input path="auctionItem.unitCost" /> 
-        <form:errors path="order.creditCard" /></td>
+       <%--  <form:errors path="order.creditCard" /></td> --%>
     <tr>
       <td>경매 마감 기한:</td>
       <td><form:input path="auctionItem.deadline" /> 
-        <form:errors path="order.expiryDate" /></td>
+      <%--   <form:errors path="order.expiryDate" /></td> --%>
     </tr>
     <tr>
       <td>카테고리 선택:</td>
       <td><form:select path="auctionItem.product.categoryId" items="${creditCardTypes}" /> 
-        <form:errors path="order.billToFirstName" /></td>
+       <%--  <form:errors path="order.billToFirstName" /></td> --%>
     </tr>
     <tr>
       <td>상세 카테고리 선택:</td>
       <td><form:select path="auctionItem.productId" items="${creditCardTypes}" />
-        <form:errors path="order.billToLastName" /></td>
+      <%--   <form:errors path="order.billToLastName" /></td> --%>
     </tr>
     <tr>
       <td>부가 설명:</td>
       <td><form:input path="auctionItem.attribute1" />
-        <form:errors path="order.billAddress2" /></td>
+        <%-- <form:errors path="order.billAddress2" /></td> --%>
     </tr>
 
   </table>
