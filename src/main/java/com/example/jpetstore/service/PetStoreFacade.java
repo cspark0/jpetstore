@@ -62,4 +62,6 @@ public interface PetStoreFacade {
 	
 	void insertItem(Item item);
 
+	List<Product> getProductList();
+
 }

@@ -14,4 +14,6 @@ public interface ProductDao {
 
 	Product getProduct(String productId) throws DataAccessException;
 
+	List<Product> getProductList();
+
 }

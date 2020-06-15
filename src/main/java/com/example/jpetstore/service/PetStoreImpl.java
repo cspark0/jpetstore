@@ -123,6 +123,11 @@ public class PetStoreImpl implements PetStoreFacade {
 		return categoryDao.getCategory(categoryId);
 	}
 
+	public List<Product> getProductList() {
+		// TODO Auto-generated method stub
+		return productDao.getProductList();
+	}
+
 	public List<Product> getProductListByCategory(String categoryId) {
 		return productDao.getProductListByCategory(categoryId);
 	}

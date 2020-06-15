@@ -46,5 +46,10 @@ public class MybatisProductDao implements ProductDao {
 		public List<String> getKeywordList() {
 			return keywordList;
 		}
+	}
+
+	public List<Product> getProductList() {
+		// TODO Auto-generated method stub
+		return productMapper.getProductList();
 	}	
 }
