@@ -18,12 +18,15 @@ package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.example.jpetstore.domain.Product;
 
 /**
  * @author Eduardo Macarron
  *
  */
+@Mapper
 public interface ProductMapper {
 
   List<Product> getProductListByCategory(String categoryId);

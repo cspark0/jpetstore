@@ -16,11 +16,14 @@
 
 package com.example.jpetstore.dao.mybatis.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.example.jpetstore.domain.Sequence;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface SequenceMapper {
   Sequence getSequence(Sequence sequence);
   Sequence getOracleSequence(Sequence sequence);

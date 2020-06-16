@@ -19,12 +19,15 @@ package com.example.jpetstore.dao.mybatis.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.example.jpetstore.domain.Item;
 
 /**
  * @author Eduardo Macarron
  *
  */
+@Mapper
 public interface ItemMapper {
 
   void updateInventoryQuantity(Map<String, Object> param);
