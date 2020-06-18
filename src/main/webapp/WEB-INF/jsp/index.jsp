@@ -72,6 +72,7 @@
 </table>
 
 <a href="<c:url value="/shop/auctionRegister.do"/>">등록</a>
+<a href="<c:url value="/shop/itemRegister.do"/>">등록2</a>
 
 <%@ include file="IncludeBanner.jsp" %>
 
