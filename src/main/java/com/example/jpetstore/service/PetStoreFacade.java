@@ -64,4 +64,6 @@ public interface PetStoreFacade {
 
 	List<Product> getProductList();
 
+	Product getProductByName(String name);
+
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Category;
+import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.AccountFormValidator;
 import com.example.jpetstore.service.OrderValidator;
@@ -70,8 +71,11 @@ public class AuctionRegisterFormController {
 		//validator.validate(auctionForm, result);
 		
 		//if (result.hasErrors()) return formViewName;
-
-		petStore.insertAuctionItem(auctionForm.getAuctionItem());
+		Item item = auctionForm.getAuctionItem();
+		item.setAuction(1);
+		Product product = petStore.getProductByName(item.getProductId());
+		item.setProductId(product.getProductId());
+		petStore.insertAuctionItem(item);
 
 		
 		return successViewName;

@@ -34,4 +34,6 @@ public interface ProductMapper {
 
   List<Product> getProductList();
 
+Product getProductByName(String name);
+
 }
