@@ -90,6 +90,11 @@
   	WHERE ITEMID = #{itemId}
   </select>
   
+  <insert id="insertQuantity">
+  	INSERT INTO INVENTORY(ITEMID, QTY)
+  	VALUES(#{param1}, #{param2})
+  </insert>
+  
    <insert id="insertAuctionItem" parameterType="Item">
     INSERT INTO ITEM
       (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, DEADLINE, DEPOSIT)

@@ -45,4 +45,6 @@ void insertAuctionItem(Item item);
 
 void insertItem(Item item);
 
+void insertQuantity(String itemId, int qty);
+
 }
