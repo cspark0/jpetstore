@@ -8,6 +8,7 @@
         <b><font color="black" size="2">
           &lt;&lt; <c:out value="${product.name}" /></font></b></a>
     </td>
+    
   </tr>
 </table>
 <p>

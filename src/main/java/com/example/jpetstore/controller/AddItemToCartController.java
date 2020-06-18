@@ -40,6 +40,7 @@ public class AddItemToCartController {
 		if (cart.containsItemId(workingItemId)) {
 			cart.incrementQuantityByItemId(workingItemId);
 		}
+		
 		else {
 			// isInStock is a "real-time" property that must be updated
 			// every time an item is added to the cart, even if other
