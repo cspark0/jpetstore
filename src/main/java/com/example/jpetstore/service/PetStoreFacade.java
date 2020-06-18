@@ -66,4 +66,7 @@ public interface PetStoreFacade {
 
 	Product getProductByName(String name);
 
+	void insertQuantity(String itemId, int qty);
+
+
 }

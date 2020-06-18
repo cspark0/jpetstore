@@ -26,4 +26,6 @@ public void insertAuctionItem(Item item);
 
 public void insertItem(Item item);
 
+public void insertQuantity(String itemId, int qty);
+
 }

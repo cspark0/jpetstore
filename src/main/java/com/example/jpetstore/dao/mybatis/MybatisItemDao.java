@@ -30,6 +30,11 @@ public class MybatisItemDao implements ItemDao {
 		}
 	}
 
+	public void insertQuantity(String itemId, int qty) {
+		// TODO Auto-generated method stub
+		itemMapper.insertQuantity(itemId, qty);
+	}
+
 	@Override
 	public void insertItem(Item item) {
 		// TODO Auto-generated method stub

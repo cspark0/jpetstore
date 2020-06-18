@@ -128,6 +128,7 @@ public class PetStoreImpl implements PetStoreFacade {
 		return productDao.getProductList();
 	}
 
+
 	public Product getProductByName(String name) {
 		// TODO Auto-generated method stub
 		return productDao.getProductByName(name);
@@ -192,4 +193,10 @@ public void testScheduler(Date closingTime) {
 		
 		System.out.println("updateTableRunner has been scheduled to execute at " + closingTime);
 	}
+
+
+public void insertQuantity(String itemId, int qty) {
+	// TODO Auto-generated method stub
+	itemDao.insertQuantity(itemId, qty);
+}
 }
