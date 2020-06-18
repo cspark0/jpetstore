@@ -27,6 +27,7 @@ public class Item implements Serializable {
   
 
     public int getIsAuction() {
+    	System.out.println("is Auction?" + isAuction);
 	    return isAuction;
 	}
 	public void setAuction(int isAuction) {

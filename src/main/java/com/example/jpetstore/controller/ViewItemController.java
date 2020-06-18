@@ -29,6 +29,7 @@ public class ViewItemController {
 			@RequestParam("itemId") String itemId,
 			ModelMap model) throws Exception {
 		Item item = this.petStore.getItem(itemId);
+		System.out.println("controller:is Auction?" + item.getIsAuction());
 		model.put("item", item);
 	    model.put("product", item.getProduct());
 		return "Item";

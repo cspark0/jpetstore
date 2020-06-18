@@ -46,6 +46,8 @@ public class AddItemToCartController {
 			// item details are cached.
 			boolean isInStock = this.petStore.isItemInStock(workingItemId);
 			Item item = this.petStore.getItem(workingItemId);
+			if(item.getIsAuction() ==1)
+				item.setListPrice(item.getListPrice()/10);
 			cart.addItem(item, isInStock);
 		}
 		return new ModelAndView("Cart", "cart", cart);
