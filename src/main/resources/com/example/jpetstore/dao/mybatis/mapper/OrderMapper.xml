@@ -4,7 +4,7 @@
 <mapper namespace="com.example.jpetstore.dao.mybatis.mapper.OrderMapper">
 
   <cache />
-
+	
   <select id="getOrder" resultType="Order">
     select
       BILLADDR1 AS billAddress1,
@@ -37,6 +37,7 @@
     WHERE ORDERS.ORDERID = #{value}
       AND ORDERS.ORDERID = ORDERSTATUS.ORDERID
   </select>
+
 
   <select id="getOrdersByUsername" resultType="Order">
     SELECT
