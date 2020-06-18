@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.jpetstore.domain.Cart;
+import com.example.jpetstore.domain.DepositCart;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.service.PetStoreFacade;
 
@@ -17,8 +18,8 @@ import com.example.jpetstore.service.PetStoreFacade;
  * @modified-by Changsup Park
  */
 @Controller
-@SessionAttributes("sessionCart")
-public class AddItemToCartController { 
+@SessionAttributes("depositSessionCart")
+public class AddItemToDeposotCartController { 
 
 	private PetStoreFacade petStore;
 
@@ -27,30 +28,27 @@ public class AddItemToCartController {
 		this.petStore = petStore;
 	}
 
-	@ModelAttribute("sessionCart")
-	public Cart createCart() {
-		return new Cart();
+	@ModelAttribute("depositSessionCart")
+	public DepositCart createCart() {
+		return new DepositCart();
 	}
 	
-	@RequestMapping("/shop/addItemToCart.do")
+	@RequestMapping("/shop/addItemToDepositCart.do")
 	public ModelAndView handleRequest(
 			@RequestParam("workingItemId") String workingItemId,
-			@ModelAttribute("sessionCart") Cart cart 
+			@ModelAttribute("depositSessionCart") DepositCart cart 
 			) throws Exception {
 		if (cart.containsItemId(workingItemId)) {
 			cart.incrementQuantityByItemId(workingItemId);
 		}
-		
 		else {
 			// isInStock is a "real-time" property that must be updated
 			// every time an item is added to the cart, even if other
 			// item details are cached.
 			boolean isInStock = this.petStore.isItemInStock(workingItemId);
 			Item item = this.petStore.getItem(workingItemId);
-			if(item.getIsAuction() ==1)
-				item.setListPrice(item.getListPrice()/10);
 			cart.addItem(item, isInStock);
 		}
-		return new ModelAndView("Cart", "cart", cart);
+		return new ModelAndView("DepositCart", "depositCart", cart);
 	}
 }

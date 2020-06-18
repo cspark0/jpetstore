@@ -35,6 +35,7 @@ public class ViewProductController {
 			ModelMap model) throws Exception {
 		PagedListHolder<Item> itemList;
 		if(productId.equals("auction")) {
+		
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListIsAuction());
 		}else {
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));

@@ -65,7 +65,8 @@
       ATTR3 AS attribute3,
       ATTR4 AS attribute4,
       ATTR5 AS attribute5,
-      QTY AS quantity
+      QTY AS quantity,
+      I.ISAUCTION AS isAuction
     FROM ITEM I, INVENTORY V, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.ITEMID = V.ITEMID
