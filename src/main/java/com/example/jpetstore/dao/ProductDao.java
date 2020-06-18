@@ -16,4 +16,6 @@ public interface ProductDao {
 
 	List<Product> getProductList();
 
+	Product getProductByName(String name);
+
 }

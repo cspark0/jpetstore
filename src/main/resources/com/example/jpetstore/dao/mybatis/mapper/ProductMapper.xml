@@ -14,6 +14,16 @@
     FROM PRODUCT
     WHERE PRODUCTID = #{productId}
   </select>
+  
+    <select id="getProductByName" resultType="Product">
+    SELECT
+      PRODUCTID,
+      NAME,
+      DESCN as description,
+      CATEGORY as categoryId
+    FROM PRODUCT
+    WHERE NAME = #{name}
+  </select>
 
   <select id="getProductListByCategory" resultType="Product">
     SELECT
