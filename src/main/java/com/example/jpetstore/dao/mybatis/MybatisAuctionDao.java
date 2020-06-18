@@ -3,13 +3,13 @@ package com.example.jpetstore.dao.mybatis;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
-
+import org.springframework.stereotype.Repository;
 
 import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.mybatis.mapper.AuctionMapper;
 import com.example.jpetstore.domain.Auction;
 
-
+@Repository
 public class MybatisAuctionDao implements AuctionDao {
 
 	private AuctionMapper auctionMapper;

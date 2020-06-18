@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
@@ -67,6 +68,8 @@ public interface PetStoreFacade {
 	Product getProductByName(String name);
 
 	void insertQuantity(String itemId, int qty);
+
+	List<Auction> getAuctionByUsername(String username);
 
 
 }
