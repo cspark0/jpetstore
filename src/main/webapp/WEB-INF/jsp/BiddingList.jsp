@@ -31,7 +31,7 @@
          <td>
           <a href='<c:url value="/shop/order.do">
             <c:param name="Progress" value="${bid.isSuccessful}"/></c:url>'>
-              <img border="0" src="" alt="" />
+              <img border="0" src="" alt="" />//
           </a></td>    
           
       </tr>
