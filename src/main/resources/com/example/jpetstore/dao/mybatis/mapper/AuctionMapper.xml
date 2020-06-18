@@ -7,7 +7,7 @@
   <select id="getAuctionByUsername" resultType="Auction">
     SELECT AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, ISSUCCESSFUL
     FROM AUCTION
-    WHERE USERNAME = #{value}
+    WHERE USERNAME = #{username}
   </select>
 
 

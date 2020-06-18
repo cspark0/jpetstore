@@ -14,29 +14,29 @@
       <td><b>Bidding Price</b></td> 
       <td><b>Progress</b></td> 
     </tr>
-    <c:forEach var="bid" items="${BiddingList}">
-      <tr bgcolor="#FFFF88">
+      <%--  <c:forEach var="bid" items="${BiddingList}">
+   <tr bgcolor="#FFFF88">
         <td>
           <b><a href='<c:url value="/shop/viewItem.do">
-              <c:param name="ItemId" value="${bid.itemId}"/></c:url>'>
+              <c:param name="itemId" value="${bid.itemId}"/></c:url>'>
               <font color="black"><c:out value="${bid.itemId}" /></font>
             </a></b></td>
         <td>
-          <b><c:param name="AuctionId" value="${bid.auctionId}"/>
+          <b><c:param name="auctionId" value="${bid.auctionId}"/>
             </b></td>
         <td><fmt:formatNumber value="${bid.biddingPrice}"
             pattern="$#,##0.00" /></td>
-        <%-- <td><fmt:formatDate value="${bid.biddingDate}"
-            pattern="yyyy/MM/dd hh:mm:ss" /></td> --%>
+        <td><fmt:formatDate value="${bid.biddingDate}"
+            pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td>
           <a href='<c:url value="/shop/order.do">
-            <c:param name="Progress" value="${bid.isSuccessful}"/></c:url>'>
+            <c:param name="isSuccessful" value="${bid.isSuccessful}"/></c:url>'>
               <img border="0" src="" alt="" />
           </a></td>    
         
           
       </tr>
-    </c:forEach>
+    </c:forEach> --%>
   </table>
 </div>
 
