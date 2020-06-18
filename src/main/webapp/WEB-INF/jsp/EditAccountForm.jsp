@@ -46,8 +46,12 @@
     <input type="image" src="../images/button_submit.gif" name="submit"
       value="Save Account Information" />
 </form:form>
-<p></p>
-  <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a><a href='<c:url value="/shop/sellerInform.do"/>'>Seller Inform</a></b></h3>
+<p>
+  <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a></b></h3>
+</p>
+<p>
+<h3><b><a href='<c:url value="/shop/sellerInform.do"/>'>Seller Inform</a></b></h3>
+</p>
 </div>
 
 <%@ include file="IncludeBottom.jsp"%>
