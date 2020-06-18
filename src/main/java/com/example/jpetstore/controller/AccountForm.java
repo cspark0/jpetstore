@@ -10,7 +10,7 @@ import com.example.jpetstore.domain.Account;
  */
 @SuppressWarnings("serial")
 public class AccountForm implements Serializable {
-
+	
 	private Account account;
 
 	private boolean newAccount;
