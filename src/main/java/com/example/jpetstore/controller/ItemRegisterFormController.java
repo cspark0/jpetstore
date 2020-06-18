@@ -75,6 +75,7 @@ public class ItemRegisterFormController {
 		item.setAuction(0);
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
+		item.setStatus("P");
 		
 		petStore.insertItem(item);
 		petStore.insertQuantity(item.getItemId(), 10000);
