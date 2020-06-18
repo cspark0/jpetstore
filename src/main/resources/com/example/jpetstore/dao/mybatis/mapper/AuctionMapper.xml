@@ -5,7 +5,7 @@
   <cache />
 
   <select id="getAuctionByUsername" resultType="Auction">
-    SELECT *
+    SELECT AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, ISSUCCESSFUL
     FROM AUCTION
     WHERE USERNAME = #{value}
   </select>

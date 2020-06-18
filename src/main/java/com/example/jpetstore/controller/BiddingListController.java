@@ -25,6 +25,7 @@ public class BiddingListController {
 		@ModelAttribute("userSession") UserSession userSession
 		) throws Exception {
 		String username = userSession.getAccount().getUsername();
+		System.out.println(username);
 		return new ModelAndView("BiddingList", "BiddingList", 
 				petStore.getAuctionByUsername(username));
 	}

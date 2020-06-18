@@ -35,6 +35,7 @@
         	<mvc:mapping path="/shop/listOrders.do"/>
         	<mvc:mapping path="/shop/viewOrder.do"/>
         	<mvc:mapping path="/shop/newOrder.do"/>
+        	<mvc:mapping path="/shop/BiddingList.do"/>
         	<bean class="com.example.jpetstore.controller.SignonInterceptor" />
     	</mvc:interceptor>
 	</mvc:interceptors>

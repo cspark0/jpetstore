@@ -1,5 +1,7 @@
 <%@ include file="IncludeTop.jsp"%>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <div align="center">
   <p>
     <font size="4"><b>Bidding List</b></font>
@@ -22,11 +24,10 @@
         <td>
           <b><c:param name="AuctionId" value="${bid.auctionId}"/>
             </b></td>
-        <td><fmt:formatDate value="${bid.biddingDate}"
-            pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td><fmt:formatNumber value="${bid.biddingPrice}"
             pattern="$#,##0.00" /></td>
-        
+        <%-- <td><fmt:formatDate value="${bid.biddingDate}"
+            pattern="yyyy/MM/dd hh:mm:ss" /></td> --%>
         <td>
           <a href='<c:url value="/shop/order.do">
             <c:param name="Progress" value="${bid.isSuccessful}"/></c:url>'>
