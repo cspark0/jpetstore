@@ -6,13 +6,11 @@
   </p>
   <table class="n23">
     <tr bgcolor="#CCCCCC">
-      <td><b>Item Name</b></td> 
       <td><b>Item ID</b></td> 
       <td><b>Auction ID</b></td> 
       <td><b>Bidding Date</b></td> 
       <td><b>Bidding Price</b></td> 
       <td><b>Progress</b></td> 
-      <td><b>Cancel Bid</b></td>
     </tr>
     <c:forEach var="bid" items="${BiddingList}">
       <tr bgcolor="#FFFF88">
@@ -28,11 +26,13 @@
             pattern="yyyy/MM/dd hh:mm:ss" /></td>
         <td><fmt:formatNumber value="${bid.biddingPrice}"
             pattern="$#,##0.00" /></td>
-         <td>
+        
+        <td>
           <a href='<c:url value="/shop/order.do">
             <c:param name="Progress" value="${bid.isSuccessful}"/></c:url>'>
-              <img border="0" src="" alt="" />//
+              <img border="0" src="" alt="" />
           </a></td>    
+        
           
       </tr>
     </c:forEach>
