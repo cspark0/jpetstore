@@ -76,9 +76,10 @@ public class AuctionRegisterFormController {
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
 		item.setDeposit(item.getListPrice()/10);
+		item.setStatus("P");
 		
 		petStore.insertAuctionItem(item);
-		petStore.insertQuantity(item.getItemId(), 10000);
+		petStore.insertQuantity(item.getItemId(), 1000);
 		
 
 		
