@@ -19,7 +19,7 @@ import com.example.jpetstore.service.PetStoreFacade;
  */
 @Controller
 @SessionAttributes("depositSessionCart")
-public class AddItemToDeposotCartController { 
+public class AddItemToDepositCartController { 
 
 	private PetStoreFacade petStore;
 

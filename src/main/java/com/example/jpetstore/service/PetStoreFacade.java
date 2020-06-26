@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
@@ -59,6 +60,7 @@ public interface PetStoreFacade {
 	void testScheduler(Date closingTime);
 	
 	void insertAuctionItem(Item item);
+	void insertAuction(Auction auction);
 	
 	void insertItem(Item item);
 

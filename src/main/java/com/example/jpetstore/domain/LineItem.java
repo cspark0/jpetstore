@@ -28,7 +28,16 @@ public class LineItem implements Serializable {
 
   /* JavaBeans Properties */
 
-  public int getOrderId() { return orderId; }
+  public LineItem(int i, DepositCartItem cartItem) {
+	// TODO Auto-generated constructor stub
+	  this.lineNumber = lineNumber;
+	    this.quantity = cartItem.getQuantity();
+	    this.itemId = cartItem.getItem().getItemId();
+	    this.unitPrice = cartItem.getItem().getListPrice();
+	    this.item = cartItem.getItem();
+}
+
+public int getOrderId() { return orderId; }
   public void setOrderId(int orderId) { this.orderId = orderId; }
 
   public int getLineNumber() { return lineNumber; }

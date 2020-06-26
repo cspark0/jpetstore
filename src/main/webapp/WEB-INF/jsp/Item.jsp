@@ -60,9 +60,9 @@
        <c:if test="${item.isAuction == 1}">
         <td>
        
-        <a href='<c:url value="/shop/addItemToCart.do">
+        <a href='<c:url value="/shop/addItemToDepositCart.do">
           <c:param name="workingItemId" value="${item.itemId}"/></c:url>'>
-         	 경매 참여(보증금계산)</a>
+             경매 참여(보증금계산)</a>
            </td> </c:if>
     </tr>
   </table>

@@ -66,7 +66,8 @@
       ATTR4 AS attribute4,
       ATTR5 AS attribute5,
       QTY AS quantity,
-      I.ISAUCTION AS isAuction
+      I.ISAUCTION AS isAuction,
+      I.DEPOSIT AS deposit 
     FROM ITEM I, INVENTORY V, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.ITEMID = V.ITEMID
