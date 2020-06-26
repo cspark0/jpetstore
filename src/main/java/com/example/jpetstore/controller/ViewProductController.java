@@ -42,6 +42,7 @@ public class ViewProductController {
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
 			
 		}
+		
 		itemList.setPageSize(15);
 		Product product = this.petStore.getProduct(productId);
 		
