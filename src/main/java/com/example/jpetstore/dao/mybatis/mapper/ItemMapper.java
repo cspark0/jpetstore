@@ -16,6 +16,7 @@
 
 package com.example.jpetstore.dao.mybatis.mapper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +48,10 @@ void insertItem(Item item);
 
 void insertQuantity(String itemId, int qty);
 
+
 List<Item> getItemListByUsername(String username);
+
+void closeEvent(Date curTime);
+
 
 }

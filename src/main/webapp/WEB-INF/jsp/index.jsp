@@ -71,7 +71,6 @@
   </tr>
 </table>
 
-<a href="<c:url value="/shop/auctionRegister.do"/>">등록</a>
 
 <%@ include file="IncludeBanner.jsp" %>
 

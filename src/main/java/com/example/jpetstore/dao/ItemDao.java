@@ -1,5 +1,6 @@
 package com.example.jpetstore.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -27,6 +28,10 @@ public void insertItem(Item item);
 
 public void insertQuantity(String itemId, int qty);
 
+
 public List<Item> getItemListByUsername(String username);
+
+public void closeEvent(Date curTime);
+
 
 }

@@ -1,6 +1,7 @@
 package com.example.jpetstore.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
@@ -67,9 +70,11 @@ public class AuctionRegisterFormController {
 	
 	@RequestMapping("/shop/auctionRegisterSubmitted.do")
 	public String onSubmit(
-			HttpServletRequest request,//Ãß°¡
+			HttpServletRequest request,//ï¿½ß°ï¿½
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
-			BindingResult result) throws Exception {
+			BindingResult result,
+			@RequestParam("keyword") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime
+			) throws Exception {
 		
 		//validator.validate(auctionForm, result);
 		
@@ -80,14 +85,19 @@ public class AuctionRegisterFormController {
 		item.setProductId(product.getProductId());
 		item.setDeposit(item.getListPrice()/10);
 		item.setStatus("P");
+
 		
-		//Ãß°¡
+		//ï¿½ß°ï¿½
 		//UserSession userSession = (UserSession) request.getSession().getAttribute("userSession");
 		//Account account = petStore.getAccount(userSession.getAccount().getUsername());
 		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		item.setUsername2(userSession.getAccount().getUsername());
-		System.out.println("username³ª¿À´Ï?" + userSession.getAccount().getUsername());
+		System.out.println("usernameï¿½ï¿½ï¿½ï¿½ï¿½?" + userSession.getAccount().getUsername());
 		
+
+		item.setClosingTime(closeTime);
+		petStore.testScheduler(closeTime);
+
 		petStore.insertAuctionItem(item);
 		petStore.insertQuantity(item.getItemId(), 1000);
 		

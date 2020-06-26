@@ -8,12 +8,14 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
+import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.dao.EventDao;
 import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
 import com.example.jpetstore.dao.ProductDao;
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
@@ -67,11 +69,14 @@ public class PetStoreImpl implements PetStoreFacade {
 	@Autowired
 	private ItemDao itemDao;
 	@Autowired
+	private AuctionDao auctionDao;
+	@Autowired
 	private OrderDao orderDao;
 
 	private EventDao eventDao;
 	@Autowired		// applicationContext.xml占쎈퓠 占쎌젟占쎌벥占쎈쭆 scheduler 揶쏆빘猿쒐몴占� 雅뚯눘�뿯 獄쏆룇�벉
 	private ThreadPoolTaskScheduler scheduler;
+
 
 	//-------------------------------------------------------------------------
 	// Operation methods, implementing the PetStoreFacade interface
@@ -178,17 +183,24 @@ public void testScheduler(Date closingTime) {
 			public void run() {   // 占쎈뮞�놂옙鴉딅��쑎占쎈퓠 占쎌벥占쎈퉸 沃섎챶�삋占쎌벥 占쎈뱟占쎌젟 占쎈뻻占쎌젎占쎈퓠 占쎈뼄占쎈뻬占쎈쭍 占쎌삂占쎈씜占쎌뱽 占쎌젟占쎌벥				
 				Date curTime = new Date();
 				// 占쎈뼄占쎈뻬 占쎈뻻占쎌젎占쎌벥 占쎈뻻揶쏄낯�뱽 占쎌읈占쎈뼎占쎈릭占쎈연 域뱄옙 占쎈뻻揶쏉옙 占쎌뵠占쎌읈占쎌벥 closing time 揶쏅�れ뱽 揶쏅쉴�뮉 event占쎌벥 占쎄맒占쎄묶�몴占� 癰귨옙野껓옙 
+
 				eventDao.closeEvent(curTime);	// EVENTS 占쎈�믭옙�뵠�뇡遺우벥 占쎌쟿�굜遺얜굡 揶쏄퉮�뻿	
+
+				itemDao.closeEvent(curTime);	// EVENTS 占쎈�믭옙�뵠�뇡遺우벥 占쎌쟿�굜遺얜굡 揶쏄퉮�뻿	
+
 				System.out.println("updateTableRunner is executed at " + curTime);
 			}
 		};
 		
+
 		HashMap<String, Date> hashMap = new HashMap<String, Date>();
 		hashMap.put("curTime", new Date());			// 占쎌겱占쎌삺 占쎈뻻揶쏉옙: PK 揶쏅�れ몵嚥∽옙 占쎄텢占쎌뒠
 		hashMap.put("closingTime", closingTime);	// 沃섎챶�삋占쎌벥 �넫�굝利� 占쎈뻻揶쏉옙
 		eventDao.insertNewEvent(hashMap);	// EVENTS 占쎈�믭옙�뵠�뇡遺용퓠 占쎌쟿�굜遺얜굡 占쎄땜占쎌뿯
 
 		// 占쎈뮞�놂옙餓ο옙 占쎄문占쎄쉐: closingTime占쎈퓠 updateTableRunner.run() 筌롫뗄�꺖占쎈굡 占쎈뼄占쎈뻬
+
+
 		scheduler.schedule(updateTableRunner, closingTime);  
 		
 		System.out.println("updateTableRunner has been scheduled to execute at " + closingTime);
@@ -206,5 +218,15 @@ public List<Item> getItemListByUsername(String username) {
 	return itemDao.getItemListByUsername(username);
 }
 
+
+public void insertAuction(Auction auction) {
+	// TODO Auto-generated method stub
+	auctionDao.insertAuction(auction);
+	
+}
+public List<Auction> getAuctionByUsername(String username) {
+	// TODO Auto-generated method stub
+	return auctionDao.getAuctionByUsername(username);
+}
 
 }

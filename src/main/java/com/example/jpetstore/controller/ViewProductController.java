@@ -39,12 +39,18 @@ public class ViewProductController {
 		if(productId.equals("auction")) {
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListIsAuction());
 		}else {
+			
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+			
 		}
-		itemList.setPageSize(4);
+		
+		itemList.setPageSize(15);
 		Product product = this.petStore.getProduct(productId);
+
 		//Product product = itemList.getPageList().get(0).getProduct();
 		System.out.println(itemList.getPageList());
+
+
 		
 		model.put("itemList", itemList);
 		model.put("product", product);
