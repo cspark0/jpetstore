@@ -32,6 +32,7 @@
     <tr>
       <td>경매 마감 기한:</td>
       <td><form:input path="auctionItem.deadline" type="date" /> 
+      "yyyy-MM-dd HH:mm" 형식으로 미래의 시각을 입력하세요.
       <%--   <form:errors path="order.expiryDate" /></td> --%>
     </tr>
     <tr>
