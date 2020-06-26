@@ -56,7 +56,7 @@
     <tr>
       <td>
         <c:if test="${!itemList.firstPage}">
-          <a href="?page=previous"><font color="white"><B>&lt;&lt; Prev</B></font></a>
+          <a href="?page=previous"><font color="white"><B>&lt;&lt; Prev</B></font></a>       
         </c:if> 
         <c:if test="${!itemList.lastPage}">
           <a href="?page=next"><font color="white"><B>Next &gt;&gt;</B></font></a>

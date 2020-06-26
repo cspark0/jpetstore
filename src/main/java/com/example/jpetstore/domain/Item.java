@@ -24,9 +24,24 @@ public class Item implements Serializable {
  
   private double deposit;
   private String auctionId;
+
+  
+  //�߰�
+  private String username2;
+
   private Date closingTime;
 
-    public int getIsAuction() {
+
+    public String getUsername2() {
+    	System.out.println("username?" + username2);
+    	return username2;
+    }
+    public void setUsername2(String username) {
+    	this.username2 = username;
+    }
+    
+    
+	public int getIsAuction() {
     	System.out.println("is Auction?" + isAuction);
 	    return isAuction;
 	}
