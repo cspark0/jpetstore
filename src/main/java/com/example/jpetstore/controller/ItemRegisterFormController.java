@@ -27,10 +27,10 @@ import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
-public class AuctionRegisterFormController {
+public class ItemRegisterFormController {
 
 	
-	@Value("AuctionRegisterForm")
+	@Value("ItemRegisterForm")
 	private String formViewName;
 	@Value("index")
 	private String successViewName;
@@ -57,29 +57,28 @@ public class AuctionRegisterFormController {
 		return petStore.getProductList();
 	}
 	
-	@RequestMapping("/shop/auctionRegister.do")
+	@RequestMapping("/shop/itemRegister.do")
 	public String showForm(Model model) {
-		 model.addAttribute("auctionForm", new AuctionForm());
+		 model.addAttribute("itemForm", new ItemForm());
 		return formViewName;
 	}
 	
-	@RequestMapping("/shop/auctionRegisterSubmitted.do")
+	@RequestMapping("/shop/itemRegisterSubmitted.do")
 	public String onSubmit(
-			@ModelAttribute("auctionForm") AuctionForm auctionForm,
+			@ModelAttribute("itemForm") ItemForm itemForm,
 			BindingResult result) throws Exception {
 		
 		//validator.validate(auctionForm, result);
 		
 		//if (result.hasErrors()) return formViewName;
-		Item item = auctionForm.getAuctionItem();
-		item.setAuction(1);
+		Item item = itemForm.getItem();
+		item.setAuction(0);
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
-		item.setDeposit(item.getListPrice()/10);
 		item.setStatus("P");
 		
-		petStore.insertAuctionItem(item);
-		petStore.insertQuantity(item.getItemId(), 1000);
+		petStore.insertItem(item);
+		petStore.insertQuantity(item.getItemId(), 10000);
 		
 
 		

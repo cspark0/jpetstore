@@ -69,13 +69,14 @@ public class PetStoreImpl implements PetStoreFacade {
 	@Autowired
 	private ItemDao itemDao;
 	@Autowired
+	private AuctionDao auctionDao;
+	@Autowired
 	private OrderDao orderDao;
 
 	private EventDao eventDao;
 	@Autowired		// applicationContext.xml占쎈퓠 占쎌젟占쎌벥占쎈쭆 scheduler 揶쏆빘猿쒐몴占� 雅뚯눘�뿯 獄쏆룇�벉
 	private ThreadPoolTaskScheduler scheduler;
-	@Autowired
-	private AuctionDao auctionDao;
+
 
 	//-------------------------------------------------------------------------
 	// Operation methods, implementing the PetStoreFacade interface
@@ -209,5 +210,9 @@ public void insertAuction(Auction auction) {
 	// TODO Auto-generated method stub
 	auctionDao.insertAuction(auction);
 	
+}
+public List<Auction> getAuctionByUsername(String username) {
+	// TODO Auto-generated method stub
+	return auctionDao.getAuctionByUsername(username);
 }
 }

@@ -1,4 +1,5 @@
 <%@ include file="IncludeTop.jsp"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -49,6 +50,7 @@
 <p>
   <h3><b><a href='<c:url value="/shop/listOrders.do"/>'>My Orders</a></b></h3>
 </p>
+<a href="<c:url value="/shop/biddingList.do"/>">입찰신청내역</a>
 <p>
 <h3><b><a href='<c:url value="/shop/sellerInform.do"/>'>Seller Inform</a></b></h3>
 </p>

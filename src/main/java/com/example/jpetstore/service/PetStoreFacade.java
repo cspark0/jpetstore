@@ -70,5 +70,7 @@ public interface PetStoreFacade {
 
 	void insertQuantity(String itemId, int qty);
 
+	List<Auction> getAuctionByUsername(String username);
+
 
 }

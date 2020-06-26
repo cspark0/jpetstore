@@ -108,6 +108,6 @@
     INSERT INTO ITEM
       (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION)
     VALUES
-      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId}, P, #{attribute1}, 0)
+      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction})
   </insert>
 </mapper>

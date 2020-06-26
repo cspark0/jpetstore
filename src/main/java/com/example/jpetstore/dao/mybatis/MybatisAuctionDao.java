@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.jpetstore.dao.AuctionDao;
 import com.example.jpetstore.dao.mybatis.mapper.AuctionMapper;
