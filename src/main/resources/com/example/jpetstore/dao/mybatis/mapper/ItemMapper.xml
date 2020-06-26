@@ -24,6 +24,7 @@
     FROM ITEM I, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.PRODUCTID = #{value}
+      AND I.ISAUCTION = 0
   </select>
   
   <select id="getItemListIsAuction" resultType="Item">
@@ -85,7 +86,12 @@
     SET QTY = QTY - #{increment}
     WHERE ITEMID = #{itemId}
   </update>
-  
+   <update id="closeEvent" parameterType="Date">
+    <![CDATA[
+     UPDATE ITEM SET TIMESTATUS = 'CLOSE'
+     WHERE CLOSINGTIME <= #{curTime} AND ISAUCTION = 1
+    ]]>
+  </update>
   <select id="getIsAuction" resultType="int">
   	SELECT ISAUCTION
   	FROM ITEM
@@ -99,9 +105,9 @@
   
    <insert id="insertAuctionItem" parameterType="Item">
     INSERT INTO ITEM
-      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, DEADLINE, DEPOSIT)
+      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, CLOSINGTIME, TIMESTATUS,DEPOSIT)
     VALUES
-      (#{itemId}, #{productId,jdbcType=VARCHAR}, #{listPrice,jdbcType=VARCHAR}, #{unitCost,jdbcType=VARCHAR}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction,jdbcType=VARCHAR}, #{deadline,jdbcType=VARCHAR}, #{deposit,jdbcType=VARCHAR})
+      (#{itemId}, #{productId,jdbcType=VARCHAR}, #{listPrice,jdbcType=VARCHAR}, #{unitCost,jdbcType=VARCHAR}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction,jdbcType=VARCHAR}, #{closingTime}, 'OPEN', #{deposit,jdbcType=VARCHAR})
   </insert>
   
     <insert id="insertItem" parameterType="Item">

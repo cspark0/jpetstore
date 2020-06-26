@@ -22,10 +22,14 @@
     </tr>
     <c:forEach var="item" items="${itemList.pageList}">
       <tr bgcolor="#FFFF88">
+     
         <td><b> 
           <a href='<c:url value="/shop/viewItem.do">
+          
             <c:param name="itemId" value="${item.itemId}"/></c:url>'>
+            
               <c:out value="${item.itemId}" />
+              
           </a></b></td>
         <td><c:out value="${item.productId}" /></td>
         <td>
@@ -36,6 +40,7 @@
           <c:out value="${item.attribute5}" /> 
           <c:out value="${product.name}" />
         </td>
+      
         <td><fmt:formatNumber value="${item.listPrice}" pattern="$#,##0.00" /></td>
         <td>
           <a href='<c:url value="/shop/addItemToCart.do">
@@ -43,9 +48,8 @@
               <img border="0" src="../images/button_add_to_cart.gif" alt="" />
           </a></td>
            <td>
-        <c:if test="${item.getIsAuction()==\"1\"}">
-        	bidding
-          </c:if> 
+            
+     
       </td>
       </tr>
     </c:forEach>
