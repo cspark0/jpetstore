@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
+import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
@@ -27,6 +28,7 @@ import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
+@SessionAttributes("userSession")
 public class AuctionRegisterFormController {
 
 	
@@ -65,6 +67,7 @@ public class AuctionRegisterFormController {
 	
 	@RequestMapping("/shop/auctionRegisterSubmitted.do")
 	public String onSubmit(
+			HttpServletRequest request,//추가
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result) throws Exception {
 		
@@ -76,9 +79,17 @@ public class AuctionRegisterFormController {
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
 		item.setDeposit(item.getListPrice()/10);
+		item.setStatus("P");
+		
+		//추가
+		//UserSession userSession = (UserSession) request.getSession().getAttribute("userSession");
+		//Account account = petStore.getAccount(userSession.getAccount().getUsername());
+		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
+		item.setUsername2(userSession.getAccount().getUsername());
+		System.out.println("username나오니?" + userSession.getAccount().getUsername());
 		
 		petStore.insertAuctionItem(item);
-		petStore.insertQuantity(item.getItemId(), 10000);
+		petStore.insertQuantity(item.getItemId(), 1000);
 		
 
 		

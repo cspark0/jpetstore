@@ -70,7 +70,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	private OrderDao orderDao;
 
 	private EventDao eventDao;
-	@Autowired		// applicationContext.xml�뿉 �젙�쓽�맂 scheduler 媛앹껜瑜� 二쇱엯 諛쏆쓬
+	@Autowired		// applicationContext.xml占쎈퓠 占쎌젟占쎌벥占쎈쭆 scheduler 揶쏆빘猿쒐몴占� 雅뚯눘�뿯 獄쏆룇�벉
 	private ThreadPoolTaskScheduler scheduler;
 
 	//-------------------------------------------------------------------------
@@ -173,22 +173,22 @@ public class PetStoreImpl implements PetStoreFacade {
 public void testScheduler(Date closingTime) {
 		
 		Runnable updateTableRunner = new Runnable() {	
-			// anonymous class �젙�쓽
+			// anonymous class 占쎌젟占쎌벥
 			@Override
-			public void run() {   // �뒪耳�伊대윭�뿉 �쓽�빐 誘몃옒�쓽 �듅�젙 �떆�젏�뿉 �떎�뻾�맆 �옉�뾽�쓣 �젙�쓽				
+			public void run() {   // 占쎈뮞�놂옙鴉딅��쑎占쎈퓠 占쎌벥占쎈퉸 沃섎챶�삋占쎌벥 占쎈뱟占쎌젟 占쎈뻻占쎌젎占쎈퓠 占쎈뼄占쎈뻬占쎈쭍 占쎌삂占쎈씜占쎌뱽 占쎌젟占쎌벥				
 				Date curTime = new Date();
-				// �떎�뻾 �떆�젏�쓽 �떆媛곸쓣 �쟾�떖�븯�뿬 洹� �떆媛� �씠�쟾�쓽 closing time 媛믪쓣 媛뽯뒗 event�쓽 �긽�깭瑜� 蹂�寃� 
-				eventDao.closeEvent(curTime);	// EVENTS �뀒�씠釉붿쓽 �젅肄붾뱶 媛깆떊	
+				// 占쎈뼄占쎈뻬 占쎈뻻占쎌젎占쎌벥 占쎈뻻揶쏄낯�뱽 占쎌읈占쎈뼎占쎈릭占쎈연 域뱄옙 占쎈뻻揶쏉옙 占쎌뵠占쎌읈占쎌벥 closing time 揶쏅�れ뱽 揶쏅쉴�뮉 event占쎌벥 占쎄맒占쎄묶�몴占� 癰귨옙野껓옙 
+				eventDao.closeEvent(curTime);	// EVENTS 占쎈�믭옙�뵠�뇡遺우벥 占쎌쟿�굜遺얜굡 揶쏄퉮�뻿	
 				System.out.println("updateTableRunner is executed at " + curTime);
 			}
 		};
 		
 		HashMap<String, Date> hashMap = new HashMap<String, Date>();
-		hashMap.put("curTime", new Date());			// �쁽�옱 �떆媛�: PK 媛믪쑝濡� �궗�슜
-		hashMap.put("closingTime", closingTime);	// 誘몃옒�쓽 醫낅즺 �떆媛�
-		eventDao.insertNewEvent(hashMap);	// EVENTS �뀒�씠釉붿뿉 �젅肄붾뱶 �궫�엯
+		hashMap.put("curTime", new Date());			// 占쎌겱占쎌삺 占쎈뻻揶쏉옙: PK 揶쏅�れ몵嚥∽옙 占쎄텢占쎌뒠
+		hashMap.put("closingTime", closingTime);	// 沃섎챶�삋占쎌벥 �넫�굝利� 占쎈뻻揶쏉옙
+		eventDao.insertNewEvent(hashMap);	// EVENTS 占쎈�믭옙�뵠�뇡遺용퓠 占쎌쟿�굜遺얜굡 占쎄땜占쎌뿯
 
-		// �뒪耳�以� �깮�꽦: closingTime�뿉 updateTableRunner.run() 硫붿냼�뱶 �떎�뻾
+		// 占쎈뮞�놂옙餓ο옙 占쎄문占쎄쉐: closingTime占쎈퓠 updateTableRunner.run() 筌롫뗄�꺖占쎈굡 占쎈뼄占쎈뻬
 		scheduler.schedule(updateTableRunner, closingTime);  
 		
 		System.out.println("updateTableRunner has been scheduled to execute at " + closingTime);
@@ -199,4 +199,12 @@ public void insertQuantity(String itemId, int qty) {
 	// TODO Auto-generated method stub
 	itemDao.insertQuantity(itemId, qty);
 }
+
+@Override
+public List<Item> getItemListByUsername(String username) {
+	// TODO Auto-generated method stub
+	return itemDao.getItemListByUsername(username);
+}
+
+
 }

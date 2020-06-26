@@ -73,4 +73,10 @@ public class MybatisItemDao implements ItemDao {
 		itemMapper.insertAuctionItem(item);
 	}
 
+	@Override
+	public List<Item> getItemListByUsername(String username) {
+		// TODO Auto-generated method stub
+		return itemMapper.getItemListByUsername(username);
+	}
+
 }

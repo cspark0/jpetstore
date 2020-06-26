@@ -47,4 +47,6 @@ void insertItem(Item item);
 
 void insertQuantity(String itemId, int qty);
 
+List<Item> getItemListByUsername(String username);
+
 }

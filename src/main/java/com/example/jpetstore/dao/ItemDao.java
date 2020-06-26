@@ -16,8 +16,7 @@ public interface ItemDao {
   List<Item> getItemListByProduct(String productId) throws DataAccessException;
 
   Item getItem(String itemId) throws DataAccessException;
-
-
+ 
   int getIsAuction(String auctionId) throws DataAccessException;
 
   public List<Item> getItemListIsAuction();
@@ -27,5 +26,7 @@ public void insertAuctionItem(Item item);
 public void insertItem(Item item);
 
 public void insertQuantity(String itemId, int qty);
+
+public List<Item> getItemListByUsername(String username);
 
 }
