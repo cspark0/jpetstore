@@ -92,7 +92,6 @@ public class AuctionRegisterFormController {
 		//Account account = petStore.getAccount(userSession.getAccount().getUsername());
 		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		item.setUsername2(userSession.getAccount().getUsername());
-		System.out.println("username�����?" + userSession.getAccount().getUsername());
 		
 
 		item.setClosingTime(closeTime);
