@@ -126,10 +126,13 @@
   </insert>
   
    <insert id="insertAuctionItem" parameterType="Item">
+        <selectKey keyProperty = "auctionId" resultType = "int" order = "BEFORE">
+  			SELECT auctionnum.nextval AS auctionId FROM DUAL
+  	    </selectKey>
     INSERT INTO ITEM
-      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, CLOSINGTIME, TIMESTATUS,DEPOSIT)
+      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, AUCTIONID, USERNAME, CLOSINGTIME, TIMESTATUS, DEPOSIT)
     VALUES
-      (#{itemId}, #{productId,jdbcType=VARCHAR}, #{listPrice,jdbcType=VARCHAR}, #{unitCost,jdbcType=VARCHAR}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction,jdbcType=VARCHAR}, #{closingTime}, 'OPEN', #{deposit,jdbcType=VARCHAR})
+      (#{itemId}, #{productId,jdbcType=VARCHAR}, #{listPrice,jdbcType=VARCHAR}, #{unitCost,jdbcType=VARCHAR}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction,jdbcType=VARCHAR}, #{auctionId}, #{username2,jdbcType=VARCHAR}, #{closingTime}, 'OPEN', #{deposit,jdbcType=VARCHAR})
   </insert>
   
     <insert id="insertItem" parameterType="Item">
