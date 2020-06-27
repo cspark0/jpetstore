@@ -23,7 +23,7 @@ public class Item implements Serializable {
   private int isAuction;
  
   private double deposit;
-  private String auctionId;
+  private int auctionId;
 
   
   //�߰�
@@ -33,7 +33,6 @@ public class Item implements Serializable {
 
 
     public String getUsername2() {
-    	System.out.println("username?" + username2);
     	return username2;
     }
     public void setUsername2(String username) {
@@ -55,10 +54,10 @@ public class Item implements Serializable {
 	public void setDeposit(double deposit) {
 		this.deposit = deposit;
 	}
-	public String getAuctionId() {
+	public int getAuctionId() {
 		return auctionId;
 	}
-	public void setAuctionId(String auctionId) {
+	public void setAuctionId(int auctionId) {
 		this.auctionId = auctionId;
 	}
 	

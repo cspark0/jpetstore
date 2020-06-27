@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="IncludeTop.jsp"%>
 
 <%-- <table id="main-menu">
@@ -14,6 +15,7 @@
   <table class="n23">
     <tr bgcolor="#CCCCCC">
       <td><b>Item ID</b></td>
+      <td></td>
     </tr>
     
     <c:forEach var="item" items="${itemList.pageList}">
@@ -23,6 +25,10 @@
             <c:param name="itemId" value="${item.itemId}"/></c:url>'>
               <c:out value="${item.itemId}" />
           </a></b></td>
+         <td>
+          <a href='<c:url value="/shop/updateAuntionItem.do">
+           <c:param name="itemId2" value="${item.itemId}"/></c:url>'> 
+             	상품정보수정</a></td>
         </tr>
     </c:forEach>
      <tr>

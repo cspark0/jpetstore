@@ -51,8 +51,6 @@ public class SignonController {
 				return new ModelAndView("redirect:" + forwardAction);
 			else 
 				return new ModelAndView("index");
-			//로그인 성공시 판매자 / 구매자 버전 선택하는 폼으로 넘어가게 맵핑해주기
-			//판매자 누르면 새로 jsp생성해서 넘어가게 하고 구매자 선택하면 index로 넘어가게 해주기
 		}
 	}
 }
