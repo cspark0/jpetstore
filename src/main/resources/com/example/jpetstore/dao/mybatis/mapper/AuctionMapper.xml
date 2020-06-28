@@ -22,7 +22,7 @@
   		SELECT auctionnum.nextval AS auctionId FROM DUAL
   	</selectKey>
     INSERT INTO AUCTION (AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, BIDDINGDATE, ISSUCCESSFUL)
-    VALUES (#{auctionId}, #{itemId}, #{username}, #{biddingPrice}, #{biddingDate}, #{isSuccessful})
+    VALUES (#{auctionId}, #{itemId}, #{username}, #{biddingPrice}, SYSDATE, #{isSuccessful})
   </insert>
 
   <delete id="deleteAuctionbyItemId">

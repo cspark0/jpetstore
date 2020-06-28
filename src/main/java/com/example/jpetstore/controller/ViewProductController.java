@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.PetStoreFacade;
@@ -19,7 +21,7 @@ import com.example.jpetstore.service.PetStoreFacade;
  * @modified-by Changsup Park
  */
 @Controller
-@SessionAttributes({"category", "productList"})
+@SessionAttributes({"product", "itemList"})
 public class ViewProductController { 
 
 	private PetStoreFacade petStore;
@@ -35,13 +37,21 @@ public class ViewProductController {
 			ModelMap model) throws Exception {
 		PagedListHolder<Item> itemList;
 		if(productId.equals("auction")) {
-		
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListIsAuction());
 		}else {
+			
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
+			
 		}
-		itemList.setPageSize(4);
+		
+		itemList.setPageSize(15);
 		Product product = this.petStore.getProduct(productId);
+
+		//Product product = itemList.getPageList().get(0).getProduct();
+		System.out.println(itemList.getPageList());
+
+
+		
 		model.put("itemList", itemList);
 		model.put("product", product);
 		return "Product";
@@ -52,8 +62,8 @@ public class ViewProductController {
 	public String handleRequest2(
 			@ModelAttribute("product") Product product,
 			@ModelAttribute("itemList") PagedListHolder<Item> itemList,
-			@RequestParam("pageName") String page, 
-			ModelMap model) throws Exception {
+			@RequestParam("pageNum") String page, ModelMap model
+			) throws Exception {
 		if ("next".equals(page)) {
 			itemList.nextPage();
 		}
@@ -64,4 +74,5 @@ public class ViewProductController {
 		model.put("product", product);
 		return "Product";
 	}
+
 }

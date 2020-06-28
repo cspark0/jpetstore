@@ -32,7 +32,7 @@
       DESCN as description,
       CATEGORY as categoryId
     FROM PRODUCT
-    WHERE CATEGORY = #{value}
+    WHERE CATEGORY = #{value} 
   </select>
 
   <select id="searchProductList" resultType="Product">

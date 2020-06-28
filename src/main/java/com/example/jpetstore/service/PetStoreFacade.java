@@ -60,6 +60,7 @@ public interface PetStoreFacade {
 	void testScheduler(Date closingTime);
 	
 	void insertAuctionItem(Item item);
+	void insertAuction(Auction auction);
 	
 	void insertItem(Item item);
 
@@ -73,5 +74,7 @@ public interface PetStoreFacade {
 
 	void updateAuctionItem(Item item);
 
+
+	List<Item> getItemListByUsername(String username);
 
 }

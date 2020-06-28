@@ -1,5 +1,6 @@
 package com.example.jpetstore.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
@@ -16,8 +17,7 @@ public interface ItemDao {
   List<Item> getItemListByProduct(String productId) throws DataAccessException;
 
   Item getItem(String itemId) throws DataAccessException;
-
-
+ 
   int getIsAuction(String auctionId) throws DataAccessException;
 
   public List<Item> getItemListIsAuction();
@@ -29,5 +29,10 @@ public void insertItem(Item item);
 public void insertQuantity(String itemId, int qty);
 
 public void updateAuctionItem(Item item);
+
+public List<Item> getItemListByUsername(String username);
+
+public void closeEvent(Date curTime);
+
 
 }

@@ -38,7 +38,8 @@ public class Order implements Serializable {
   private String locale;
   private String status;
   private List<LineItem> lineItems = new ArrayList<LineItem>();
-
+  private double deposit;
+  
   /* JavaBeans Properties */
 
   public int getOrderId() { return orderId; }
@@ -170,4 +171,56 @@ public class Order implements Serializable {
   public void addLineItem(LineItem lineItem) {
     lineItems.add(lineItem);
   }
+public void initOrder(Account account, DepositCart cart) {
+	// TODO Auto-generated method stub
+	  username = account.getUsername();
+	    orderDate = new Date();
+
+	    shipToFirstName = account.getFirstName();
+	    shipToLastName = account.getLastName();
+	    shipAddress1 = account.getAddress1();
+	    shipAddress2 = account.getAddress2();
+	    shipCity = account.getCity();
+	    shipState = account.getState();
+	    shipZip = account.getZip();
+	    shipCountry = account.getCountry();
+
+	    billToFirstName = account.getFirstName();
+	    billToLastName = account.getLastName();
+	    billAddress1 = account.getAddress1();
+	    billAddress2 = account.getAddress2();
+	    billCity = account.getCity();
+	    billState = account.getState();
+	    billZip = account.getZip();
+	    billCountry = account.getCountry();
+
+	    totalPrice = cart.getSubTotal();
+
+	    creditCard = "999 9999 9999 9999";
+	    expiryDate = "12/03";
+	    cardType = "Visa";
+	    courier = "UPS";
+	    locale = "CA";
+	    status = "P";
+
+	    Iterator<DepositCartItem> i = cart.getDepositAllCartItems();
+	    while (i.hasNext()) {
+	      DepositCartItem cartItem = (DepositCartItem) i.next();
+	      addLineItem(cartItem);
+	    }
+
+	
+}
+private void addLineItem(DepositCartItem cartItem) {
+	// TODO Auto-generated method stub
+	 LineItem lineItem = new LineItem(lineItems.size() + 1, cartItem);
+	    addLineItem(lineItem);
+	
+}
+public double getDeposit() {
+	return deposit;
+}
+public void setDeposit(double deposit) {
+	this.deposit = deposit;
+}
 }

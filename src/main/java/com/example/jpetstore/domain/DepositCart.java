@@ -13,9 +13,9 @@ public class DepositCart implements Serializable {
 
   /* Private Fields */
 
-  private final Map<String, CartItem> itemMap = Collections.synchronizedMap(new HashMap<String, CartItem>());
+  private final Map<String, DepositCartItem> itemMap = Collections.synchronizedMap(new HashMap<String, DepositCartItem>());
 	
-  private final PagedListHolder<CartItem> itemList = new PagedListHolder<CartItem>();
+  private final PagedListHolder<DepositCartItem> itemList = new PagedListHolder<DepositCartItem>();
 
   /* JavaBeans Properties */
 
@@ -23,8 +23,8 @@ public class DepositCart implements Serializable {
 		this.itemList.setPageSize(4);
 	}
 
-	public Iterator<CartItem> getAllCartItems() { return itemList.getSource().iterator(); }
-  public PagedListHolder<CartItem> getCartItemList() { return itemList; }
+ public Iterator<DepositCartItem> getDepositAllCartItems() { return itemList.getSource().iterator(); }
+  public PagedListHolder<DepositCartItem> getDepositCartItemList() { return itemList; }
   public int getNumberOfItems() { return itemList.getSource().size(); }
 
   /* Public Methods */
@@ -34,9 +34,9 @@ public class DepositCart implements Serializable {
   }
 
   public void addItem(Item item, boolean isInStock) {
-    CartItem cartItem = itemMap.get(item.getItemId());
+    DepositCartItem cartItem = itemMap.get(item.getItemId());
     if (cartItem == null) {
-      cartItem = new CartItem();
+      cartItem = new DepositCartItem();
       cartItem.setItem(item);
       cartItem.setQuantity(0);
       cartItem.setInStock(isInStock);
@@ -48,7 +48,7 @@ public class DepositCart implements Serializable {
 
 
   public Item removeItemById(String itemId) {
-    CartItem cartItem = itemMap.remove(itemId);
+    DepositCartItem cartItem = itemMap.remove(itemId);
     if (cartItem == null) {
       return null;
     }
@@ -59,20 +59,20 @@ public class DepositCart implements Serializable {
   }
 
   public void incrementQuantityByItemId(String itemId) {
-    CartItem cartItem = itemMap.get(itemId);
+	  DepositCartItem cartItem = itemMap.get(itemId);
     cartItem.incrementQuantity();
   }
 
   public void setQuantityByItemId(String itemId, int quantity) {
-    CartItem cartItem = itemMap.get(itemId);
+	  DepositCartItem cartItem = itemMap.get(itemId);
     cartItem.setQuantity(quantity);
   }
 
   public double getSubTotal() {
     double subTotal = 0;
-    Iterator<CartItem> items = getAllCartItems();
+    Iterator<DepositCartItem> items = getDepositAllCartItems();
     while (items.hasNext()) {
-      CartItem cartItem = (CartItem) items.next();
+      DepositCartItem cartItem = (DepositCartItem) items.next();
       Item item = cartItem.getItem();
       double listPrice = item.getListPrice();
       int quantity = cartItem.getQuantity();

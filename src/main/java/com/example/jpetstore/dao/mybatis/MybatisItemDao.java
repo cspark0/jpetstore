@@ -1,5 +1,6 @@
 package com.example.jpetstore.dao.mybatis;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,9 @@ public class MybatisItemDao implements ItemDao {
 	public void insertQuantity(String itemId, int qty) {
 		// TODO Auto-generated method stub
 		itemMapper.insertQuantity(itemId, qty);
+	}
+	public void closeEvent(Date curTime) {
+		itemMapper.closeEvent(curTime);		
 	}
 
 	@Override
@@ -77,6 +81,11 @@ public class MybatisItemDao implements ItemDao {
 	public void updateAuctionItem(Item item) {
 		// TODO Auto-generated method stub
 		itemMapper.updateAuctionItem(item);
+
+	public List<Item> getItemListByUsername(String username) {
+		// TODO Auto-generated method stub
+		return itemMapper.getItemListByUsername(username);
+
 	}
 
 }
