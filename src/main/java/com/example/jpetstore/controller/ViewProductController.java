@@ -65,13 +65,16 @@ public class ViewProductController {
 		PagedListHolder<Item> itemList;
 		itemList = new PagedListHolder<Item>(this.petStore.getItemListByUsername(username2));		
 		itemList.setPageSize(15);
+		
+		PagedListHolder<Item> auctionItemList;
+		auctionItemList = new PagedListHolder<Item>(this.petStore.getAuctionItemListByUsername(username2));		
+		auctionItemList.setPageSize(15);
 
 		//Product product = itemList.getPageList().get(0).getProduct();
 		System.out.println(itemList.getPageList());
 
-
-		
 		model.put("itemList", itemList);
+		model.put("auctionItemList", auctionItemList);
 		model.put("username2", username2);
 		//model.put("product", product);
 		return "ViewSellerItem";

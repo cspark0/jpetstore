@@ -80,7 +80,7 @@
       <td><b>List Price</b></td>
       <td>&nbsp;</td>
     </tr>
-    <c:forEach var="item" items="${itemList.pageList}">
+    <c:forEach var="item" items="${auctionItemList.pageList}">
       <tr bgcolor="#FFFF88">
      
         <td><b> 
