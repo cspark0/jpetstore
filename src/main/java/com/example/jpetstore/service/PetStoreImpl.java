@@ -154,7 +154,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	public List<Item> getItemListByProduct(String productId) {
 		return itemDao.getItemListByProduct(productId);
 	}
-
+	
 	public Item getItem(String itemId) {
 		return itemDao.getItem(itemId);
 	}
@@ -230,10 +230,18 @@ public List<Auction> getAuctionByUsername(String username) {
 }
 
 
+
+
 @Override
 public void updateAuctionItem(Item item) {
 	itemDao.updateAuctionItem(item);
 	
+}
+
+@Override
+public List<Item> getAuctionItemListByUsername(String username) {
+	// TODO Auto-generated method stub
+	return itemDao.getAuctionItemListByUsername(username);
 }
 
 }

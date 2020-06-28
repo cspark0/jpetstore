@@ -31,8 +31,10 @@ public void insertQuantity(String itemId, int qty);
 public void updateAuctionItem(Item item);
 
 public List<Item> getItemListByUsername(String username);
+public List<Item> getAuctionItemListByUsername(String username);
 
 public void closeEvent(Date curTime);
+
 
 
 }

@@ -28,18 +28,18 @@
          <td>
           <a href='<c:url value="/shop/updateAuctionItem.do">
            <c:param name="itemId2" value="${item.itemId}"/></c:url>'> 
-             	상품정보수정 </a></td>
+             	상품정보수정  </a></td>
         </tr>
     </c:forEach>
      <tr>
       <td>
         <c:if test="${!itemList.firstPage}">
-          <a href='<c:url value="/shop/SellerAuctionManage2.do">
+          <a href='<c:url value="/shop/SellerItemManage2.do">
             <c:param name="page" value="previous"/></c:url>'>
               <font color="white"><B>&lt;&lt; Prev</B></font></a>
         </c:if> 
         <c:if test="${!itemList.lastPage}">
-          <a href='<c:url value="/shop/SellerAuctionManage2.do">
+          <a href='<c:url value="/shop/SellerItemManage2.do">
             <c:param name="page" value="next"/></c:url>'>
               <font color="white"><B>Next &gt;&gt;</B></font></a>
         </c:if>

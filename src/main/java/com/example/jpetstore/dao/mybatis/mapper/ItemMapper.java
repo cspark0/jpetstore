@@ -54,5 +54,7 @@ List<Item> getItemListByUsername(String username);
 
 void closeEvent(Date curTime);
 
+List<Item> getAuctionItemListByUsername(String username);
+
 
 }

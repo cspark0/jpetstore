@@ -27,6 +27,7 @@ import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
+@SessionAttributes("userSession")
 public class ItemRegisterFormController {
 
 	
@@ -65,6 +66,7 @@ public class ItemRegisterFormController {
 	
 	@RequestMapping("/shop/itemRegisterSubmitted.do")
 	public String onSubmit(
+			HttpServletRequest request,
 			@ModelAttribute("itemForm") ItemForm itemForm,
 			BindingResult result) throws Exception {
 		
@@ -76,6 +78,10 @@ public class ItemRegisterFormController {
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
 		item.setStatus("P");
+		
+		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
+		item.setUsername2(userSession.getAccount().getUsername());
+		System.out.println("?"+userSession.getAccount().getUsername());
 		
 		petStore.insertItem(item);
 		petStore.insertQuantity(item.getItemId(), 10000);

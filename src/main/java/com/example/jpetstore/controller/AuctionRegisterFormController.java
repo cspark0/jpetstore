@@ -77,7 +77,7 @@ public class AuctionRegisterFormController {
 	
 	@RequestMapping("/shop/auctionRegisterSubmitted.do")
 	public String onSubmit(
-			HttpServletRequest request,//ï¿½ß°ï¿½
+			HttpServletRequest request,//챦쩔쩍횩째챦쩔쩍
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result,
 			@RequestParam("keyword") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime
@@ -93,9 +93,10 @@ public class AuctionRegisterFormController {
 			item.setProductId(product.getProductId());
 			item.setDeposit(item.getListPrice()/10);
 			item.setStatus("P");
-      UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
-		item.setUsername2(userSession.getAccount().getUsername());
-		System.out.println("item Å×ÀÌºí¿¡ username ÀúÀå: " + userSession.getAccount().getUsername());
+     
+			UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
+			item.setUsername2(userSession.getAccount().getUsername());
+			System.out.println("item 횇횞�횑쨘챠쩔징 username �첬�책: " + userSession.getAccount().getUsername());
 	
 		item.setClosingTime(closeTime);
 		petStore.testScheduler(closeTime);

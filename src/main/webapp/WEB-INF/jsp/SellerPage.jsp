@@ -7,13 +7,13 @@
     		<td><a href="<c:url value="/shop/auctionRegister.do"/>">경매 상품 등록</a></td>
     	</tr>
     	<tr bgcolor="#FFFF88">
-    		<td><a href="<c:url value="/shop/productRegister.do"/>">일반 상품 등록</a></td>
+    		<td><a href="<c:url value="/shop/itemRegister.do"/>">일반 상품 등록</a></td>
     	</tr>
     	<tr bgcolor="#FFFF88">
     		<td><a href='<c:url value="/shop/SellerAuctionManage.do"></c:url>'>경매 상품 관리</a></td>
     	</tr>
     		<tr bgcolor="#FFFF88">
-    		<td><a href='<c:url value="/shop/SellerProdcutManage.do"></c:url>'>일반 상품 관리</a></td>
+    		<td><a href='<c:url value="/shop/SellerItemManage.do"></c:url>'>일반 상품 관리</a></td>
     	</tr>
     	<tr bgcolor="#FFFF88">
     		<td><a href='<c:url value="/shop/ShippingManage.do"></c:url>'>Shipping Manage</a></td>

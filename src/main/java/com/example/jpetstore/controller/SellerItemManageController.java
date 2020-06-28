@@ -18,7 +18,7 @@ import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
 @SessionAttributes({"userSession", "itemList"})
-public class SellerAuctionManageController {
+public class SellerItemManageController {
 	
 	private PetStoreFacade petStore;
 
@@ -27,7 +27,7 @@ public class SellerAuctionManageController {
 		this.petStore = petStore;
 	}
 	
-	@RequestMapping("/shop/SellerAuctionManage.do")
+	@RequestMapping("/shop/SellerItemManage.do")
 	public String handleRequest(
 			@ModelAttribute("userSession") UserSession userSession,
 			ModelMap model) throws Exception {
@@ -35,16 +35,18 @@ public class SellerAuctionManageController {
 		
 		String nowUser = userSession.getAccount().getUsername();
 	
-		itemList = new PagedListHolder<Item>(this.petStore.getAuctionItemListByUsername(nowUser));
+		itemList = new PagedListHolder<Item>(this.petStore.getItemListByUsername(nowUser));
 		itemList.setPageSize(4);
+		
+		System.out.println(itemList);
 		
 		model.put("itemList", itemList);
 	
-		return "SellerAuctionManage";
+		return "SellerItemManage";
 		
 	}
 	
-	@RequestMapping("/shop/SellerAuctionManage2.do")
+	@RequestMapping("/shop/SellerItemManage2.do")
 	public String handleRequest2(
 			@RequestParam("page") String page,
 			@ModelAttribute("itemList") PagedListHolder<Item> itemList
@@ -54,6 +56,6 @@ public class SellerAuctionManageController {
 		}
 		if ("next".equals(page)) { itemList.nextPage(); }
 		else if ("previous".equals(page)) { itemList.previousPage(); }
-		return "SellerAuctionManage";
+		return "SellerItemManage";
 	}
 }

@@ -77,4 +77,6 @@ public interface PetStoreFacade {
 
 	List<Item> getItemListByUsername(String username);
 
+	List<Item> getAuctionItemListByUsername(String username);
+
 }
