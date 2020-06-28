@@ -43,7 +43,8 @@
       ATTR2 AS attribute2,
       ATTR3 AS attribute3,
       ATTR4 AS attribute4,
-      ATTR5 AS attribute5
+      ATTR5 AS attribute5,
+      I.USERNAME AS username2
     FROM ITEM I, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.USERNAME = #{value,jdbcType=VARCHAR}

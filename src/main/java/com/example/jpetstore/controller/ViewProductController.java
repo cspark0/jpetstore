@@ -58,6 +58,26 @@ public class ViewProductController {
 		
 	}
 	
+	@RequestMapping("/shop/viewSellerItem.do")
+	public String handleRequest3(
+			@RequestParam("username2") String username2,
+			ModelMap model) throws Exception {
+		PagedListHolder<Item> itemList;
+		itemList = new PagedListHolder<Item>(this.petStore.getItemListByUsername(username2));		
+		itemList.setPageSize(15);
+
+		//Product product = itemList.getPageList().get(0).getProduct();
+		System.out.println(itemList.getPageList());
+
+
+		
+		model.put("itemList", itemList);
+		model.put("username2", username2);
+		//model.put("product", product);
+		return "ViewSellerItem";
+		
+	}
+	
 	@RequestMapping("/shop/viewProduct2.do")
 	public String handleRequest2(
 			@ModelAttribute("product") Product product,
