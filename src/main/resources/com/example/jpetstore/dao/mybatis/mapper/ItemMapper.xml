@@ -49,6 +49,31 @@
     FROM ITEM I, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.USERNAME = #{value,jdbcType=VARCHAR}
+      AND I.ISAUCTION = 0
+  </select>
+  
+    <select id="getAuctionItemListByUsername" resultType="Item">
+    SELECT
+      I.ITEMID,
+      I.PRODUCTID,
+      LISTPRICE,
+      UNITCOST,
+      SUPPLIER AS supplierId,
+      I.PRODUCTID AS "product.productId",
+      NAME AS "product.name",
+      DESCN AS "product.description",
+      CATEGORY AS "product.categoryId",
+      STATUS,
+      ATTR1 AS attribute1,
+      ATTR2 AS attribute2,
+      ATTR3 AS attribute3,
+      ATTR4 AS attribute4,
+      ATTR5 AS attribute5,
+      I.USERNAME AS username2
+    FROM ITEM I, PRODUCT P
+    WHERE P.PRODUCTID = I.PRODUCTID
+      AND I.USERNAME = #{value,jdbcType=VARCHAR}
+      AND I.ISAUCTION = 1
   </select>
   
   <select id="getItemListIsAuction" resultType="Item">
@@ -154,8 +179,8 @@
   
     <insert id="insertItem" parameterType="Item">
     INSERT INTO ITEM
-      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION)
+      (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1, ISAUCTION, USERNAME)
     VALUES
-      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction})
+      (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction}, #{username2,jdbcType=VARCHAR})
   </insert>
 </mapper>

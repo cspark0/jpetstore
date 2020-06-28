@@ -33,6 +33,7 @@ public class Item implements Serializable {
 
 
     public String getUsername2() {
+    	System.out.println("?" + username2);
     	return username2;
     }
     public void setUsername2(String username) {
