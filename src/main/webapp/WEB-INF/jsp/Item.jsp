@@ -65,6 +65,15 @@
              경매 참여(보증금계산)</a>
            </td> </c:if>
     </tr>
+     <tr>
+      <td>
+     
+        <a href='<c:url value="/shop/viewSellerItem.do">
+          <c:param name="username2" value="${item.username2}"/></c:url>'>
+          go to seller page</a>
+           
+      </td>
+    </tr>
   </table>
 </div>
 
