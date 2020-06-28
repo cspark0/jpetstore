@@ -22,7 +22,6 @@ public class AuctionForm implements Serializable{
 	
 	public AuctionForm(Item auctionItem) {
 		this.auctionItem =  auctionItem;
-		auctionItem.setAuction(1);
 	}
 	
 	public AuctionForm() {

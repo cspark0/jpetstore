@@ -108,12 +108,25 @@
     SET QTY = QTY - #{increment}
     WHERE ITEMID = #{itemId}
   </update>
+  
+    <update id="updateAuctionItem" parameterType="Item">
+    UPDATE ITEM SET
+      LISTPRICE = #{listPrice},
+      UNITCOST = #{unitCost},
+      ATTR1 = #{attribute1},
+      DEADLINE = #{deadline},
+      DEPOSIT = #{deposit},
+    WHERE ITEMID = #{itemId}
+  </update>
+  
+
    <update id="closeEvent" parameterType="Date">
     <![CDATA[
      UPDATE ITEM SET TIMESTATUS = 'CLOSE'
      WHERE CLOSINGTIME <= #{curTime} AND ISAUCTION = 1
     ]]>
   </update>
+
   <select id="getIsAuction" resultType="int">
   	SELECT ISAUCTION
   	FROM ITEM

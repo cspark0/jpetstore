@@ -229,4 +229,11 @@ public List<Auction> getAuctionByUsername(String username) {
 	return auctionDao.getAuctionByUsername(username);
 }
 
+
+@Override
+public void updateAuctionItem(Item item) {
+	itemDao.updateAuctionItem(item);
+	
+}
+
 }

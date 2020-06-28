@@ -78,9 +78,14 @@ public class MybatisItemDao implements ItemDao {
 	}
 
 	@Override
+	public void updateAuctionItem(Item item) {
+		// TODO Auto-generated method stub
+		itemMapper.updateAuctionItem(item);
+
 	public List<Item> getItemListByUsername(String username) {
 		// TODO Auto-generated method stub
 		return itemMapper.getItemListByUsername(username);
+
 	}
 
 }

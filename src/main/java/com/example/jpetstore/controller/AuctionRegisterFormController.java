@@ -29,6 +29,7 @@ import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.AccountFormValidator;
 import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
+import com.example.jpetstore.service.ItemValidator;
 
 @Controller
 @SessionAttributes("userSession")
@@ -44,6 +45,12 @@ public class AuctionRegisterFormController {
 	private PetStoreFacade petStore;
 	public void setPetStore(PetStoreFacade petStore) {
 		this.petStore = petStore;
+	}
+  
+  	@Autowired
+	private ItemValidator validator;
+	public void setValidator(ItemValidator validator) {
+		this.validator = validator;
 	}
 /*
 	@Autowired
@@ -70,33 +77,36 @@ public class AuctionRegisterFormController {
 	
 	@RequestMapping("/shop/auctionRegisterSubmitted.do")
 	public String onSubmit(
-			HttpServletRequest request,//�߰�
+			HttpServletRequest request,//ï¿½ß°ï¿½
 			@ModelAttribute("auctionForm") AuctionForm auctionForm,
 			BindingResult result,
 			@RequestParam("keyword") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime
 			) throws Exception {
 		
-		//validator.validate(auctionForm, result);
+		validator.validate(auctionForm, result);
 		
-		//if (result.hasErrors()) return formViewName;
-		Item item = auctionForm.getAuctionItem();
-		item.setAuction(1);
-		Product product = petStore.getProductByName(item.getProductId());
-		item.setProductId(product.getProductId());
-		item.setDeposit(item.getListPrice()/10);
-		item.setStatus("P");
-
-		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
+		if (result.hasErrors()) return formViewName;
+		try {
+			Item item = auctionForm.getAuctionItem();
+			item.setAuction(1);
+			Product product = petStore.getProductByName(item.getProductId());
+			item.setProductId(product.getProductId());
+			item.setDeposit(item.getListPrice()/10);
+			item.setStatus("P");
+      UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
 		item.setUsername2(userSession.getAccount().getUsername());
-		System.out.println("item ���̺��� username ����: " + userSession.getAccount().getUsername());
-		
-
+		System.out.println("item Å×ÀÌºí¿¡ username ÀúÀå: " + userSession.getAccount().getUsername());
+	
 		item.setClosingTime(closeTime);
 		petStore.testScheduler(closeTime);
-
-		petStore.insertAuctionItem(item);
-		petStore.insertQuantity(item.getItemId(), 1000);
-		
+			petStore.insertAuctionItem(item);
+			petStore.insertQuantity(item.getItemId(), 1000);
+		}
+		catch (DataIntegrityViolationException ex) {
+			result.rejectValue("auction.itemId", "USER_ID_ALREADY_EXISTS",
+					"User ID already exists: choose a different ID.");
+			return formViewName; 
+		}
 
 		
 		return successViewName;
@@ -105,3 +115,4 @@ public class AuctionRegisterFormController {
 	
 
 }
+

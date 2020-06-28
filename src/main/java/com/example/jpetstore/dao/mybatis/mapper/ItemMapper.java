@@ -48,6 +48,7 @@ void insertItem(Item item);
 
 void insertQuantity(String itemId, int qty);
 
+void updateAuctionItem(Item item);
 
 List<Item> getItemListByUsername(String username);
 
