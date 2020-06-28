@@ -209,4 +209,10 @@ public List<Auction> getAuctionByUsername(String username) {
 	// TODO Auto-generated method stub
 	return auctionDao.getAuctionByUsername(username);
 }
+
+@Override
+public void updateAuctionItem(Item item) {
+	itemDao.updateAuctionItem(item);
+	
+}
 }

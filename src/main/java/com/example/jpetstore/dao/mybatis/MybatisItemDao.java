@@ -73,4 +73,10 @@ public class MybatisItemDao implements ItemDao {
 		itemMapper.insertAuctionItem(item);
 	}
 
+	@Override
+	public void updateAuctionItem(Item item) {
+		// TODO Auto-generated method stub
+		itemMapper.updateAuctionItem(item);
+	}
+
 }

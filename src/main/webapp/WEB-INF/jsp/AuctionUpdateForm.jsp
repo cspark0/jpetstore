@@ -12,27 +12,27 @@
   <table class="n13">
     <tr>
       <td colspan="2">
-        <font color="green" size="4"><b>상품 등록</b></font></td>
+        <font color="green" size="4"><b>상품 수정</b></font></td>
     </tr>
     <tr>
       <td>상품 이름:</td>
       <td><form:input path="auctionItem.itemId" />
-       <form:errors path="auctionItem.itemId" /></td>
+       <%--  <form:errors path="order.cardType" /></td> --%>
     </tr>
     <tr>
       <td>가격:</td>
       <td><form:input path="auctionItem.listPrice" /> 
-       <form:errors path="auctionItem.listPrice" /></td>
+       <%--  <form:errors path="order.creditCard" /></td> --%>
     </tr>
     <tr>
     	<td>단위 가격:</td>
     	<td><form:input path="auctionItem.unitCost" /> 
-       <form:errors path="auctionItem.unitCost" /></td>
+       <%--  <form:errors path="order.creditCard" /></td> --%>
     </tr>
     <tr>
       <td>경매 마감 기한:</td>
       <td><form:input path="auctionItem.deadline" type="date" /> 
-      <form:errors path="auctionItem.deadline" /></td>
+      <%--   <form:errors path="order.expiryDate" /></td> --%>
     </tr>
     <tr>
       <td>카테고리 선택:</td>
@@ -47,7 +47,7 @@
     <tr>
       <td>부가 설명:</td>
       <td><form:input path="auctionItem.attribute1" />
-        <form:errors path="auctionItem.attribute1" /></td> 
+        <%-- <form:errors path="order.billAddress2" /></td> --%>
     </tr>
 
   </table>

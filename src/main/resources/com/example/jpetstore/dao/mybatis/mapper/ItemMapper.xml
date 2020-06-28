@@ -85,6 +85,16 @@
     WHERE ITEMID = #{itemId}
   </update>
   
+    <update id="updateAuctionItem" parameterType="Item">
+    UPDATE ITEM SET
+      LISTPRICE = #{listPrice},
+      UNITCOST = #{unitCost},
+      ATTR1 = #{attribute1},
+      DEADLINE = #{deadline},
+      DEPOSIT = #{deposit},
+    WHERE ITEMID = #{itemId}
+  </update>
+  
   <select id="getIsAuction" resultType="int">
   	SELECT ISAUCTION
   	FROM ITEM
