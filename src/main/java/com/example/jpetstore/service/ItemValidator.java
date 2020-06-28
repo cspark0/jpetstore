@@ -29,7 +29,6 @@ public class ItemValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auctionItem.listPrice", "CARD_TYPE_REQUIRED", "Card type is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auctionItem.unitCost", "CCN_REQUIRED", "FAKE (!) credit card number required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auctionItem.attribute1", "EXPIRY_DATE_REQUIRED", "Expiry date is required.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "auctionItem.deadline", "EXPIRY_DATE_REQUIRED", "Expiry date is required.");
 
 	}
 	
