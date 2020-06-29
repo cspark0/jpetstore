@@ -52,4 +52,8 @@ public class MybatisAuctionDao implements AuctionDao {
 		return auctionMapper.getAuctionByAuctionId(auctionId);
 	}	
 
+	public int getMaxAuctionId(String itemId) {
+		return auctionMapper.getMaxAuctionId(itemId);
+	}
+
 }

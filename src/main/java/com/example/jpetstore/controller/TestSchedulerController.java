@@ -24,8 +24,8 @@ public class TestSchedulerController {
 
 	@RequestMapping("/shop/testScheduler.do")
 	public ModelAndView handleRequest(HttpServletRequest request,
-			@RequestParam("keyword")
-			@DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime) throws Exception {
+		@RequestParam("keyword")
+		@DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime) throws Exception {
 		System.out.println(closeTime);
 		petStore.testScheduler(closeTime);
 		return new ModelAndView("Scheduled", "closeTime", closeTime);	

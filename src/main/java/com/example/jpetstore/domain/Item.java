@@ -19,26 +19,36 @@ public class Item implements Serializable {
   private String attribute5;
   private Product product;
   private int quantity;
- 
+  private String timeStatus;
   private int isAuction;
-  private Date deadline;
+ 
   private double deposit;
   private int auctionId;
-  
 
-    public int getIsAuction() {
+  
+  //�߰�
+  private String username2;
+
+  private Date closingTime;
+
+
+    public String getUsername2() {
+    	System.out.println("?" + username2);
+    	return username2;
+    }
+    public void setUsername2(String username) {
+    	this.username2 = username;
+    }
+    
+    
+	public int getIsAuction() {
     	System.out.println("is Auction?" + isAuction);
 	    return isAuction;
 	}
 	public void setAuction(int isAuction) {
 		this.isAuction = isAuction;
 	}
-	public Date getDeadline() {
-		return deadline;
-	}
-	public void setDeadline(Date deadline) {
-		this.deadline = deadline;
-	}
+	
 	public double getDeposit() {
 		return deposit;
 	}
@@ -92,4 +102,16 @@ public class Item implements Serializable {
   public String toString() {
     return "(" + getItemId().trim() + "-" + getProductId().trim() + ")";
   }
+public Date getClosingTime() {
+	return closingTime;
+}
+public void setClosingTime(Date closingTime) {
+	this.closingTime = closingTime;
+}
+public String getTimeStatus() {
+	return timeStatus;
+}
+public void setTimeStatus(String timeStatus) {
+	this.timeStatus = timeStatus;
+}
 }

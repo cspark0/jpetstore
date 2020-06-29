@@ -19,7 +19,7 @@ import com.example.jpetstore.service.PetStoreFacade;
  */
 @Controller
 @SessionAttributes("depositSessionCart")
-public class AddItemToDeposotCartController { 
+public class AddItemToDepositCartController { 
 
 	private PetStoreFacade petStore;
 
@@ -36,10 +36,10 @@ public class AddItemToDeposotCartController {
 	@RequestMapping("/shop/addItemToDepositCart.do")
 	public ModelAndView handleRequest(
 			@RequestParam("workingItemId") String workingItemId,
-			@ModelAttribute("depositSessionCart") DepositCart cart 
+			@ModelAttribute("depositSessionCart") DepositCart depositCart 
 			) throws Exception {
-		if (cart.containsItemId(workingItemId)) {
-			cart.incrementQuantityByItemId(workingItemId);
+		if (depositCart.containsItemId(workingItemId)) {
+			depositCart.incrementQuantityByItemId(workingItemId);
 		}
 		else {
 			// isInStock is a "real-time" property that must be updated
@@ -47,8 +47,8 @@ public class AddItemToDeposotCartController {
 			// item details are cached.
 			boolean isInStock = this.petStore.isItemInStock(workingItemId);
 			Item item = this.petStore.getItem(workingItemId);
-			cart.addItem(item, isInStock);
+			depositCart.addItem(item, isInStock);
 		}
-		return new ModelAndView("DepositCart", "depositCart", cart);
+		return new ModelAndView("DepositCart", "depositCart", depositCart);
 	}
 }

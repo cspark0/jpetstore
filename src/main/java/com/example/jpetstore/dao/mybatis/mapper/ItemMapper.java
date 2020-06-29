@@ -16,9 +16,11 @@
 
 package com.example.jpetstore.dao.mybatis.mapper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Item;
 
 /**
@@ -39,12 +41,28 @@ public interface ItemMapper {
   
   int getIsAuction(String itemId);
 
-List<Item> getItemListIsAuction();
+  List<Item> getItemListIsAuction();
 
-void insertAuctionItem(Item item);
+  void insertAuctionItem(Item item);
 
-void insertItem(Item item);
+  void insertItem(Item item);
 
-void insertQuantity(String itemId, int qty);
+  void insertQuantity(String itemId, int qty);
+
+  void updateAuctionItem(Item item);
+
+  List<Item> getItemListByUsername(String username);
+
+  void closeEvent(Date curTime);
+
+  List<Item> getAuctionItemListByUsername(String username);
+  
+  void updateAuctionId(Auction auction);
+  
+
+void updateItem(Item item);
+
+void deleteItem(String itemId);
+
 
 }

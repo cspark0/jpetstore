@@ -9,8 +9,8 @@ import com.example.jpetstore.domain.Order;
 
 public interface AuctionDao {
 	/*
-	 * ¸¶ÀÌÆäÀÌÁö¿¡ ³ªÀÇ ÀÔÂû³»¿ª(getAuctionListByUserId)
-	 * ¿Á¼Ç¿¡¼­ ¾ÆÀÌÅÛdbÀ¸·Î °¡°İ °»½Å
+	 * ë§ˆì´í˜ì´ì§€ì— ë‚˜ì˜ ì…ì°°ë‚´ì—­(getAuctionListByUserId)
+	 * ì˜¥ì…˜ì—ì„œ ì•„ì´í…œdbìœ¼ë¡œ ê°€ê²© ê°±ì‹ 
 	 * insert, update, (delete), 
 	 *  
 	 *  
@@ -20,6 +20,8 @@ public interface AuctionDao {
 	 void updateBiddingPrice(double price)throws DataAccessException;
 	 void insertAuction(Auction auction)throws DataAccessException;
 	 void deleteAuctionbyAuctionId(String auctionId) throws DataAccessException;
-
-	 Auction getAuctionByAuctionId(int auctionId)throws DataAccessException;
+  
+   Auction getAuctionByAuctionId(int auctionId)throws DataAccessException;
+	 int getMaxAuctionId(String itemId);
 }
+

@@ -1,6 +1,8 @@
 package com.example.jpetstore.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,28 +12,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
+import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.AccountFormValidator;
 import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
 @Controller
-@SessionAttributes("userSession")
-public class ItemRegisterFormController {
+public class UpdateAuctionItemController {
 
 	
-	@Value("ItemRegisterForm")
+	@Value("AuctionUpdateForm")
 	private String formViewName;
 	@Value("index")
 	private String successViewName;
@@ -58,39 +63,70 @@ public class ItemRegisterFormController {
 		return petStore.getProductList();
 	}
 	
-	@RequestMapping("/shop/itemRegister.do")
-	public String showForm(Model model) {
-		 model.addAttribute("itemForm", new ItemForm());
+	@RequestMapping("/shop/updateAuction.do")
+	public String showForm(@RequestParam("itemId2") String itemId, Model model) {
+		Item item = petStore.getItem(itemId);
+		if(item.getIsAuction()==1) {
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm");	
+		String closingTime = formatter.format(item.getClosingTime());
+		System.out.println(closingTime);
+		model.addAttribute("closingTime", closingTime);
+		}
+		 model.addAttribute("auctionForm", new AuctionForm(item));
+		if(item.getIsAuction()==0) {
+			return "ItemUpdateForm";
+		}
 		return formViewName;
 	}
+
 	
-	@RequestMapping("/shop/itemRegisterSubmitted.do")
+	@RequestMapping("/shop/auctionUpdateSubmitted.do")
 	public String onSubmit(
-			HttpServletRequest request,
-			@ModelAttribute("itemForm") ItemForm itemForm,
-			BindingResult result) throws Exception {
+			@ModelAttribute("auctionForm") AuctionForm auctionForm,
+			BindingResult result,
+			@RequestParam("keyword") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm") Date closeTime) throws Exception {
 		
 		//validator.validate(auctionForm, result);
 		
 		//if (result.hasErrors()) return formViewName;
-		Item item = itemForm.getItem();
-		item.setAuction(0);
+		Item item = auctionForm.getAuctionItem();
+		//item.setAuction(1);
 		Product product = petStore.getProductByName(item.getProductId());
 		item.setProductId(product.getProductId());
-		item.setStatus("P");
+		item.setClosingTime(closeTime);
+		petStore.testScheduler(closeTime);
+		item.setDeposit(item.getListPrice()/10);
+		//item.setStatus("P");
 		
-		UserSession userSession = (UserSession) WebUtils.getSessionAttribute(request, "userSession");
-		item.setUsername2(userSession.getAccount().getUsername());
-		System.out.println("?"+userSession.getAccount().getUsername());
-		
-		petStore.insertItem(item);
-		petStore.insertQuantity(item.getItemId(), 10000);
+		petStore.updateAuctionItem(item);
+		//petStore.insertQuantity(item.getItemId(), 1000);
 		
 
 		
 		return successViewName;
 	}
 	
+	@RequestMapping("/shop/itemUpdateSubmitted.do")
+	public String onItemSubmit(
+			@ModelAttribute("auctionForm") AuctionForm auctionForm,
+			BindingResult result) throws Exception {
+		
+		//validator.validate(auctionForm, result);
+		
+		//if (result.hasErrors()) return formViewName;
+		Item item = auctionForm.getAuctionItem();
+		//item.setAuction(1);
+		Product product = petStore.getProductByName(item.getProductId());
+		item.setProductId(product.getProductId());
+		//item.setStatus("P");
+		
+		petStore.updateItem(item);
+		//petStore.insertQuantity(item.getItemId(), 1000);
+		
+
+		
+		return successViewName;
+	}
 	
 
 }

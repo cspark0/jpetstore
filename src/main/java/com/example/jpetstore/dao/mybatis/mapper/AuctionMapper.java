@@ -15,4 +15,6 @@ public interface AuctionMapper {
 	List <Auction> getAuctionByUsername(String username);
 
 	Auction getAuctionByAuctionId(int auctionId);
+	
+	int getMaxAuctionId(String itemId);
 }
