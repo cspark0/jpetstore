@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="targetUrl"><c:url value="/shop/auctionRegisterSubmitted.do" /></c:set>
+<c:set var="targetUrl"><c:url value="/shop/auctionUpdateSubmitted.do" /></c:set>
 
 <div align="center">
 <form:form modelAttribute="auctionForm" action="${targetUrl}" method="post">
@@ -31,7 +31,8 @@
     </tr>
     <tr>
       <td>경매 마감 기한:</td>
-      <td><form:input path="auctionItem.deadline" type="date" /> 
+      <td> <input name="keyword" size="14" value="${closingTime}"/>
+      "yyyy-MM-dd HH:mm" 형식으로 미래의 시각을 입력하세요.
       <%--   <form:errors path="order.expiryDate" /></td> --%>
     </tr>
     <tr>
@@ -52,7 +53,8 @@
 
   </table>
   <p>
-    <input type="image" src="../images/button_submit.gif">
+    <input type="image" src="../images/button_submit.gif" name="sumbit"
+    value="Update Auction Item" />
   </p>
 </form:form>
 </div>

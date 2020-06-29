@@ -60,5 +60,9 @@ public interface ItemMapper {
   void updateAuctionId(Auction auction);
   
 
+void updateItem(Item item);
+
+void deleteItem(String itemId);
+
 
 }

@@ -36,7 +36,14 @@ public List<Item> getAuctionItemListByUsername(String username);
 
 public void closeEvent(Date curTime);
 
+
 public void updateAuctionId(Auction auction);
+
+public void updateItem(Item item);
+
+public void deleteItem(String itemId);
+
+
 
 
 }

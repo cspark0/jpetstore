@@ -26,9 +26,13 @@
               <c:out value="${item.itemId}" />
           </a></b></td>
          <td>
-          <a href='<c:url value="/shop/updateAuctionItem.do">
+          <a href='<c:url value="/shop/updateAuction.do">
            <c:param name="itemId2" value="${item.itemId}"/></c:url>'> 
-             	상품정보수정 </a></td>
+             	상품 수정 </a></td>
+           <td>
+          <a href='<c:url value="/shop/deleteItem.do">
+           <c:param name="itemId3" value="${item.itemId}"/></c:url>'> 
+             	상품 삭제 </a></td>
         </tr>
     </c:forEach>
      <tr>

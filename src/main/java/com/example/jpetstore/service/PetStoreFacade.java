@@ -81,4 +81,8 @@ public interface PetStoreFacade {
 
 	List<Item> getAuctionItemListByUsername(String username);
 
+	void updateItem(Item item);
+
+	void deleteItem(String itemId);
+
 }
