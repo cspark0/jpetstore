@@ -60,4 +60,14 @@
 </form:form>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	var mainCategoryArray = "${categories}";
+	var mainCategoryObject = "${products}";
+
+	mainCategoryObject = ne
+	
+})
+</script>
+
 <%@ include file="IncludeBottom.jsp"%>
