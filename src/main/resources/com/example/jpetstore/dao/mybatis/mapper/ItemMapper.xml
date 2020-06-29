@@ -128,6 +128,7 @@
       AND I.ITEMID = #{value}
   </select>
   
+  
   <select id="getInventoryQuantity" resultType="int">
     SELECT QTY AS value
     FROM INVENTORY

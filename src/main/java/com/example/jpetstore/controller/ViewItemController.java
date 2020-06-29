@@ -40,6 +40,7 @@ public class ViewItemController {
      @ResponseBody public JSONObject getDeadline(
      @RequestParam("itemId") String itemId) throws Exception {
       
+    	 
     Item item = this.petStore.getItem(itemId); 
     System.out.println(item.getTimeStatus());
      if(item.getTimeStatus().equals("OPEN")) {
