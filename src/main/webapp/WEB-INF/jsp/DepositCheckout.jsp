@@ -23,29 +23,29 @@
           <td><b>List Price</b></td>
           <td><b>Total Cost</b></td>
         </tr>
+        
         <c:forEach var="depositCartItem" items="${depositCart.depositCartItemList.pageList}">
           <tr bgcolor="#FFFF88">
             <td><b> 
               <a href='<c:url value="/shop/viewItem.do">
-                <c:param name="itemId" value="${depositCartItem.itemId}"/></c:url>'>
-                  <c:out value="${depositCartItem.itemId}" />
-              </a></b>
-            </td>
-            <td><c:out value="${depositCartItem.productId}" /></td>
+                <c:param name="itemId" value="${depositCartItem.item.itemId}"/></c:url>'>
+                  <c:out value="${depositCartItem.item.itemId}" />
+              </a></b></td>
+            <td><c:out value="${depositCartItem.item.productId}" /></td>
             <td>
-              <c:out value="${depositCartItem.attribute1}" /> 
-              <c:out value="${depositCartItem.attribute2}" /> 
-              <c:out value="${depositCartItem.attribute3}" /> 
-              <c:out value="${depositCartItem.attribute4}" /> 
-              <c:out value="${depositCartItem.attribute5}" /> 
-              <c:out value="${depositCartItem.product.name}" />
+              <c:out value="${depositCartItem.item.attribute1}" /> 
+              <c:out value="${depositCartItem.item.attribute2}" /> 
+              <c:out value="${depositCartItem.item.attribute3}" /> 
+              <c:out value="${depositCartItem.item.attribute4}" /> 
+              <c:out value="${depositCartItem.item.attribute5}" /> 
+              <c:out value="${depositCartItem.item.product.name}" />
             </td>
-            <td align="center"><c:out value="${depositCartItem.inStock}" /></td>
-            <td align="center"><c:out value="${depositCartItem.quantity}" /></td>
+            <td align="center"><c:out value="${depositCartItem.item.inStock}" /></td>
+            <td align="center"><c:out value="${depositCartItem.item.quantity}" /></td>
             <td align="right"><fmt:formatNumber
-                value="${depositCartItem.listPrice}" pattern="$#,##0.00" /></td>
+                value="${depositCartItem.item.listPrice}" pattern="$#,##0.00" /></td>
             <td align="right"><fmt:formatNumber
-                value="${depositCartItem.totalPrice}" pattern="$#,##0.00" /></td>
+                value="${depositCartItem.item.totalPrice}" pattern="$#,##0.00" /></td>
           </tr>
         </c:forEach>
         <tr bgcolor="#FFFF88">

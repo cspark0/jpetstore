@@ -82,7 +82,8 @@
       <c:if test="${depositCart.numberOfItems > 0}">
         <br />
         <div style="text-align:center">
-          <a href='<c:url value="/shop/depositCheckout.do"/>'>
+         <%--  <a href='<c:url value="/shop/depositCheckout.do"/>'> --%>
+           <a href='<c:url value="/shop/newDepositOrder.do"/>'>
             <img border="0" src="../images/button_checkout.gif" alt="" /></a>
         </div>
       </c:if>
