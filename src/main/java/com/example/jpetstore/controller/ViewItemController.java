@@ -39,35 +39,41 @@ public class ViewItemController {
      @RequestMapping("shop/getDeadline.do")
      @ResponseBody public JSONObject getDeadline(
      @RequestParam("itemId") String itemId) throws Exception {
-      
-  Item item = this.petStore.getItem(itemId); List<Item> items = new
-     ArrayList<>(); items.add(item); System.out.println("deadLine?" +
-     item.getClosingTime()); 
-    
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-     String closeTime = formatter.format(item.getClosingTime());
-     Date endDate = formatter.parse(closeTime);
-     Date now = new Date();
-     long mill = Math.abs(endDate.getTime() - now.getTime());
-   // 시로 변환 ( millisecond -> hour 로 변환 ) 
-      long hours = TimeUnit.MILLISECONDS.toHours(mill);
-      // 일로 변환 ( hour -> day 로 변환 )
-      long days = TimeUnit.HOURS.toDays(hours); 
-      long mins =TimeUnit.MILLISECONDS.toMinutes(mill)
-              - TimeUnit.HOURS.toMinutes(hours);
-      long secs = TimeUnit.MILLISECONDS.toSeconds(mill)
-              -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mill));
-      long  newHour = days*24 - hours;
-      String diffDays = String.format("%d days",  days);
-      String diff = String.format("%d hour(s) %d min(s) %d secs", newHour
-              , TimeUnit.MILLISECONDS.toMinutes(mill)
-              - TimeUnit.HOURS.toMinutes(hours),secs);
-      
-      JSONObject deadLine = new JSONObject();
-      deadLine.put("closingTime", diffDays + diff);
-      System.out.println(diffDays + diff);
-     return deadLine;
-     
+        
+    Item item = this.petStore.getItem(itemId); 
+    System.out.println(item.getTimeStatus());
+     if(item.getTimeStatus().equals("OPEN")) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String closeTime = formatter.format(item.getClosingTime());
+        Date endDate = formatter.parse(closeTime);
+        Date now = new Date();
+        long mill = Math.abs(endDate.getTime() - now.getTime());
+      // 시로 변환 ( millisecond -> hour 로 변환 ) 
+         long hours = TimeUnit.MILLISECONDS.toHours(mill);
+         // 일로 변환 ( hour -> day 로 변환 )
+         long days = TimeUnit.HOURS.toDays(hours); 
+         long mins =TimeUnit.MILLISECONDS.toMinutes(mill)
+                 - TimeUnit.HOURS.toMinutes(hours);
+         long secs = TimeUnit.MILLISECONDS.toSeconds(mill)
+                 -  TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mill));
+         long  newHour = days*24 - hours;
+         String diffDays = String.format("%d days",  days);
+         String diff = String.format("%d hour(s) %d min(s) %d secs", newHour
+                 , TimeUnit.MILLISECONDS.toMinutes(mill)
+                 - TimeUnit.HOURS.toMinutes(hours),secs);
+         
+         JSONObject deadLine = new JSONObject();
+         deadLine.put("closingTime", diffDays + diff);
+         System.out.println(diffDays + diff);
+        return deadLine;
+     }
+     else
+     {
+        JSONObject deadLine = new JSONObject();
+         deadLine.put("closingTime","마감되었습니다.");
+         System.out.println("마감");
+        return deadLine;
+     }
      }
     
    
