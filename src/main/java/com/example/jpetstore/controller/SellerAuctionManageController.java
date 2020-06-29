@@ -37,7 +37,7 @@ public class SellerAuctionManageController {
 		String nowUser = userSession.getAccount().getUsername();
 	
 		itemList = new PagedListHolder<Item>(this.petStore.getAuctionItemListByUsername(nowUser));
-		itemList.setPageSize(4);
+		itemList.setPageSize(5);
 		
 		model.put("itemList", itemList);
 	

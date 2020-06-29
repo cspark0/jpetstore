@@ -37,7 +37,7 @@ public class SellerItemManageController {
 		String nowUser = userSession.getAccount().getUsername();
 	
 		itemList = new PagedListHolder<Item>(this.petStore.getItemListByUsername(nowUser));
-		itemList.setPageSize(4);
+		itemList.setPageSize(5);
 		
 		System.out.println(itemList);
 		

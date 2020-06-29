@@ -42,8 +42,9 @@ public class ViewProductController {
 			itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));	
 		}
 		
-		itemList.setPageSize(15);
-		Product product = this.petStore.getProduct(productId);
+		itemList.setPageSize(5);
+		//Product product = this.petStore.getProduct(productId);
+		Product product = itemList.getPageList().get(0).getProduct();
 
 		model.put("cc", productId);
 		model.put("itemList", itemList);
@@ -60,7 +61,7 @@ public class ViewProductController {
 			@ModelAttribute("itemList") PagedListHolder<Item> itemList,
 			BindingResult result, ModelMap model) throws Exception {
 		if(product == null || itemList == null) {
-			throw new IllegalStateException("Cannot find pre-loaded category and product list");
+			throw new IllegalStateException("Cannot find pre-loaded page and itemList");
 		}
 		
 		if ("next".equals(page)) {
@@ -70,7 +71,7 @@ public class ViewProductController {
 			itemList.previousPage();
 		}
 
-		model.put("cc", productId);
+	    model.put("cc", productId);
 		return "Product";
 	}
 	
@@ -80,14 +81,14 @@ public class ViewProductController {
 			ModelMap model) throws Exception {
 		PagedListHolder<Item> itemList;
 		itemList = new PagedListHolder<Item>(this.petStore.getItemListByUsername(username2));		
-		itemList.setPageSize(15);
+		itemList.setPageSize(5);
 		
 		PagedListHolder<Item> auctionItemList;
 		auctionItemList = new PagedListHolder<Item>(this.petStore.getAuctionItemListByUsername(username2));		
-		auctionItemList.setPageSize(15);
+		auctionItemList.setPageSize(5);
 
 		//Product product = itemList.getPageList().get(0).getProduct();
-		System.out.println(itemList.getPageList());
+		//System.out.println(itemList.getPageList());
 
 		model.put("itemList", itemList);
 		model.put("auctionItemList", auctionItemList);

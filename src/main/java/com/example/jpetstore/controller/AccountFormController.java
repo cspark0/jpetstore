@@ -108,7 +108,7 @@ public class AccountFormController {
 			petStore.getAccount(accountForm.getAccount().getUsername()));
 		PagedListHolder<Product> myList = new PagedListHolder<Product>(
 			petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
-		myList.setPageSize(4);
+		myList.setPageSize(5);
 		userSession.setMyList(myList);
 		session.setAttribute("userSession", userSession);
 		return successViewName;  
