@@ -244,4 +244,16 @@ public List<Item> getAuctionItemListByUsername(String username) {
 	return itemDao.getAuctionItemListByUsername(username);
 }
 
+@Override
+public void updateItem(Item item) {
+	// TODO Auto-generated method stub
+	itemDao.updateItem(item);
+}
+
+@Override
+public void deleteItem(String itemId) {
+	// TODO Auto-generated method stub
+	itemDao.deleteItem(itemId);
+}
+
 }
