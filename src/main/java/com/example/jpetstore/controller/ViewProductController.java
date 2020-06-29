@@ -50,8 +50,7 @@ public class ViewProductController {
 		//Product product = itemList.getPageList().get(0).getProduct();
 		System.out.println(itemList.getPageList());
 
-
-		
+		model.put("cc", productId);
 		model.put("itemList", itemList);
 		model.put("product", product);
 		return "Product";

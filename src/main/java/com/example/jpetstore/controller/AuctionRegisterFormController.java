@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
@@ -87,6 +88,7 @@ public class AuctionRegisterFormController {
 		
 		if (result.hasErrors()) return formViewName;
 		try {
+		
 			Item item = auctionForm.getAuctionItem();
 			item.setAuction(1);
 			Product product = petStore.getProductByName(item.getProductId());
@@ -98,8 +100,8 @@ public class AuctionRegisterFormController {
 			item.setUsername2(userSession.getAccount().getUsername());
 			System.out.println("item 횇횞�횑쨘챠쩔징 username �첬�책: " + userSession.getAccount().getUsername());
 	
-		item.setClosingTime(closeTime);
-		petStore.testScheduler(closeTime);
+			item.setClosingTime(closeTime);
+			petStore.testScheduler(closeTime);
 			petStore.insertAuctionItem(item);
 			petStore.insertQuantity(item.getItemId(), 1000);
 		}

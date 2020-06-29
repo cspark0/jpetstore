@@ -10,7 +10,13 @@
     WHERE USERNAME = #{username}
   </select>
 
-
+  <select id="getMaxAuctionId" resultType="int">
+  	SELECT AUCTIONID
+  	FROM AUCTION
+  	WHERE BIDDINGPRICE = (SELECT MAX(BIDDINGPRICE) FROM AUCTION WHERE ITEMID=#{itemId})
+  	AND ITEMID=#{itemId}
+  </select>
+  
   <update id="updateBiddingPrice">
     UPDATE AUCTION 
     SET BIDDINGPRICE = #{biddingPrice}
