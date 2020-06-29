@@ -39,7 +39,6 @@ public class ViewItemController {
      @RequestMapping("shop/getDeadline.do")
      @ResponseBody public JSONObject getDeadline(
      @RequestParam("itemId") String itemId) throws Exception {
-      
     	 
     Item item = this.petStore.getItem(itemId); 
     System.out.println(item.getTimeStatus());
