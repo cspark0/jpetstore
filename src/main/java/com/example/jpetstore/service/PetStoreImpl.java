@@ -254,6 +254,7 @@ public void updateAuctionId(Auction auction) {
 public int getMaxAuctionId(String itemId) {
 	// TODO Auto-generated method stub
 	return auctionDao.getMaxAuctionId(itemId);
+}
 
 public void updateItem(Item item) {
 	// TODO Auto-generated method stub
