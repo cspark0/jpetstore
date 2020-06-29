@@ -56,5 +56,9 @@ void closeEvent(Date curTime);
 
 List<Item> getAuctionItemListByUsername(String username);
 
+void updateItem(Item item);
+
+void deleteItem(String itemId);
+
 
 }

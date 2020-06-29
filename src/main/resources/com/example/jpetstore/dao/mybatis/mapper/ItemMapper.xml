@@ -119,7 +119,8 @@
       QTY AS quantity,
       I.ISAUCTION AS isAuction,
       I.DEPOSIT AS deposit,
-      I.USERNAME AS username2 
+      I.USERNAME AS username2,
+      CLOSINGTIME 
     FROM ITEM I, INVENTORY V, PRODUCT P
     WHERE P.PRODUCTID = I.PRODUCTID
       AND I.ITEMID = V.ITEMID
@@ -140,11 +141,23 @@
   
     <update id="updateAuctionItem" parameterType="Item">
     UPDATE ITEM SET
+    ITEMID = #{itemId},
+    PRODUCTID = #{productId},
       LISTPRICE = #{listPrice},
       UNITCOST = #{unitCost},
       ATTR1 = #{attribute1},
-      DEADLINE = #{deadline},
-      DEPOSIT = #{deposit},
+      CLOSINGTIME = #{closingTime},
+      DEPOSIT = #{deposit}
+    WHERE ITEMID = #{itemId}
+  </update>
+  
+      <update id="updateItem" parameterType="Item">
+    UPDATE ITEM SET
+    ITEMID = #{itemId},
+    PRODUCTID = #{productId},
+      LISTPRICE = #{listPrice},
+      UNITCOST = #{unitCost},
+      ATTR1 = #{attribute1}
     WHERE ITEMID = #{itemId}
   </update>
   
@@ -183,4 +196,10 @@
     VALUES
       (#{itemId}, #{productId}, #{listPrice}, #{unitCost}, #{supplierId,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{attribute1}, #{isAuction}, #{username2,jdbcType=VARCHAR})
   </insert>
+  
+  <delete id="deleteItem" parameterType="String">
+  DELETE 
+  FROM ITEM
+  WHERE ITEMID = #{itemId}
+  </delete>
 </mapper>
