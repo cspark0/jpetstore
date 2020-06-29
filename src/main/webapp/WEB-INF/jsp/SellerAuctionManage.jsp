@@ -1,15 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="IncludeTop.jsp"%>
 
-<%-- <table id="main-menu">
+<table id="main-menu">
   <tr>
-    <td><a href='<c:url value="/shop/viewCategory.do">
-        <c:param name="categoryId" value="${product.categoryId}"/></c:url>'>
-        <b><font color="black" size="2">
-          &lt;&lt; <c:out value="${product.name}" /></font></b></a>
+    <td><a href='<c:url value="/shop/sellerInform.do"/>'><b>
+       <font color="black" size="2">&lt;&lt; Seller Page</font></b></a>
     </td>
   </tr>
-</table> --%>
+</table>
 
 <div align="center">
   <table class="n23">
