@@ -10,8 +10,8 @@ public class Auction implements Serializable {
 	private String itemId;
 	private String username;
 	private double biddingPrice;
-	//private Date biddingDate;
-	private boolean isSuccessful;
+	private Date biddingDate;
+	private int isSuccessful;
 	
 	
 	public int getAuctionId() {
@@ -38,19 +38,17 @@ public class Auction implements Serializable {
 	public void setBiddingPrice(double biddingPrice) {
 		this.biddingPrice = biddingPrice;
 	}
-	/*public Date getBiddingDate() {
+	public Date getBiddingDate() {
 		return biddingDate;
 	}
 	public void setBiddingDate(Date biddingDate) {
 		this.biddingDate = biddingDate;
-	}*/
-	public boolean isSuccessful() {
+	}
+	public int getIsSuccessful() {
 		return isSuccessful;
 	}
-	public void setSuccessful(boolean isSuccessful) {
+	public void setIsSuccessful(int isSuccessful) {
 		this.isSuccessful = isSuccessful;
 	}
-	
-	
 
 }

@@ -19,5 +19,7 @@ public interface AuctionDao {
 	
 	 void updateBiddingPrice(double price)throws DataAccessException;
 	 void insertAuction(Auction auction)throws DataAccessException;
-	void deleteAuctionbyAuctionId(String auctionId) throws DataAccessException;
+	 void deleteAuctionbyAuctionId(String auctionId) throws DataAccessException;
+
+	 Auction getAuctionByAuctionId(int auctionId)throws DataAccessException;
 }

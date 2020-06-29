@@ -23,7 +23,7 @@ public class Item implements Serializable {
   private int isAuction;
   private Date deadline;
   private double deposit;
-  private String auctionId;
+  private int auctionId;
   
 
     public int getIsAuction() {
@@ -45,10 +45,10 @@ public class Item implements Serializable {
 	public void setDeposit(double deposit) {
 		this.deposit = deposit;
 	}
-	public String getAuctionId() {
+	public int getAuctionId() {
 		return auctionId;
 	}
-	public void setAuctionId(String auctionId) {
+	public void setAuctionId(int auctionId) {
 		this.auctionId = auctionId;
 	}
 	

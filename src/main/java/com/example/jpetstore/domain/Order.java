@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.dao.DataAccessException;
+
 @SuppressWarnings("serial")
 public class Order implements Serializable {
 
@@ -38,6 +40,7 @@ public class Order implements Serializable {
   private String locale;
   private String status;
   private List<LineItem> lineItems = new ArrayList<LineItem>();
+  //private int lineNumber;
 
   /* JavaBeans Properties */
 
@@ -161,13 +164,59 @@ public class Order implements Serializable {
       addLineItem(cartItem);
     }
   }
+  
+  public void initOrder(Account account, Item item, double biddingPrice) {
+	    username = account.getUsername();
+	    orderDate = new Date();
 
+	    shipToFirstName = account.getFirstName();
+	    shipToLastName = account.getLastName();
+	    shipAddress1 = account.getAddress1();
+	    shipAddress2 = account.getAddress2();
+	    shipCity = account.getCity();
+	    shipState = account.getState();
+	    shipZip = account.getZip();
+	    shipCountry = account.getCountry();
+
+	    billToFirstName = account.getFirstName();
+	    billToLastName = account.getLastName();
+	    billAddress1 = account.getAddress1();
+	    billAddress2 = account.getAddress2();
+	    billCity = account.getCity();
+	    billState = account.getState();
+	    billZip = account.getZip();
+	    billCountry = account.getCountry();
+
+	    totalPrice = biddingPrice;
+
+	    creditCard = "999 9999 9999 9999";
+	    expiryDate = "12/03";
+	    cardType = "Visa";
+	    courier = "UPS";
+	    locale = "CA";
+	    status = "P";
+	    
+		addLineItem2(item, biddingPrice);
+	  }
+
+  public void addLineItem2(Item item, double biddingPrice) {
+		LineItem lineItem = new LineItem(item, biddingPrice);
+	  	addLineItem(lineItem);
+  }
+  
   public void addLineItem(CartItem cartItem) {
-    LineItem lineItem = new LineItem(lineItems.size() + 1, cartItem);
-    addLineItem(lineItem);
+	  if(cartItem != null) {
+		LineItem lineItem = new LineItem(lineItems.size() + 1, cartItem);
+	  	addLineItem(lineItem);} 
+		/*
+		 * else { LineItem lintItem2 = new LineItem(lineItems.size() + 1, )
+		 * addLineItem(lineItem2);}
+		 */
   }
 
   public void addLineItem(LineItem lineItem) {
     lineItems.add(lineItem);
   }
+
+  
 }

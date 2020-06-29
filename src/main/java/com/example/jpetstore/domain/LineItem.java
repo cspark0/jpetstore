@@ -2,6 +2,8 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import com.example.jpetstore.dao.AuctionDao;
+
 @SuppressWarnings("serial")
 public class LineItem implements Serializable {
 
@@ -27,6 +29,14 @@ public class LineItem implements Serializable {
   }
 
   /* JavaBeans Properties */
+
+  public LineItem(Item item, double biddingPrice) {
+	    this.lineNumber = 1;
+	    this.quantity = 1;
+	    this.itemId = item.getItemId();
+	    this.unitPrice = biddingPrice;
+	    this.item = item;
+}
 
   public int getOrderId() { return orderId; }
   public void setOrderId(int orderId) { this.orderId = orderId; }
