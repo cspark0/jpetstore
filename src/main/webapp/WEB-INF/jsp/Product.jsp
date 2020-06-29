@@ -11,7 +11,8 @@
 </table>
 
 <div align="center">
-  <b><font size="4"><c:out value="${product.name}" /></font></b>
+	<c:if test="${!cc.equals(\"auction\")}">
+  <b><font size="4"><c:out value="${product.name}" /></font></b> </c:if>
   <table class="n23">
     <tr bgcolor="#CCCCCC">
       <td><b>Item ID</b></td>
@@ -42,14 +43,14 @@
         </td>
       
         <td><fmt:formatNumber value="${item.listPrice}" pattern="$#,##0.00" /></td>
+        <c:if test="${!cc.equals(\"auction\")}">
         <td>
           <a href='<c:url value="/shop/addItemToCart.do">
             <c:param name="workingItemId" value="${item.itemId}"/></c:url>'>
               <img border="0" src="../images/button_add_to_cart.gif" alt="" />
           </a></td>
+         </c:if>
            <td>
-            
-     
       </td>
       </tr>
     </c:forEach>

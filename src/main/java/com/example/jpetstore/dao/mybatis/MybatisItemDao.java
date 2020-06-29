@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.mybatis.mapper.ItemMapper;
+import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
@@ -81,6 +82,10 @@ public class MybatisItemDao implements ItemDao {
 	public void updateAuctionItem(Item item) {
 		// TODO Auto-generated method stub
 		itemMapper.updateAuctionItem(item);
+	}
+	
+	public void updateAuctionId(Auction auction) {
+		itemMapper.updateAuctionId(auction);
 	}
 
 	public List<Item> getItemListByUsername(String username) {

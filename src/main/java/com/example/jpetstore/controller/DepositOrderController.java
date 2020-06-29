@@ -22,6 +22,7 @@ import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Cart;
 import com.example.jpetstore.domain.DepositCart;
+import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.service.OrderValidator;
 import com.example.jpetstore.service.PetStoreFacade;
 
@@ -75,6 +76,7 @@ public class DepositOrderController {
 	public String bindAndValidateOrder(HttpServletRequest request,
 			@ModelAttribute("auctionForm") AuctionForm auctionForm, 
 			BindingResult result) {
+		
 				
 				return "ConfirmDepositOrder";
 			
@@ -89,14 +91,20 @@ public class DepositOrderController {
 		Date date = new Date();
 		
 		auction.setItemId(auctionForm.getOrder().getLineItems().get(0).getItem().getItemId());
-		auction.setSuccessful(true);
+		auction.setSuccessful(false);
 		auction.setUsername(auctionForm.getOrder().getUsername());
 		auction.setBiddingPrice(auctionForm.getAuction().getBiddingPrice());
 		petStore.insertAuction(auction);
+		
+		//item Å×ÀÌºí update
+		auction.setMaxAuctionId(petStore.getMaxAuctionId(auction.getItemId()));
+		petStore.updateAuctionId(auction);
+		
 		ModelAndView mav = new ModelAndView("ViewAuction");
 		mav.addObject("order", auctionForm.getAuction());
 		mav.addObject("message", "Thank you, your order has been submitted.");
 		status.setComplete();  // remove sessionCart and orderForm from session
+		
 		return mav;
 	}
 }

@@ -13,4 +13,6 @@ public interface AuctionMapper {
 	void deleteAuctionbyAunctionId(String auctionId);
 	
 	List <Auction> getAuctionByUsername(String username);
+	
+	int getMaxAuctionId(String itemId);
 }

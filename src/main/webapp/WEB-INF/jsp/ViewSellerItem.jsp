@@ -78,7 +78,6 @@
       <td><b>Product ID</b></td>
       <td><b>Description</b></td>
       <td><b>List Price</b></td>
-      <td>&nbsp;</td>
     </tr>
     <c:forEach var="item" items="${auctionItemList.pageList}">
       <tr bgcolor="#FFFF88">
@@ -101,15 +100,7 @@
         </td>
       
         <td><fmt:formatNumber value="${item.listPrice}" pattern="$#,##0.00" /></td>
-        <td>
-          <a href='<c:url value="/shop/addItemToCart.do">
-            <c:param name="workingItemId" value="${item.itemId}"/></c:url>'>
-              <img border="0" src="../images/button_add_to_cart.gif" alt="" />
-          </a></td>
-           <td>
-            
-     
-      </td>
+    
       </tr>
     </c:forEach>
     <tr>
