@@ -20,6 +20,11 @@ public class MybatisAuctionDao implements AuctionDao {
 		return auctionMapper.getAuctionByUsername(username);
 		
 	}
+	
+	/*@Override
+	public getAuctionByAuctionId(String auctionId) throws DataAccessException {
+		return auctionMapper.getAuctionByAuctionId(auctionId);
+	}*/
 
 	@Override
 	public void updateBiddingPrice(double price) throws DataAccessException {
@@ -40,6 +45,12 @@ public class MybatisAuctionDao implements AuctionDao {
 		auctionMapper.deleteAuctionbyAunctionId(auctionId);
 		
 	}
+
+	@Override
+	public Auction getAuctionByAuctionId(int auctionId) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return auctionMapper.getAuctionByAuctionId(auctionId);
+	}	
 
 	public int getMaxAuctionId(String itemId) {
 		return auctionMapper.getMaxAuctionId(itemId);

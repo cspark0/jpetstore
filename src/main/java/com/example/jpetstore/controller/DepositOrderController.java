@@ -91,7 +91,7 @@ public class DepositOrderController {
 		Date date = new Date();
 		
 		auction.setItemId(auctionForm.getOrder().getLineItems().get(0).getItem().getItemId());
-		auction.setSuccessful(false);
+		auction.setIsSuccessful(0);
 		auction.setUsername(auctionForm.getOrder().getUsername());
 		auction.setBiddingPrice(auctionForm.getAuction().getBiddingPrice());
 		petStore.insertAuction(auction);

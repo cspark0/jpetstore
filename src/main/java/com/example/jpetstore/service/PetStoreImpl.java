@@ -212,6 +212,17 @@ public void insertQuantity(String itemId, int qty) {
 	itemDao.insertQuantity(itemId, qty);
 }
 
+	@Override
+	public List<Auction> getAuctionByUsername(String username) {
+		// TODO Auto-generated method stub
+		return auctionDao.getAuctionByUsername(username);
+	}
+	
+	@Override
+	public Auction getAuctionByAuctionId(int auctionId) {
+		return auctionDao.getAuctionByAuctionId(auctionId);
+	}
+  
 @Override
 public List<Item> getItemListByUsername(String username) {
 	// TODO Auto-generated method stub
@@ -224,13 +235,6 @@ public void insertAuction(Auction auction) {
 	auctionDao.insertAuction(auction);
 	
 }
-public List<Auction> getAuctionByUsername(String username) {
-	// TODO Auto-generated method stub
-	return auctionDao.getAuctionByUsername(username);
-}
-
-
-
 
 @Override
 public void updateAuctionItem(Item item) {
@@ -267,5 +271,5 @@ public void deleteItem(String itemId) {
 	itemDao.deleteItem(itemId);
 
 }
-
+  
 }

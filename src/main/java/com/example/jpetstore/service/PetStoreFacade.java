@@ -72,6 +72,8 @@ public interface PetStoreFacade {
 
 	List<Auction> getAuctionByUsername(String username);
 
+	Auction getAuctionByAuctionId(int auctionId);
+
 	void updateAuctionItem(Item item);
 	void updateAuctionId(Auction auction);
 

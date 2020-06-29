@@ -2,6 +2,8 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import com.example.jpetstore.dao.AuctionDao;
+
 @SuppressWarnings("serial")
 public class LineItem implements Serializable {
 
@@ -28,16 +30,24 @@ public class LineItem implements Serializable {
 
   /* JavaBeans Properties */
 
+  public LineItem(Item item, double biddingPrice) {
+	    this.lineNumber = 1;
+	    this.quantity = 1;
+	    this.itemId = item.getItemId();
+	    this.unitPrice = biddingPrice;
+	    this.item = item;
+}
+
   public LineItem(int i, DepositCartItem cartItem) {
 	// TODO Auto-generated constructor stub
-	  this.lineNumber = lineNumber;
+	    this.lineNumber = lineNumber;
 	    this.quantity = cartItem.getQuantity();
 	    this.itemId = cartItem.getItem().getItemId();
 	    this.unitPrice = cartItem.getItem().getListPrice();
 	    this.item = cartItem.getItem();
 }
 
-public int getOrderId() { return orderId; }
+  public int getOrderId() { return orderId; }
   public void setOrderId(int orderId) { this.orderId = orderId; }
 
   public int getLineNumber() { return lineNumber; }

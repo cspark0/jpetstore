@@ -2,10 +2,8 @@
 
 <table id="main-menu">
   <tr>
-    <td><a href='<c:url value="/shop/viewCategory.do">
-        <c:param name="categoryId" value="${product.categoryId}"/></c:url>'>
-        <b><font color="black" size="2">
-          &lt;&lt; <c:out value="${product.name}" /></font></b></a>
+    <td><a href='<c:url value="/shop/index.do"/>'><b>
+       <font color="black" size="2">&lt;&lt; Main Menu</font></b></a>
     </td>
   </tr>
 </table>
@@ -57,11 +55,15 @@
     <tr>
       <td>
         <c:if test="${!itemList.firstPage}">
-          <a href="?page=previous"><font color="white"><B>&lt;&lt; Prev</B></font></a>       
+        	<a href='<c:url value="/shop/viewProduct2.do?productId=auction">
+               <c:param name="page" value="previous"/></c:url>'>
+               	<font color="white"><B>&lt;&lt; Prev</B></font></a> 
         </c:if> 
         <c:if test="${!itemList.lastPage}">
-          <a href="?page=next"><font color="white"><B>Next &gt;&gt;</B></font></a>
-        </c:if>
+        	<a href='<c:url value="/shop/viewProduct2.do?productId=auction">
+               <c:param name="page" value="next"/></c:url>'>
+               	<font color="white"><B>Next &gt;&gt;</B></font></a> 
+        </c:if> 
       </td>
     </tr>
   </table>

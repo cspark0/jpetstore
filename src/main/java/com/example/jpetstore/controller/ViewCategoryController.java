@@ -48,7 +48,7 @@ public class ViewCategoryController {
 			@ModelAttribute("productList") PagedListHolder<Product> productList,
 			BindingResult result) throws Exception {
 		if (category == null || productList == null) {
-			throw new IllegalStateException("Cannot find pre-loaded category and product list");
+			throw new IllegalStateException("Cannot find pre-loaded page and productList");
 		}
 		if ("next".equals(page)) { productList.nextPage(); }
 		else if ("previous".equals(page)) { productList.previousPage(); }

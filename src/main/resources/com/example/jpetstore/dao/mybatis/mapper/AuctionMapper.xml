@@ -5,9 +5,15 @@
   <cache />
 
   <select id="getAuctionByUsername" resultType="Auction">
-    SELECT AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE, ISSUCCESSFUL
+    SELECT AUCTIONID, ITEMID, USERNAME, BIDDINGDATE, BIDDINGPRICE, ISSUCCESSFUL
     FROM AUCTION
     WHERE USERNAME = #{username}
+  </select>
+  
+  <select id="getAuctionByAuctionId" resultType="Auction">
+    SELECT AUCTIONID, ITEMID, USERNAME, BIDDINGPRICE
+    FROM AUCTION
+    WHERE AUCTIONID = #{auctionId}
   </select>
 
   <select id="getMaxAuctionId" resultType="int">
