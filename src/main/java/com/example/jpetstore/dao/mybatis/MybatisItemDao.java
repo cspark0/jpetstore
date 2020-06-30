@@ -35,7 +35,6 @@ public class MybatisItemDao implements ItemDao {
 			itemMapper.updateInventoryQuantity(param);
 		}
 	}
-
 	public void insertQuantity(String itemId, int qty) {
 		// TODO Auto-generated method stub
 		itemMapper.insertQuantity(itemId, qty);

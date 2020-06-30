@@ -43,6 +43,7 @@ public class SearchProductsController {
 			System.out.println(productList.getFirstElementOnPage());
 			return new ModelAndView("SearchProducts", "itemList", productList);
 		}
+		
 		else {
 			@SuppressWarnings("unchecked")
 			PagedListHolder<Product> productList = (PagedListHolder<Product>)request.getSession().getAttribute("SearchProductsController_productList");

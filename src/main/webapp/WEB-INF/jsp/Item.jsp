@@ -179,6 +179,7 @@ setInterval(
           <c:param name="username2" value="${item.username2}"/></c:url>'>
           go to seller page</a>
            
+           
       </td>
     </tr>
   </table>
