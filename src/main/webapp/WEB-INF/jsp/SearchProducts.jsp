@@ -43,5 +43,4 @@
     </tr>
   </table>
 </div>
-
 <%@ include file="IncludeBottom.jsp"%>

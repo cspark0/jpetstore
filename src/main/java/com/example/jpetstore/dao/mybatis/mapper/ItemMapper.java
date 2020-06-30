@@ -58,7 +58,6 @@ public interface ItemMapper {
   List<Item> getAuctionItemListByUsername(String username);
   
   void updateAuctionId(Auction auction);
-  
 
 void updateItem(Item item);
 

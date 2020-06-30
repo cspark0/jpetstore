@@ -174,7 +174,6 @@ setInterval(
     </tr>
     <tr>
       <td>
-     
         <a href='<c:url value="/shop/viewSellerItem.do">
           <c:param name="username2" value="${item.username2}"/></c:url>'>
           go to seller page</a>

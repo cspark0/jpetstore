@@ -24,7 +24,6 @@ public class Item implements Serializable {
  
   private double deposit;
   private int auctionId;
-
   
   //�߰�
   private String username2;
