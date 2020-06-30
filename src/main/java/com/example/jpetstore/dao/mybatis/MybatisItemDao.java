@@ -1,9 +1,12 @@
 package com.example.jpetstore.dao.mybatis;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -14,6 +17,7 @@ import com.example.jpetstore.domain.Auction;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
+import com.example.jpetstore.domain.Product;
 
 @Repository
 public class MybatisItemDao implements ItemDao {
@@ -110,6 +114,29 @@ public class MybatisItemDao implements ItemDao {
 	public void deleteItem(String itemId) {
 		// TODO Auto-generated method stub
 		itemMapper.deleteItem(itemId);
+	}
+
+	@Override
+	public List<Item> searchItemList(String keywords)throws DataAccessException  {
+		// TODO Auto-generated method stub
+ 
+		    return itemMapper.searchItemList(
+		    	"%" + keywords.toLowerCase() + "%");
+
+	}
+	public static class ProductSearch {
+
+		private List<String> keywordList = new ArrayList<String>();
+
+		public ProductSearch(String keywords) {
+			StringTokenizer splitter = new StringTokenizer(keywords," ",false);
+			while (splitter.hasMoreTokens()) {
+				this.keywordList.add("%" + splitter.nextToken() + "%");
+			}
+		}
+		public List<String> getKeywordList() {
+			return keywordList;
+		}
 	}
 
 }

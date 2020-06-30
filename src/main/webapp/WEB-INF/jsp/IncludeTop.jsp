@@ -38,7 +38,7 @@
       <a href="../help.html"><img border="0" name="img_help" src="../images/help.gif" /></a>
     </td>
     <td style="text-align:left">
-      <form action="<c:url value="/shop/searchProducts.do"/>" method="post">
+      <form action="<c:url value="/shop/searchItem.do"/>" method="post">
 	    <input type="hidden" name="search" value="true"/>
         <input type="text" name="keyword" size="14" />&nbsp;
         <input src="../images/search.gif" type="image"/>

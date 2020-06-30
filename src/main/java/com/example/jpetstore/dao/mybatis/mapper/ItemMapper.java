@@ -64,5 +64,7 @@ void updateItem(Item item);
 
 void deleteItem(String itemId);
 
+List<Item> searchItemList(String string);
+
 
 }

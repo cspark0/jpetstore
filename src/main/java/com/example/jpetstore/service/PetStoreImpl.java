@@ -143,8 +143,9 @@ public class PetStoreImpl implements PetStoreFacade {
 		return productDao.getProductListByCategory(categoryId);
 	}
 
-	public List<Product> searchProductList(String keywords) {
-		return productDao.searchProductList(keywords);
+	public List<Item> searchItemList(String keywords) {
+		System.out.println("'%"+keywords+"%'");
+		return itemDao.searchItemList(keywords);
 	}
 
 	public Product getProduct(String productId) {

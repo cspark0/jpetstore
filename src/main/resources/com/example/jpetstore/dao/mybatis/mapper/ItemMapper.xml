@@ -206,4 +206,9 @@
   FROM ITEM
   WHERE ITEMID = #{itemId}
   </delete>
+   <select id="searchItemList" resultType="Item">
+   SELECT       ITEMID,       PRODUCTID,            
+USERNAME AS username2,       ATTR1 AS attribute1 
+FROM ITEM    WHERE lower(itemId)  like #{value}
+  </select>
 </mapper>

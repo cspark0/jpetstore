@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.PetStoreFacade;
 
@@ -27,7 +28,7 @@ public class SearchProductsController {
 		this.petStore = petStore;
 	}
 
-	@RequestMapping("/shop/searchProducts.do")
+	@RequestMapping("/shop/searchItem.do")
 	public ModelAndView handleRequest(HttpServletRequest request,
 			@RequestParam(value="keyword", required=false) String keyword,
 			@RequestParam(value="page", required=false) String page
@@ -36,10 +37,11 @@ public class SearchProductsController {
 			if (!StringUtils.hasLength(keyword)) {
 				return new ModelAndView("Error", "message", "Please enter a keyword to search for, then press the search button.");
 			}
-			PagedListHolder<Product> productList = new PagedListHolder<Product>(this.petStore.searchProductList(keyword.toLowerCase()));
-			productList.setPageSize(4);
+			PagedListHolder<Item> productList = new PagedListHolder<Item>(this.petStore.searchItemList(keyword.toLowerCase()));
+			productList.setPageSize(15);
 			request.getSession().setAttribute("SearchProductsController_productList", productList);
-			return new ModelAndView("SearchProducts", "productList", productList);
+			System.out.println(productList.getFirstElementOnPage());
+			return new ModelAndView("SearchProducts", "itemList", productList);
 		}
 		else {
 			@SuppressWarnings("unchecked")
@@ -53,7 +55,7 @@ public class SearchProductsController {
 			else if ("previous".equals(page)) {
 				productList.previousPage();
 			}
-			return new ModelAndView("SearchProducts", "productList", productList);
+			return new ModelAndView("SearchProducts", "itemList", productList);
 		}
 	}
 }

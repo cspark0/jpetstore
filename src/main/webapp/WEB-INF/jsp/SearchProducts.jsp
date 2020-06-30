@@ -10,23 +10,28 @@
 <div align="center">
   <table class="n23">
     <tr bgcolor="#CCCCCC">
-      <td>&nbsp;</td>
-      <td><b>Product ID</b></td>
-      <td><b>Name</b></td>
+    
+      <td><b>Item ID</b></td>
+      <td><b>Product Id</b></td>
+      <td><b>Seller</b></td>
     </tr>
-    <c:forEach var="product" items="${productList.pageList}">
+    <c:forEach var="item" items="${itemList.pageList}">
       <tr bgcolor="#FFFF88">
         <td><a
-          href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
-            <c:out value="${product.description}" escapeXml="false" />
+          href='<c:url value="/shop/viewItem.do"><c:param name="itemId" value="${item.itemId}"/></c:url>'>
+            <c:out value="${item.itemId}" escapeXml="false" />
         </a></td>
         <td><b><a
-            href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${product.productId}"/></c:url>'>
-              <font color="BLACK"><c:out value="${product.productId}" /></font>
+            href='<c:url value="/shop/viewProduct.do"><c:param name="productId" value="${item.productId}"/></c:url>'>
+              <font color="BLACK"><c:out value="${item.productId}" /></font>
           </a></b></td>
-        <td><c:out value="${product.name}" /></td>
-      </tr>
+       
+        
+       <td><b> <a href='<c:url value="/shop/viewSellerItem.do">
+          <c:param name="username2" value="${item.username2}"/></c:url>'>
+         <c:out value="${item.username2}" escapeXml="false" /></a></b></td></tr>
     </c:forEach>
+   
     <tr>
       <td><c:if test="${!productList.firstPage}">
           <a href="?page=previous"><font color="white"><B>&lt;&lt;
