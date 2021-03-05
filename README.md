@@ -21,14 +21,14 @@ __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토�
 2. 프로젝트를 Tomcat server에 deploy(drag&drop)하고 Synchronized 상태인지 확인한 후 server를 start함
 3. 프로젝트 이름을 right-click 후 Run As > Run On Server를 실행하여  웹 브라우저를 띄우고 접속함(URL을 외부의 Chrome brower 등에서 직접 입력해도 됨)
  
-(참고: 프로젝트에 포함되어 있는 HSQL DB를 이용해서 실행하는 방법
-    * src/main/resources/dataAccessContext-mybatis.xml: <context:property-placeholder>의 location 속성을 "classpath:jdbc.hsqldb.properties" 로 변경
-    * src/main/resources/db/hsqldb 폴더에 대해 Properties 메뉴(Alt + Enter)를 실행하여 절대경로 확인 (copy)
-    * Windows 명령 프롬프트(cmd.exe)를 실행하고 cd 명령을 이용하여 위에서 확인한 경로로 이동 (paste)
-    * set 명령을 실행하여 현재 시스템에 JAVA_HOME 환경변수가 JDK 설치폴더의 경로로 설정되어 있는지 확인 (없을 경우 설정 필요)    
-    * server.bat 실행 (이 때 HSQL DB 서버가 실행되고 테이블과 초기 데이터들이 hsqldb/jpetstore.script에 의해 자동 생성됨)
-    * 주의: HSQL DB 서버가 실행되면 src/main/resources/db/hsqldb 폴더에 jpetstore.log, jpetstore.lck, jpetstore.tmp 등 임시파일이 생성되며, Eclipse에서 프로젝트 삭제, export 등이 제대로 실행되지 않음. 이를 위해서는 cmd 창에서 HSQL DB 서버를 종료하고(Ctrl+C) cmd 창도 종료해야 함
-)
+#### 참고: 프로젝트에 포함되어 있는 HSQL DB를 이용해서 실행하는 방법
+* src/main/resources/dataAccessContext-mybatis.xml: <context:property-placeholder>의 location 속성을 "classpath:jdbc.hsqldb.properties" 로 변경
+* src/main/resources/db/hsqldb 폴더에 대해 Properties 메뉴(Alt + Enter)를 실행하여 절대경로 확인 (copy)
+* Windows 명령 프롬프트(cmd.exe)를 실행하고 cd 명령을 이용하여 위에서 확인한 경로로 이동 (paste)
+* set 명령을 실행하여 현재 시스템에 JAVA_HOME 환경변수가 JDK 설치폴더의 경로로 설정되어 있는지 확인 (없을 경우 설정 필요)    
+* server.bat 실행 (이 때 HSQL DB 서버가 실행되고 테이블과 초기 데이터들이 hsqldb/jpetstore.script에 의해 자동 생성됨)
+* 주의: HSQL DB 서버가 실행되면 src/main/resources/db/hsqldb 폴더에 jpetstore.log, jpetstore.lck, jpetstore.tmp 등 임시파일이 생성되며, Eclipse에서 프로젝트 삭제, export 등이 제대로 실행되지 않음. 이를 위해서는 cmd 창에서 HSQL DB 서버를 종료하고(Ctrl+C) cmd 창도 종료해야 함
+
 
 ### Git 사용법 참조
 
