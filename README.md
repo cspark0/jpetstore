@@ -20,6 +20,7 @@ __주의: 먼저 우측 상단의 Fork 버튼을 클릭하여 이 리파지토�
 1. Apache Tomcat v9.0을 다운로드 및 설치하고, Eclipse의 Servers 창에 등록함      
 2. 프로젝트를 Tomcat server에 deploy(drag&drop)하고 Synchronized 상태인지 확인한 후 server를 start함
 3. 프로젝트 이름을 right-click 후 Run As > Run On Server를 실행하여  웹 브라우저를 띄우고 접속함(URL을 외부의 Chrome brower 등에서 직접 입력해도 됨)
+ 
 (참고: 프로젝트에 포함되어 있는 HSQL DB를 이용해서 실행하는 방법
     * src/main/resources/dataAccessContext-mybatis.xml: <context:property-placeholder>의 location 속성을 "classpath:jdbc.hsqldb.properties" 로 변경
     * src/main/resources/db/hsqldb 폴더에 대해 Properties 메뉴(Alt + Enter)를 실행하여 절대경로 확인 (copy)
