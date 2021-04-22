@@ -14,7 +14,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<spring.version>5.2.4.RELEASE</spring.version>
-		<mybatis.version>3.5.4</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybatis-spring.version>2.0.4</mybatis-spring.version>
 		<dbcp.version>2.2.0</dbcp.version>
 		<servlet-api.version>3.1.0</servlet-api.version>
