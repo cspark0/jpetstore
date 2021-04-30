@@ -19,8 +19,8 @@ JPetStore project based on Spring Boot 2.4
 * Maven: mvnw spring-boot:run
 * http://localhost:8088/ 
 
-####H2 in-memory database 사용
+####Oralce 대신 H2 in-memory database 이용 방법
 * pom.xml에 com.h2database:h2 dependency 추가
-* application.properties 파일에 datasource 설정 변경 
+* application.properties 파일의 spring.datasource.* 설정들을 H2 관련 값으로 변경
 * src/main/resources/{schema.sql, data.sql} 파일 생성(DB schema 생성 및 초기 data load)
  
