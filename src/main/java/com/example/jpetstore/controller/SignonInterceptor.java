@@ -12,6 +12,7 @@ import org.springframework.web.util.WebUtils;
 /**
  * @author Juergen Hoeller
  * @since 01.12.2003
+ * @modified-by Changsup Park
  */
 @Component
 public class SignonInterceptor implements HandlerInterceptor {
@@ -24,7 +25,7 @@ public class SignonInterceptor implements HandlerInterceptor {
 		if (userSession == null) {
 			String url = request.getRequestURL().toString(); 
 			String query = request.getQueryString();
-			ModelAndView modelAndView = new ModelAndView("SignonForm");
+			ModelAndView modelAndView = new ModelAndView("tiles/SignonForm"); 	// use Tiles
 			if (query != null) {
 				modelAndView.addObject("signonForwardAction", url+"?"+query);
 			}
