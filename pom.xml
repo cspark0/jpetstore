@@ -39,6 +39,13 @@
          	<artifactId>tomcat-embed-jasper</artifactId>
       	</dependency>
       	
+      	<!-- Tiles -->
+		<dependency>
+         	<groupId>org.apache.tiles</groupId>
+         	<artifactId>tiles-jsp</artifactId>
+			<version>3.0.8</version>
+      	</dependency>
+      	
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
