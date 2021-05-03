@@ -6,17 +6,18 @@
 <table class="n13">
   <tr>
     <td>First name:</td>
-    <td><form:input path="account.firstName" />
+    <td>
+    	<form:input path="account.firstName" htmlEscape="false" />
       <form:errors path="account.firstName" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Last name:</td>
-    <td><form:input path="account.lastName" /> 
+    <td><form:input path="account.lastName" htmlEscape="false"/> 
       <form:errors path="account.lastName" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Email:</td>
-    <td><form:input path="account.email" />
+    <td><form:input path="account.email" htmlEscape="false"/>
       <form:errors path="account.email" cssClass="error" /></td>
   </tr>
   <tr>
@@ -26,22 +27,22 @@
   </tr>
   <tr>
     <td>Address 1:</td>
-    <td><form:input path="account.address1" />
+    <td><form:input path="account.address1" htmlEscape="false"/>
       <form:errors path="account.address1" cssClass="error" /></td>
   </tr>
   <tr>
     <td>Address 2:</td>
-    <td><form:input path="account.address2" />
+    <td><form:input path="account.address2" htmlEscape="false"/>
       <form:errors path="account.address2" cssClass="error" /></td>
   </tr>
   <tr>
     <td>City:</td>
-    <td><form:input path="account.city" /> 
+    <td><form:input path="account.city" htmlEscape="false"/> 
       <form:errors path="account.city" cssClass="error" /></td>
   </tr>
   <tr>
     <td>State:</td>
-    <td><form:input path="account.state" /> 
+    <td><form:input path="account.state" htmlEscape="false"/> 
       <form:errors path="account.state" cssClass="error" /></td>
   </tr>
   <tr>
@@ -51,7 +52,7 @@
   </tr>
   <tr>
     <td>Country:</td>
-    <td><form:input path="account.country" />
+    <td><form:input path="account.country" htmlEscape="false"/>
       <form:errors path="account.country" cssClass="error" /></td>
   </tr>
 </table>
