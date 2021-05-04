@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE XML>
 <!-- configuration file for LogBack (slf4J implementation)
 See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-through-the-java-loggers/ -->
+<!-- <!DOCTYPE configuration> -->
 <configuration scan="true" scanPeriod="30 seconds">
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
