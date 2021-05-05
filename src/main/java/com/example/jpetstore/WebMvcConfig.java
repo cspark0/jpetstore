@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +18,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("start");
 		registry.addViewController("/shop/index.do").setViewName("index");
 		registry.addViewController("/shop/signonForm.do").setViewName("SignonForm");
 	}
@@ -28,5 +28,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addPathPatterns("/shop/editAccount.do", "/shop/listOrders.do",
 					"/shop/viewOrder.do", "/shop/newOrder.do");		
 	}
-	
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+    <title>quickHeader</title>
+</head>
+<body>
+<div th:fragment="quickHeader" align="center">
+  <a href="" th:href="@{/shop/viewCategory.do?categoryId=FISH}">
+    <img border="0" src="/images/sm_fish.gif" /></a>
+  <img border="0" src="/images/separator.gif" />
+  <a href="" th:href="@{/shop/viewCategory.do?categoryId=DOGS}">
+    <img border="0" src="/images/sm_dogs.gif" /></a>
+  <img border="0" src="/images/separator.gif" />
+  <a href="" th:href="@{/shop/viewCategory.do?categoryId=REPTILES}">
+    <img border="0" src="/images/sm_reptiles.gif" /></a>
+  <img border="0" src="/images/separator.gif" />
+  <a href="" th:href="@{/shop/viewCategory.do?categoryId=CATS}">
+    <img border="0" src="/images/sm_cats.gif" /></a>
+  <img border="0" src="/images/separator.gif" />
+  <a href="" th:href="@{/shop/viewCategory.do?categoryId=BIRDS}">
+    <img border="0" src="/images/sm_birds.gif" /></a>
+</div>

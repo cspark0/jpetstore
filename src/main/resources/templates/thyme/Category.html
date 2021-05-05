@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="thyme/Top :: head(~{::title})">
+    <title>Category</title>
+</head>
+<body>
+
+<div th:replace="thyme/Top :: header"></div>
+
+<table id="main-menu">
+  <tr>
+    <td><a href="" th:href="@{/shop/index.do}"><b>
+       <font color="black" size="2">&lt;&lt; Main Menu</font></b></a>
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+  <h2 th:text="${category.name}">Category Name</h2>
+  <table class="n23">
+    <tr bgcolor="#CCCCCC">
+      <td><b>Product ID</b></td>
+      <td><b>Name</b></td>
+    </tr>
+    <tr th:each="product : ${productList.pageList}" bgcolor="#FFFF88">
+        <td><b><a href="" th:href="@{/shop/viewProduct.do(productId=${product.productId})}"
+                  th:text="${product.productId}">Product ID</a>
+          </b></td>
+        <td th:text="${product.name}">Product Name</td>
+    </tr>
+    <tr>
+      <td>
+        <a th:if="${!productList.firstPage}" 
+           href="" th:href="@{/shop/viewCategory2.do(page=${'previous'})}"
+           th:utext="${'<font color=white><B>&lt;&lt; Prev</B></font>'}">Prev</a>
+        <a th:if="${!productList.lastPage}" 
+           href="" th:href="@{/shop/viewCategory2.do(page=${'next'})}"
+           th:utext="${'<font color=white><B>Next &gt;&gt;</B></font>'}">Next</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div th:replace="thyme/Bottom :: footer"></div>

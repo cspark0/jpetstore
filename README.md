@@ -1,26 +1,16 @@
-# JPetStore (boot)
-JPetStore project based on Spring Boot 2.4
+# JPetStore (boot-thymeleaf branch)
+JPetStore project using both JSP and Thymeleaf as view templates on Spring Boot 2.4
 
-####변경 사항     
-1. pom.xml: Spring Boot Starter Dependencies 사용 
-2. com.example.jpetstore.JpetstoreBootApplication: 시작 및 설정 클래스 
-3. com.example.jpetstore.WebMvcConfig: Spring MVC 관련 설정 클래스
-4. com.example.jpetstore.controller.SignonInterceptor: @Component 추가 (bean scan 대상)
-5. com.example.jpetstore.controller.dao.mybatis.mapper.*: @Mapper 추가 (mapper scan 대상)
-6. src/main/resources/{기존 properties, xml 설정 파일} 삭제
-7. src/main/resources/application.properties: bean property 설정
-8. src/main/webapp/{images, style, *.html}를 src/main/resources/static/ 으로 이동 
-9. src/main/webapp/META-INF 삭제
-10. src/main/webapp/WEB-INF/*.xml 삭제
-11. src/main/webapp/WEB-INF/lib/ojdbc6.jar 삭제
+### boot branch에서 변경된 사항(차이점)     
+1. pom.xml에 spring-boot-starter-thymeleaf dependencies 추가
+2. src/main/resources/templates 디렉토리 생성: Spring Boot에서는 기본적으로 templates 디렉토리에서 Thymeleaf template 파일을 찾도록 설정됨.
+3. templates 디렉토리 아래에 thyme 디렉토리 생성: JSP view와 Thymeleaf view를 구별하기 위함. Thymeleaf view의 이름은 이 디렉토리 이름을 포함해서 정의 (예: "thyme/Category")
+4. src/main/resources/application.properties에  spring.thymeleaf.view-names 속성 값을 "thyme/*"로 설정: view 이름이 "thyme/Category"일 경우 Thymeleaf View Resolver가 Thymeleaf view로 인식하고 templates/thyme 디렉토리에서 template file을 찾음 (그렇지 않을 경우 JSP view로 인식되어 JSP file을 찾게 됨)
+5. templates/thyme/{Category,Top,Bottom,QuickHeader}.html: Thymeleaf templates (기존 Category view를 Thymeleaf로 구현)
+6. 기존 WEB-INF/jsp/Category.jsp 삭제
+7. static/{index.html, help.html}에서 이미지 파일에 대한 URL 수정: Spring Boot에서는 classpath:/static 디렉토리를 정적 리소스 파일의 기본 디렉토리로 설정하여 "/images/search.gif"와 같이 절대경로식으로 접근 가능   
  
-####실행
+### 실행
 * Eclise: com.example.jpetstore.JpetstoreBootApplication 선택 > Run As > Java Application  
 * Maven: mvnw spring-boot:run
 * http://localhost:8088/ 
-
-####Oralce 대신 H2 in-memory database 이용 방법
-* pom.xml에 com.h2database:h2 dependency 추가
-* application.properties 파일의 spring.datasource.* 설정들을 H2 관련 값으로 변경
-* src/main/resources/{schema.sql, data.sql} 파일 생성(DB schema 생성 및 초기 data load)
- 
