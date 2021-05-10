@@ -55,31 +55,27 @@ import com.example.jpetstore.domain.Product;
 @Service
 @Transactional
 public class PetStoreImpl implements PetStoreFacade { 
-	@Autowired	// @Qualifier("mybatisAccountDao")
+	@Autowired	
 	private AccountDao accountDao;
 	
-	@Autowired @Qualifier("mybatisCategoryDao")  
-	private CategoryDao categoryDao;
+	@Autowired   
+	private CategoryDao mybatisCategoryDao;	
+	@Autowired    
+	private CategoryDao jdbcTemplateCategoryDao;	
+	@Autowired    
+	private CategoryDao namedParamJdbcTemplateCategoryDao;	
+	@Autowired   
+	private CategoryDao jdbcDaoSupportCategoryDao;	
+	@Autowired 
+	private CategoryDao pureJdbcCategoryDao;	
 	
-	@Autowired @Qualifier("jdbcTemplateCategoryDao")   
-	private CategoryDao categoryDao1;
-	
-	@Autowired @Qualifier("namedParamJdbcTemplateCategoryDao")   
-	private CategoryDao categoryDao2;
-	
-	@Autowired @Qualifier("jdbcDaoSupportCategoryDao")  
-	private CategoryDao categoryDao3;
-	
-	@Autowired @Qualifier("pureJdbcCategoryDao")
-	private CategoryDao categoryDao4;	
-	
-	@Autowired  // @Qualifier("mybatisProductDao")
+	@Autowired  
 	private ProductDao productDao;
 	
-	@Autowired	// @Qualifier("mybatisItemDao")
+	@Autowired	
 	private ItemDao itemDao;
 	
-	@Autowired	// @Qualifier("mybatisOrderDao")
+	@Autowired	
 	private OrderDao orderDao;
 
 	//-------------------------------------------------------------------------
@@ -107,26 +103,26 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Category> getCategoryList() {
-		return categoryDao.getCategoryList();
+		return mybatisCategoryDao.getCategoryList();
 	}
 
 	public Category getCategory(String categoryId) {
 		Category category = null;
 		switch (categoryId) {
 			case "FISH" :
-				category = categoryDao.getCategory(categoryId);
+				category = mybatisCategoryDao.getCategory(categoryId);
 				break;
 			case "DOGS" :
-				category = categoryDao1.getCategory(categoryId);
+				category = jdbcTemplateCategoryDao.getCategory(categoryId);
 				break;
 			case "REPTILES" :
-				category = categoryDao2.getCategory(categoryId);
+				category = namedParamJdbcTemplateCategoryDao.getCategory(categoryId);
 				break;
 			case "CATS" :
-				category = categoryDao3.getCategory(categoryId);
+				category = jdbcDaoSupportCategoryDao.getCategory(categoryId);
 				break;
 			case "BIRDS" :
-				category = categoryDao4.getCategory(categoryId);
+				category = pureJdbcCategoryDao.getCategory(categoryId);
 		}
 		return category;
 	}

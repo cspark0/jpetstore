@@ -15,33 +15,33 @@ CategoryDao를 Spring JDBC Template을 이용하여 구현함
 @Service
 @Transactional
 public class PetStoreImpl implements PetStoreFacade { 
-   	@Autowired @Qualifier("mybatisCategoryDao")
-	private CategoryDao categoryDao;  
-	@Autowired @Qualifier("jdbcTemplateCategoryDao")
-	private CategoryDao categoryDao1;  
-	@Autowired @Qualifier("namedParamJdbcTemplateCategoryDao")
-	private CategoryDao categoryDao2;  
-	@Autowired @Qualifier("jdbcDaoSupportCategoryDao")
-	private CategoryDao categoryDao3;  
-	@Autowired @Qualifier("pureJdbcCategoryDao")
-	private CategoryDao categoryDao4;	  
+   	@Autowired
+	private CategoryDao mybatisCategoryDao;	  
+	@Autowired 
+	private CategoryDao jdbcTemplateCategoryDao;   
+	@Autowired 
+	private CategoryDao namedParamJdbcTemplateCategoryDao;   
+	@Autowired 
+	private CategoryDao jdbcDaoSupportCategoryDao;   
+	@Autowired 
+	private CategoryDao pureJdbcCategoryDao;   
 	public Category getCategory(String categoryId) {
 		Category category = null;
 		switch (categoryId) {
-		case "FISH" :
-			category = categoryDao.getCategory(categoryId);
-			break;
-		case "DOGS" :
-			category = categoryDao1.getCategory(categoryId);
-			break;
-		case "REPTILES" :
-			category = categoryDao2.getCategory(categoryId);
-			break;
-		case "CATS" :
-			category = categoryDao3.getCategory(categoryId);
-			break;
-		case "BIRDS" :
-			category = categoryDao4.getCategory(categoryId);
+			case "FISH" :
+				category = mybatisCategoryDao.getCategory(categoryId);
+				break;
+			case "DOGS" :
+				category = jdbcTemplateCategoryDao.getCategory(categoryId);
+				break;
+			case "REPTILES" :
+				category = namedParamJdbcTemplateCategoryDao.getCategory(categoryId);
+				break;
+			case "CATS" :
+				category = jdbcDaoSupportCategoryDao.getCategory(categoryId);
+				break;
+			case "BIRDS" :
+				category = pureJdbcCategoryDao.getCategory(categoryId);
 		}
 		return category;
 	}	
