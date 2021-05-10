@@ -54,15 +54,27 @@ import com.example.jpetstore.domain.Product;
 @Service
 @Transactional
 public class PetStoreImpl implements PetStoreFacade { 
-	@Autowired
+	@Autowired	
 	private AccountDao accountDao;
-	@Autowired
-	private CategoryDao categoryDao;
-	@Autowired
+	
+	@Autowired   
+	private CategoryDao mybatisCategoryDao;	
+	@Autowired    
+	private CategoryDao jdbcTemplateCategoryDao;	
+	@Autowired    
+	private CategoryDao namedParamJdbcTemplateCategoryDao;	
+	@Autowired   
+	private CategoryDao jdbcDaoSupportCategoryDao;	
+	@Autowired 
+	private CategoryDao pureJdbcCategoryDao;	
+	
+	@Autowired  
 	private ProductDao productDao;
-	@Autowired
+	
+	@Autowired	
 	private ItemDao itemDao;
-	@Autowired
+	
+	@Autowired	
 	private OrderDao orderDao;
 
 	//-------------------------------------------------------------------------
@@ -90,11 +102,28 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Category> getCategoryList() {
-		return categoryDao.getCategoryList();
+		return mybatisCategoryDao.getCategoryList();
 	}
 
 	public Category getCategory(String categoryId) {
-		return categoryDao.getCategory(categoryId);
+		Category category = null;
+		switch (categoryId) {
+			case "FISH" :
+				category = mybatisCategoryDao.getCategory(categoryId);
+				break;
+			case "DOGS" :
+				category = jdbcTemplateCategoryDao.getCategory(categoryId);
+				break;
+			case "REPTILES" :
+				category = namedParamJdbcTemplateCategoryDao.getCategory(categoryId);
+				break;
+			case "CATS" :
+				category = jdbcDaoSupportCategoryDao.getCategory(categoryId);
+				break;
+			case "BIRDS" :
+				category = pureJdbcCategoryDao.getCategory(categoryId);
+		}
+		return category;
 	}
 
 	public List<Product> getProductListByCategory(String categoryId) {
