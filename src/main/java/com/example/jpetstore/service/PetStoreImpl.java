@@ -58,15 +58,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	private AccountDao accountDao;
 	
 	@Autowired   
-	private CategoryDao mybatisCategoryDao;	
-	@Autowired    
-	private CategoryDao jdbcTemplateCategoryDao;	
-	@Autowired    
-	private CategoryDao namedParamJdbcTemplateCategoryDao;	
-	@Autowired   
-	private CategoryDao jdbcDaoSupportCategoryDao;	
-	@Autowired 
-	private CategoryDao pureJdbcCategoryDao;	
+	private CategoryDao categoryDao;	
 	
 	@Autowired  
 	private ProductDao productDao;
@@ -102,26 +94,26 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Category> getCategoryList() {
-		return mybatisCategoryDao.getCategoryList();
+		return categoryDao.getCategoryList();
 	}
 
 	public Category getCategory(String categoryId) {
 		Category category = null;
 		switch (categoryId) {
 			case "FISH" :
-				category = mybatisCategoryDao.getCategory(categoryId);
+				category = categoryDao.getCategory(categoryId);
 				break;
 			case "DOGS" :
-				category = jdbcTemplateCategoryDao.getCategory(categoryId);
+				category = categoryDao.getCategory(categoryId);
 				break;
 			case "REPTILES" :
-				category = namedParamJdbcTemplateCategoryDao.getCategory(categoryId);
+				category = categoryDao.getCategory(categoryId);
 				break;
 			case "CATS" :
-				category = jdbcDaoSupportCategoryDao.getCategory(categoryId);
+				category = categoryDao.getCategory(categoryId);
 				break;
 			case "BIRDS" :
-				category = pureJdbcCategoryDao.getCategory(categoryId);
+				category = categoryDao.getCategory(categoryId);
 		}
 		return category;
 	}
