@@ -6,12 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.service.OrderService;
@@ -19,7 +18,7 @@ import com.example.jpetstore.service.OrderService;
 /**
  * @author Changsup Park
  */
-@Controller
+@RestController
 public class RestfulOrderController {
 	private OrderService orderSvc;
 
@@ -28,8 +27,8 @@ public class RestfulOrderController {
 		this.orderSvc = orderService;
 	}
 	
-	@RequestMapping(value = "/order/{orderId}", method = RequestMethod.GET, produces = "application/json")
-	@ResponseBody         
+	// @ResponseBody         
+	@GetMapping(value = "/order/{orderId}", produces = "application/json")
 	public Order getOrder(@PathVariable("orderId") int orderId, HttpServletResponse response)
 			throws IOException {
 		System.out.println("/rest/order/{orderId} request accepted: {orderId} = " + orderId);
@@ -41,8 +40,8 @@ public class RestfulOrderController {
 		return order;   // convert order to JSON text in response body
 	}
 	
-	@RequestMapping(value = "/ordersBy/{username}", method = RequestMethod.GET, produces = "application/json")
-	@ResponseBody         
+	// @ResponseBody         
+	@GetMapping(value = "/ordersBy/{username}", produces = "application/json")
 	public List<Order> getOrdersByUsername(@PathVariable("username") String username, HttpServletResponse response)
 			throws IOException {
 		System.out.println("/rest/order/{username} request accepted: {username} = " + username);
@@ -54,9 +53,9 @@ public class RestfulOrderController {
 		return orderList;  // convert list of orders to JSON text in response body
 	}
 	
-	@RequestMapping(value = "/order/{orderId}", method = RequestMethod.DELETE)
+	// @ResponseBody
+	@DeleteMapping("/order/{orderId}")
 	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
 	public Order deleteOrder(@PathVariable("orderId") int orderId, HttpServletResponse response)
 			throws IOException {
 		System.out.println("/rest/order/{orderId} request with DELETE method accepted: {orderId} = " + orderId);
@@ -66,6 +65,6 @@ public class RestfulOrderController {
 			return null;
 		}
 		System.out.println("order " + order.getOrderId() + " deleted.");
-		return order;	 // convert order to JSON text in response body
+		return order;	 	// convert order to JSON text in response body
 	}
 }
