@@ -18,19 +18,24 @@ package com.example.jpetstore.dao.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.CacheNamespaceRef;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.jpetstore.domain.LineItem;
 
 /**
  * @author Eduardo Macarron
- *
+ * @modified by Chang-Sup Park
  */
-@Mapper
+@Mapper 
+@CacheNamespaceRef(value=LineItemMapper.class)
 public interface LineItemMapper {
 
   List<LineItem> getLineItemsByOrderId(int orderId);
 
   void insertLineItem(LineItem lineItem);
 
+  @Delete("delete from LINEITEM where ORDERID = #{orderId}")
+  int deleteLineItems(int orderId);
 }

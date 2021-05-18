@@ -15,6 +15,7 @@ import com.example.jpetstore.domain.Order;
  * @see PetStoreFacade
  * @see PetStoreImpl
  * @see OrderServiceImpl
+ * @modified-by Changsup Park
  */
 //@WebService(name = "OrderService") 
 public interface OrderService {
@@ -22,4 +23,5 @@ public interface OrderService {
 	Order getOrder(int orderId);
 	public List<Order> getOrdersByUsername(String username);
 
+	public Order removeOrder(int orderId);     // added
 }
