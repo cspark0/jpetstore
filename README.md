@@ -1,26 +1,28 @@
-# JPetStore (boot)
-JPetStore project based on Spring Boot 2.4
+# boot-rest branch
+Spring boot를 기반으로 RESTful Order Service를 구현
 
-####변경 사항     
-1. pom.xml: Spring Boot Starter Dependencies 사용 
-2. com.example.jpetstore.JpetstoreBootApplication: 시작 및 설정 클래스 
-3. com.example.jpetstore.WebMvcConfig: Spring MVC 관련 설정 클래스
-4. com.example.jpetstore.controller.SignonInterceptor: @Component 추가 (bean scan 대상)
-5. com.example.jpetstore.controller.dao.mybatis.mapper.*: @Mapper 추가 (mapper scan 대상)
-6. src/main/resources/{기존 properties, xml 설정 파일} 삭제
-7. src/main/resources/application.properties: bean property 설정
-8. src/main/webapp/{images, style, *.html}를 src/main/resources/static/ 으로 이동 
-9. src/main/webapp/META-INF 삭제
-10. src/main/webapp/WEB-INF/*.xml 삭제
-11. src/main/webapp/WEB-INF/lib/ojdbc6.jar 삭제
- 
-####실행
-* Eclise: com.example.jpetstore.JpetstoreBootApplication 선택 > Run As > Java Application  
-* Maven: mvnw spring-boot:run
-* http://localhost:8088/ 
+### boot branch에 대한 변경 사항
+1. contoller.rest 패키지에 RestfulOrderController 클래스 정의
+    * REST service에 대한 request handler methods 정의
+    * public Order getOrder(@PathVariable("orderId") int orderId, HttpServletResponse response)
+    * public List<Order> getOrderInfoByUsername(@PathVariable("username") String username,HttpServletResponse response)
+    * public Order deleteOrder(@PathVariable("orderId") int orderId, HttpServletResponse response)   
 
-####Oralce 대신 H2 in-memory database 이용 방법
-* pom.xml에 com.h2database:h2 dependency 추가
-* application.properties 파일의 spring.datasource.* 설정들을 H2 관련 값으로 변경
-* src/main/resources/{schema.sql, data.sql} 파일 생성(DB schema 생성 및 초기 data load)
+2. OrderService, OrderServiceImpl 클래스 수정
+    * public Order removeOrder(int orderId) 선언 및 구현 추가 
+     
+3. OrderDao, MyBatisOrderDao, OrderMapper, LineItemMapper 클래스 수정
+    * Order removeOrder(int orderId) 선언 및 구현 
+    * void deleteOrder(int orderId) 선언 및 SQL 정의 
+    * void deleteOrderStatus(int orderId) 선언 및 SQL 정의
+    * int deleteLineItems(int orderId) 선언 및 SQL 정의
+
+4. service.client 패키지에 OrderServiceClient_rest 클래스 정의
+    * 위 Restful Order Service를 호출하는 client program
+    
+5. WEB-INF/jsp/ListOrder.jsp 수정
+    * 주문 목록에서 특정 price 셀을 클릭하면 Ajax 호출을 통해 /rest/order/{orderId}에 대한 요청 생성  
+    * RestfulOrderController#getOrder()를 통해 주문 정보를 구하고 결과를 JSON data로 return
+    * 필요한 정보를 price 셀 안에 추가  
+    * 기존 price 셀을 다시 클릭하면 추가된 주문 정보를 삭제  
  
