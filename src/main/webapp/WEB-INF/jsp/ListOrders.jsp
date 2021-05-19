@@ -19,7 +19,7 @@
         <td><fmt:formatDate value="${order.orderDate}"
             pattern="yyyy/MM/dd hh:mm:ss" />
         </td>
-        <td onClick="printOrderDetail(${order.orderId}, this);">
+        <td onClick="printOrderDetail(${order.orderId}, this);">	<!-- add click event handler -->
         	<fmt:formatNumber value="${order.totalPrice}"
             pattern="$#,##0.00" />
         </td>
@@ -31,29 +31,35 @@
 <script src="<c:url value='/js/jquery-3.4.1.min.js'/>"></script>
 <!-- or <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script>
-function printOrderDetail(orderId, td) {
-	
-	if ($(td).children("ul").length > 0) {	
-		$(td).children("ul").remove();
-	}
-	else {
-		$(td).append("<ul id='detail'></ul>");	
+function printOrderDetail(orderId, td) {	// click event handler for <td> including price
 
-		var reqUrl = "../rest/order/" + orderId;
-		$.ajax({
+	if ($(td).children("ul").length > 0) {	// if <td> includes <ul> (and order details)
+		$(td).children("ul").remove();		// remove <ul> (and order details)
+	}
+	else {	
+		$(td).append("<ul id='detail'></ul>");	// create <ul> of 'detail' in <td>	
+
+		var reqUrl = "../rest/order/" + orderId;	// REST service URL		
+		$.ajax({									// Ajax call to the REST service
 			type: "GET",
 			url: reqUrl,
 			processData: false,
-			success: function(response){	// object parsed from JSON text	
+			success: function(response){	// callback function: get JS object parsed from JSON response
+				// add <li> of shipping address into <ul>
 				$("#detail").append("<li>Shipping address: " + response.shipAddress1 + ", " + 
 							   		  response.shipAddress2 + ", " + response.shipCity + "</li>");
+				
+				// collect lineitem infos from the response
 				var content = "";
-				$(response.lineItems).each(function(i, lineItem){	        	
+				$(response.lineItems).each( function(i, lineItem){	        	
 			       	content += "LineItem " + lineItem.lineNumber + ": " + lineItem.quantity +
 							" piece(s) of item " + lineItem.itemId + "<br>";
 				});
-				$("#detail").append ("<li>" + content + "</li>");				
-				$("#detail").removeAttr("id");
+				
+				// add <li> of lineitmes into <ul>
+				$("#detail").append ("<li>" + content + "</li>");
+				
+				$("#detail").removeAttr("id");	// remove id of <ul> for the next click event
 			},
 			error: function(){
 				alert("ERROR", arguments);
