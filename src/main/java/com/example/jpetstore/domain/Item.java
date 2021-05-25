@@ -2,20 +2,39 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 @SuppressWarnings("serial")
+@Entity
+@Table(name="item")		// 생략 가능
 public class Item implements Serializable {
-  /* Private Fields */
+  
+  @Id
   private String itemId;
   private String productId;
   private double listPrice;
   private double unitCost;
+  
+  @Column(name="supplier")
   private int supplierId;
   private String status;
+
+  @Column(name="attr1")
   private String attribute1;
+  @Column(name="attr2")
   private String attribute2;
+  
+  @Transient
   private String attribute3;
+  @Transient
   private String attribute4;
+  @Transient
   private String attribute5;
+  
   private Product product;
   private int quantity;
 
