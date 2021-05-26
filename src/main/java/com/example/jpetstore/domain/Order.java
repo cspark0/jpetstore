@@ -130,21 +130,21 @@ public class Order implements Serializable {
 
     shipToFirstName = account.getFirstName();
     shipToLastName = account.getLastName();
-    shipAddress1 = account.getAddress1();
-    shipAddress2 = account.getAddress2();
-    shipCity = account.getCity();
-    shipState = account.getState();
-    shipZip = account.getZip();
-    shipCountry = account.getCountry();
+    shipAddress1 = account.getAddress().getAddress1();
+    shipAddress2 = account.getAddress().getAddress2();
+    shipCity = account.getAddress().getCity();
+    shipState = account.getAddress().getState();
+    shipZip = account.getAddress().getZip();
+    shipCountry = account.getAddress().getCountry();
 
     billToFirstName = account.getFirstName();
     billToLastName = account.getLastName();
-    billAddress1 = account.getAddress1();
-    billAddress2 = account.getAddress2();
-    billCity = account.getCity();
-    billState = account.getState();
-    billZip = account.getZip();
-    billCountry = account.getCountry();
+    billAddress1 = account.getAddress().getAddress1();
+    billAddress2 = account.getAddress().getAddress2();
+    billCity = account.getAddress().getCity();
+    billState = account.getAddress().getState();
+    billZip = account.getAddress().getZip();
+    billCountry = account.getAddress().getCountry();
 
     totalPrice = cart.getSubTotal();
 
