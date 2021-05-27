@@ -11,14 +11,15 @@ import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
-@IdClass(LineItemPK.class)
+@IdClass(LineItemPK.class)		// composite key class
 public class LineItem implements Serializable {
 
 	/* Private Fields */
 	@Id
 	private int orderId;
+	
 	@Id 
-	@Column(name = "linenum")
+	@Column(name="linenum")
 	private int lineNumber;
 	
 	private int quantity;
@@ -26,7 +27,7 @@ public class LineItem implements Serializable {
 	private String itemId;
 
 	@ManyToOne
-	//@JoinColumn(name = "itemId")
+	@JoinColumn(name="itemId", insertable=false, updatable=false)
 	private Item item;
 
 	/* Constructors */

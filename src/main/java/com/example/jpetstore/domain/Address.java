@@ -26,6 +26,16 @@ public class Address implements Serializable {
 		this.zip = zip;
 		this.country = country;
 	}
+	
+	public Address(Address address) {
+		super();
+		this.addr1 = address.addr1;
+		this.addr2 = address.addr2;
+		this.city = address.city;
+		this.state = address.state;
+		this.zip = address.zip;
+		this.country = address.country;
+	}
 
 	/* JavaBeans Properties */
 	public String getaddr1() {

@@ -12,15 +12,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name="ORDERS")
 @SecondaryTable(name="ORDERSTATUS",
 	pkJoinColumns=@PrimaryKeyJoinColumn(
 		name="orderid", referencedColumnName="orderid"))
@@ -29,6 +32,8 @@ public class Order implements Serializable {
   /* Private Fields */
   @Id
   private int orderId;
+  
+  @Column(name="userid") 
   private String username;
   
   @Temporal(TemporalType.DATE)
@@ -43,14 +48,15 @@ public class Order implements Serializable {
 */
   @Embedded
   @AttributeOverrides({
-	  @AttributeOverride(name="addr1", column=@Column(name="shipAddress1")),
-	  @AttributeOverride(name="addr2", column=@Column(name="shipAddress2")),
-	  @AttributeOverride(name="city", column=@Column(name="shipCity")),
-	  @AttributeOverride(name="state", column=@Column(name="shipState")),
-	  @AttributeOverride(name="zip", column=@Column(name="shipZip")),
-	  @AttributeOverride(name="country", column=@Column(name="shipCountry")) 
+	  @AttributeOverride(name="addr1", column=@Column(name="shipaddr1")),
+	  @AttributeOverride(name="addr2", column=@Column(name="shipaddr2")),
+	  @AttributeOverride(name="city", column=@Column(name="shipcity")),
+	  @AttributeOverride(name="state", column=@Column(name="shipstate")),
+	  @AttributeOverride(name="zip", column=@Column(name="shipzip")),
+	  @AttributeOverride(name="country", column=@Column(name="shipcountry")) 
   })
   private Address shippingAddress;
+  
 /*
   private String billAddress1;
   private String billAddress2;
@@ -61,12 +67,12 @@ public class Order implements Serializable {
 */
   @Embedded
   @AttributeOverrides({
-	  @AttributeOverride(name="addr1", column=@Column(name="billAddress1")),
-	  @AttributeOverride(name="addr2", column=@Column(name="billAddress2")),
-	  @AttributeOverride(name="city", column=@Column(name="billCity")),
-	  @AttributeOverride(name="state", column=@Column(name="billState")),
-	  @AttributeOverride(name="zip", column=@Column(name="billZip")),
-	  @AttributeOverride(name="country", column=@Column(name="billCountry")) 
+	  @AttributeOverride(name="addr1", column=@Column(name="billaddr1")),
+	  @AttributeOverride(name="addr2", column=@Column(name="billaddr2")),
+	  @AttributeOverride(name="city", column=@Column(name="billcity")),
+	  @AttributeOverride(name="state", column=@Column(name="billstate")),
+	  @AttributeOverride(name="zip", column=@Column(name="billzip")),
+	  @AttributeOverride(name="country", column=@Column(name="billcountry")) 
   })
   private Address billingAddress;
   
@@ -77,20 +83,30 @@ public class Order implements Serializable {
   private String shipToFirstName;
   private String shipToLastName;
   private String creditCard;
+  
+  @Column(name="exprdate") 
   private String expiryDate;
   private String cardType;
   private String locale;
   
+  @OneToMany(cascade = CascadeType.ALL)
+  @JoinColumn(name="orderid")
+  private List<LineItem> lineItems; // = new ArrayList<LineItem>();
+
   @Column(name="status", table="ORDERSTATUS") 
   private String status;
+  @Column(name="linenum", table="ORDERSTATUS") 
+  private int linenum;
+  @Column(name="timestamp", table="ORDERSTATUS") 
+  private Date timestamp;
   
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<LineItem> lineItems = new ArrayList<LineItem>();
-
   /* JavaBeans Properties */
 
   public int getOrderId() { return orderId; }
-  public void setOrderId(int orderId) { this.orderId = orderId; }
+  public void setOrderId(int orderId) { 
+	  this.orderId = orderId;
+	  this.linenum = orderId;
+  }
 
   public String getUsername() { return username; }
   public void setUsername(String username) { this.username = username; }
@@ -152,7 +168,7 @@ public class Order implements Serializable {
     
     billToFirstName = account.getFirstName();
     billToLastName = account.getLastName();
-    billingAddress = account.getAddress();
+    billingAddress = new Address(account.getAddress());
     
     totalPrice = cart.getSubTotal();
 
@@ -162,7 +178,9 @@ public class Order implements Serializable {
     courier = "UPS";
     locale = "CA";
     status = "P";
-
+    timestamp = orderDate;
+    
+    this.lineItems = new ArrayList<LineItem>();
     Iterator<CartItem> i = cart.getAllCartItems();
     while (i.hasNext()) {
       CartItem cartItem = (CartItem) i.next();
@@ -178,4 +196,16 @@ public class Order implements Serializable {
   public void addLineItem(LineItem lineItem) {
     lineItems.add(lineItem);
   }
+public int getLinenum() {
+	return linenum;
+}
+public void setLinenum(int linenum) {
+	this.linenum = linenum;
+}
+public Date getTimestamp() {
+	return timestamp;
+}
+public void setTimestamp(Date timestamp) {
+	this.timestamp = timestamp;
+}
 }

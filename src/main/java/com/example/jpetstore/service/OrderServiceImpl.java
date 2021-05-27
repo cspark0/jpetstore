@@ -3,6 +3,7 @@ package com.example.jpetstore.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.jpetstore.dao.OrderDao;
@@ -14,7 +15,8 @@ import com.example.jpetstore.domain.Order;
 @Service("orderServiceImpl")
 public class OrderServiceImpl implements OrderService {
 
-	@Autowired
+	@Autowired 
+	@Qualifier("jpaOrderDao")
 	private OrderDao orderDao;
 
 	public Order getOrder(int orderId) {

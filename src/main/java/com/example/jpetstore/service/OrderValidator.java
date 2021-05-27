@@ -36,7 +36,7 @@ public class OrderValidator implements Validator {
 		errors.setNestedPath("order");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billToFirstName", "FIRST_NAME_REQUIRED", "Billing Info: first name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billToLastName", "LAST_NAME_REQUIRED", "Billing Info: last name is required.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billingAddress.address1", "ADDRESS_REQUIRED", "Billing Info: address is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billingAddress.addr1", "ADDRESS_REQUIRED", "Billing Info: address is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billingAddress.city", "CITY_REQUIRED", "Billing Info: city is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billingAddress.state", "STATE_REQUIRED", "Billing Info: state is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "billingAddress.zip", "ZIP_REQUIRED", "Billing Info: zip/postal code is required.");
@@ -48,9 +48,9 @@ public class OrderValidator implements Validator {
 		errors.setNestedPath("order");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shipToFirstName", "FIRST_NAME_REQUIRED", "Shipping Info: first name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shipToLastName", "LAST_NAME_REQUIRED", "Shipping Info: last name is required.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.address1", "ADDRESS_REQUIRED", "Shipping Info: address is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.addr1", "ADDRESS_REQUIRED", "Shipping Info: address is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.city", "CITY_REQUIRED", "Shipping Info: city is required.");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sshippingAddress.state", "STATE_REQUIRED", "Shipping Info: state is required.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.state", "STATE_REQUIRED", "Shipping Info: state is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.zip", "ZIP_REQUIRED", "Shipping Info: zip/postal code is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "shippingAddress.country", "COUNTRY_REQUIRED", "Shipping Info: country is required.");
 		errors.setNestedPath("");

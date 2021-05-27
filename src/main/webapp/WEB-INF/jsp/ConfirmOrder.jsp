@@ -35,27 +35,27 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td>${orderForm.order.billAddress1}</td>
+      <td>${orderForm.order.billingAddress.addr1}</td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td>${orderForm.order.billAddress2}</td>
+      <td>${orderForm.order.billingAddress.addr2}</td>
     </tr>
     <tr>
       <td>City:</td>
-      <td>${orderForm.order.billCity}</td>
+      <td>${orderForm.order.billingAddress.city}</td>
     </tr>
     <tr>
       <td>State:</td>
-      <td>${orderForm.order.billState}</td>
+      <td>${orderForm.order.billingAddress.state}</td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td>${orderForm.order.billZip}</td>
+      <td>${orderForm.order.billingAddress.zip}</td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td>${orderForm.order.billCountry}</td>
+      <td>${orderForm.order.billingAddress.country}</td>
     </tr>
     <tr>
       <td colspan="2">
@@ -71,27 +71,27 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td>${orderForm.order.shipAddress1}</td>
+      <td>${orderForm.order.shippingAddress.addr1}</td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td>${orderForm.order.shipAddress2}</td>
+      <td>${orderForm.order.shippingAddress.addr2}</td>
     </tr>
     <tr>
       <td>City:</td>
-      <td>${orderForm.order.shipCity}</td>
+      <td>${orderForm.order.shippingAddress.city}</td>
     </tr>
     <tr>
       <td>State:</td>
-      <td>${orderForm.order.shipState}</td>
+      <td>${orderForm.order.shippingAddress.state}</td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td>${orderForm.order.shipZip}</td>
+      <td>${orderForm.order.shippingAddress.zip}</td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td>${orderForm.order.shipCountry}</td>
+      <td>${orderForm.order.shippingAddress.country}</td>
     </tr>
   </table>
   <p>

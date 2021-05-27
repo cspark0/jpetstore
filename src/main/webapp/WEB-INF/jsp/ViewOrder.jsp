@@ -51,27 +51,27 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td><c:out value="${order.billAddress1}" /></td>
+      <td><c:out value="${order.billingAddress.addr1}" /></td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td><c:out value="${order.billAddress2}" /></td>
+      <td><c:out value="${order.billingAddress.addr2}" /></td>
     </tr>
     <tr>
       <td>City:</td>
-      <td><c:out value="${order.billCity}" /></td>
+      <td><c:out value="${order.billingAddress.city}" /></td>
     </tr>
     <tr>
       <td>State:</td>
-      <td><c:out value="${order.billState}" /></td>
+      <td><c:out value="${order.billingAddress.state}" /></td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td><c:out value="${order.billZip}" /></td>
+      <td><c:out value="${order.billingAddress.zip}" /></td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td><c:out value="${order.billCountry}" /></td>
+      <td><c:out value="${order.billingAddress.country}" /></td>
     </tr>
     <tr>
       <td colspan="2"><font color="green" size="4"><b>Shipping Address</b></font></td>
@@ -86,27 +86,27 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td><c:out value="${order.shipAddress1}" /></td>
+      <td><c:out value="${order.shippingAddress.addr1}" /></td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td><c:out value="${order.shipAddress2}" /></td>
+      <td><c:out value="${order.shippingAddress.addr2}" /></td>
     </tr>
     <tr>
       <td>City:</td>
-      <td><c:out value="${order.shipCity}" /></td>
+      <td><c:out value="${order.shippingAddress.city}" /></td>
     </tr>
     <tr>
       <td>State:</td>
-      <td><c:out value="${order.shipState}" /></td>
+      <td><c:out value="${order.shippingAddress.state}" /></td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td><c:out value="${order.shipZip}" /></td>
+      <td><c:out value="${order.shippingAddress.zip}" /></td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td><c:out value="${order.shipCountry}" /></td>
+      <td><c:out value="${order.shippingAddress.country}" /></td>
     </tr>
     <tr>
       <td>Courier:</td>

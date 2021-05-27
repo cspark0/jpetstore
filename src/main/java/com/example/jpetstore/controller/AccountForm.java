@@ -26,10 +26,6 @@ public class AccountForm implements Serializable {
 
 	public AccountForm() {
 		this.account = new Account();
-/*		
-		this.account.setAddress(new Address());
-		this.account.setProfile(new Profile());
-*/		
 		this.newAccount = true;
 	}
 
