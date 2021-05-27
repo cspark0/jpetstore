@@ -1,20 +1,22 @@
 package com.example.jpetstore.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
-import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
-import com.example.jpetstore.dao.ProductDao;
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
+import com.example.jpetstore.repository.CategoryRepository;
+import com.example.jpetstore.repository.ProductRepository;
 
 /**
  * JPetStore primary business object.
@@ -60,12 +62,14 @@ public class PetStoreImpl implements PetStoreFacade {
 	private AccountDao accountDao;
 	
 	@Autowired   
-	private CategoryDao categoryDao;	
-	
+	private CategoryRepository caRepository;
+	// private CategoryDao categoryDao;
+
 	@Autowired  
-	private ProductDao productDao;
+	private ProductRepository prodRepository;
+	// private ProductDao productDao;
 	
-	@Autowired	
+	@Autowired
 	private ItemDao itemDao;
 	
 	@Autowired	
@@ -97,40 +101,27 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Category> getCategoryList() {
-		return categoryDao.getCategoryList();
+        return caRepository.findAll();
 	}
 
 	public Category getCategory(String categoryId) {
-		Category category = null;
-		switch (categoryId) {
-			case "FISH" :
-				category = categoryDao.getCategory(categoryId);
-				break;
-			case "DOGS" :
-				category = categoryDao.getCategory(categoryId);
-				break;
-			case "REPTILES" :
-				category = categoryDao.getCategory(categoryId);
-				break;
-			case "CATS" :
-				category = categoryDao.getCategory(categoryId);
-				break;
-			case "BIRDS" :
-				category = categoryDao.getCategory(categoryId);
-		}
-		return category;
-	}
-
-	public List<Product> getProductListByCategory(String categoryId) {
-		return productDao.getProductListByCategory(categoryId);
-	}
-
-	public List<Product> searchProductList(String keywords) {
-		return productDao.searchProductList(keywords);
+		Optional<Category> result = caRepository.findById(categoryId);
+		if (result.isPresent()) return result.get();
+		return null;			
 	}
 
 	public Product getProduct(String productId) {
-		return productDao.getProduct(productId);
+		Optional<Product> result = prodRepository.findById(productId);
+		if (result.isPresent()) return result.get();
+		return null;			
+	}
+
+	public List<Product> getProductListByCategory(String categoryId) {
+		return prodRepository.findByCategoryId(categoryId);
+	}
+
+	public List<Product> searchProductList(String keywords) {
+		return prodRepository.searchProductList(keywords);
 	}
 
 	public List<Item> getItemListByProduct(String productId) {

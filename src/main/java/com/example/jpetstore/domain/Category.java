@@ -2,13 +2,20 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @SuppressWarnings("serial")
+@Entity
 public class Category implements Serializable {
 
   /* Private Fields */
 
+  @Id @Column(name="catid")
   private String categoryId;
   private String name;
+  @Column(name="descn")
   private String description;
 
   /* JavaBeans Properties */

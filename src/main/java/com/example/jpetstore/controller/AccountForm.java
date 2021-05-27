@@ -3,8 +3,6 @@ package com.example.jpetstore.controller;
 import java.io.Serializable;
 
 import com.example.jpetstore.domain.Account;
-import com.example.jpetstore.domain.Address;
-import com.example.jpetstore.domain.Profile;
 
 /**
  * @author Juergen Hoeller
