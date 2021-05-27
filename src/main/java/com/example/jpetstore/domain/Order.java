@@ -6,26 +6,70 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 @SuppressWarnings("serial")
+@Entity
+@SecondaryTable(name="ORDERSTATUS",
+	pkJoinColumns=@PrimaryKeyJoinColumn(
+		name="orderid", referencedColumnName="orderid"))
 public class Order implements Serializable {
 
   /* Private Fields */
-
+  @Id
   private int orderId;
   private String username;
+  
+  @Temporal(TemporalType.DATE)
   private Date orderDate;
+/*
   private String shipAddress1;
   private String shipAddress2;
   private String shipCity;
   private String shipState;
   private String shipZip;
   private String shipCountry;
+*/
+  @Embedded
+  @AttributeOverrides({
+	  @AttributeOverride(name="addr1", column=@Column(name="shipAddress1")),
+	  @AttributeOverride(name="addr2", column=@Column(name="shipAddress2")),
+	  @AttributeOverride(name="city", column=@Column(name="shipCity")),
+	  @AttributeOverride(name="state", column=@Column(name="shipState")),
+	  @AttributeOverride(name="zip", column=@Column(name="shipZip")),
+	  @AttributeOverride(name="country", column=@Column(name="shipCountry")) 
+  })
+  private Address shippingAddress;
+/*
   private String billAddress1;
   private String billAddress2;
   private String billCity;
   private String billState;
   private String billZip;
   private String billCountry;
+*/
+  @Embedded
+  @AttributeOverrides({
+	  @AttributeOverride(name="addr1", column=@Column(name="billAddress1")),
+	  @AttributeOverride(name="addr2", column=@Column(name="billAddress2")),
+	  @AttributeOverride(name="city", column=@Column(name="billCity")),
+	  @AttributeOverride(name="state", column=@Column(name="billState")),
+	  @AttributeOverride(name="zip", column=@Column(name="billZip")),
+	  @AttributeOverride(name="country", column=@Column(name="billCountry")) 
+  })
+  private Address billingAddress;
+  
   private String courier;
   private double totalPrice;
   private String billToFirstName;
@@ -36,7 +80,11 @@ public class Order implements Serializable {
   private String expiryDate;
   private String cardType;
   private String locale;
+  
+  @Column(name="status", table="ORDERSTATUS") 
   private String status;
+  
+  @OneToMany(cascade = CascadeType.ALL)
   private List<LineItem> lineItems = new ArrayList<LineItem>();
 
   /* JavaBeans Properties */
@@ -50,41 +98,11 @@ public class Order implements Serializable {
   public Date getOrderDate() { return orderDate; }
   public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }
 
-  public String getShipAddress1() { return shipAddress1; }
-  public void setShipAddress1(String shipAddress1) { this.shipAddress1 = shipAddress1; }
+  public Address getShippingAddress() { return shippingAddress; }
+  public void setShipAddress1(Address shipAddress) { this.shippingAddress = shipAddress; }
 
-  public String getShipAddress2() { return shipAddress2; }
-  public void setShipAddress2(String shipAddress2) { this.shipAddress2 = shipAddress2; }
-
-  public String getShipCity() { return shipCity; }
-  public void setShipCity(String shipCity) { this.shipCity = shipCity; }
-
-  public String getShipState() { return shipState; }
-  public void setShipState(String shipState) { this.shipState = shipState; }
-
-  public String getShipZip() { return shipZip; }
-  public void setShipZip(String shipZip) { this.shipZip = shipZip; }
-
-  public String getShipCountry() { return shipCountry; }
-  public void setShipCountry(String shipCountry) { this.shipCountry = shipCountry; }
-
-  public String getBillAddress1() { return billAddress1; }
-  public void setBillAddress1(String billAddress1) { this.billAddress1 = billAddress1; }
-
-  public String getBillAddress2() { return billAddress2; }
-  public void setBillAddress2(String billAddress2) { this.billAddress2 = billAddress2; }
-
-  public String getBillCity() { return billCity; }
-  public void setBillCity(String billCity) { this.billCity = billCity; }
-
-  public String getBillState() { return billState; }
-  public void setBillState(String billState) { this.billState = billState; }
-
-  public String getBillZip() { return billZip; }
-  public void setBillZip(String billZip) { this.billZip = billZip; }
-
-  public String getBillCountry() { return billCountry; }
-  public void setBillCountry(String billCountry) { this.billCountry = billCountry; }
+  public Address getBillingAddress() { return billingAddress; }
+  public void setBillingAddress(Address billAddress) { this.billingAddress = billAddress; }
 
   public String getCourier() { return courier; }
   public void setCourier(String courier) { this.courier = courier; }
@@ -129,23 +147,13 @@ public class Order implements Serializable {
     orderDate = new Date();
 
     shipToFirstName = account.getFirstName();
-    shipToLastName = account.getLastName();
-    shipAddress1 = account.getAddress().getAddress1();
-    shipAddress2 = account.getAddress().getAddress2();
-    shipCity = account.getAddress().getCity();
-    shipState = account.getAddress().getState();
-    shipZip = account.getAddress().getZip();
-    shipCountry = account.getAddress().getCountry();
-
+    shipToLastName = account.getLastName();    
+    shippingAddress = account.getAddress();
+    
     billToFirstName = account.getFirstName();
     billToLastName = account.getLastName();
-    billAddress1 = account.getAddress().getAddress1();
-    billAddress2 = account.getAddress().getAddress2();
-    billCity = account.getAddress().getCity();
-    billState = account.getAddress().getState();
-    billZip = account.getAddress().getZip();
-    billCountry = account.getAddress().getCountry();
-
+    billingAddress = account.getAddress();
+    
     totalPrice = cart.getSubTotal();
 
     creditCard = "999 9999 9999 9999";

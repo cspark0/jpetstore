@@ -3,6 +3,8 @@ package com.example.jpetstore.controller;
 import java.io.Serializable;
 
 import com.example.jpetstore.domain.Account;
+import com.example.jpetstore.domain.Address;
+import com.example.jpetstore.domain.Profile;
 
 /**
  * @author Juergen Hoeller
@@ -24,6 +26,10 @@ public class AccountForm implements Serializable {
 
 	public AccountForm() {
 		this.account = new Account();
+/*		
+		this.account.setAddress(new Address());
+		this.account.setProfile(new Profile());
+*/		
 		this.newAccount = true;
 	}
 

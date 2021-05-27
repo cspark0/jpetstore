@@ -2,55 +2,96 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 @SuppressWarnings("serial")
+@Entity
+@IdClass(LineItemPK.class)
 public class LineItem implements Serializable {
 
-  /* Private Fields */
+	/* Private Fields */
+	@Id
+	private int orderId;
+	@Id 
+	@Column(name = "linenum")
+	private int lineNumber;
+	
+	private int quantity;
+	private double unitPrice;
+	private String itemId;
 
-  private int orderId;
-  private int lineNumber;
-  private int quantity;
-  private String itemId;
-  private double unitPrice;
-  private Item item;
+	@ManyToOne
+	//@JoinColumn(name = "itemId")
+	private Item item;
 
-  /* Constructors */
+	/* Constructors */
+	public LineItem() {
+	}
 
-  public LineItem() {}
+	public LineItem(int lineNumber, CartItem cartItem) {
+		this.lineNumber = lineNumber;
+		this.quantity = cartItem.getQuantity();
+		this.itemId = cartItem.getItem().getItemId();
+		this.unitPrice = cartItem.getItem().getListPrice();
+		this.item = cartItem.getItem();
+	}
 
-  public LineItem(int lineNumber, CartItem cartItem) {
-    this.lineNumber = lineNumber;
-    this.quantity = cartItem.getQuantity();
-    this.itemId = cartItem.getItem().getItemId();
-    this.unitPrice = cartItem.getItem().getListPrice();
-    this.item = cartItem.getItem();
-  }
+	/* JavaBeans Properties */
 
-  /* JavaBeans Properties */
+	public int getOrderId() {
+		return orderId;
+	}
 
-  public int getOrderId() { return orderId; }
-  public void setOrderId(int orderId) { this.orderId = orderId; }
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 
-  public int getLineNumber() { return lineNumber; }
-  public void setLineNumber(int lineNumber) { this.lineNumber = lineNumber; }
+	public int getLineNumber() {
+		return lineNumber;
+	}
 
-  public String getItemId() { return itemId; }
-  public void setItemId(String itemId) { this.itemId = itemId; }
+	public void setLineNumber(int lineNumber) {
+		this.lineNumber = lineNumber;
+	}
 
-  public double getUnitPrice() { return unitPrice; }
-  public void setUnitPrice(double unitprice) { this.unitPrice = unitprice; }
+	public String getItemId() {
+		return itemId;
+	}
 
-  public Item getItem() { return item; }
-  public void setItem(Item item) {
-    this.item = item;
-  }
+	public void setItemId(String itemId) {
+		this.itemId = itemId;
+	}
 
-  public int getQuantity() { return quantity; }
-  public void setQuantity(int quantity) {
-    this.quantity = quantity;
-  }
+	public double getUnitPrice() {
+		return unitPrice;
+	}
 
-  public double getTotalPrice() {
-	return this.unitPrice * this.quantity;
-  }
+	public void setUnitPrice(double unitprice) {
+		this.unitPrice = unitprice;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public double getTotalPrice() {
+		return this.unitPrice * this.quantity;
+	}
 }

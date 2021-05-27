@@ -5,12 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="item")		// 생략 가능
+@Table(name="Item")		// 생략 가능
 public class Item implements Serializable {
   
   @Id
@@ -30,11 +32,11 @@ public class Item implements Serializable {
   
   @Transient
   private String attribute3;
-  @Transient
-  private String attribute4;
-  @Transient
-  private String attribute5;
+  transient private String attribute4;
+  transient private String attribute5;
   
+  @ManyToOne
+  @JoinColumn(name="productid")
   private Product product;
   private int quantity;
 

@@ -80,11 +80,14 @@ public class AccountFormController {
 			@ModelAttribute("accountForm") AccountForm accountForm,
 			BindingResult result) throws Exception {
 
-		if (request.getParameter("account.listOption") == null) {
-			accountForm.getAccount().setListOption(false);
+		accountForm.getAccount().getProfile().setUserid(
+			accountForm.getAccount().getUsername());
+
+		if (request.getParameter("account.profile.listOption") == null) {
+			accountForm.getAccount().getProfile().setListOption(false);
 		}
-		if (request.getParameter("account.bannerOption") == null) {
-			accountForm.getAccount().setBannerOption(false);
+		if (request.getParameter("account.profile.bannerOption") == null) {
+			accountForm.getAccount().getProfile().setBannerOption(false);
 		}
 		
 		validator.validate(accountForm, result);
@@ -107,7 +110,8 @@ public class AccountFormController {
 		UserSession userSession = new UserSession(
 			petStore.getAccount(accountForm.getAccount().getUsername()));
 		PagedListHolder<Product> myList = new PagedListHolder<Product>(
-			petStore.getProductListByCategory(accountForm.getAccount().getFavouriteCategoryId()));
+			petStore.getProductListByCategory(
+					accountForm.getAccount().getProfile().getFavouriteCategoryId()));
 		myList.setPageSize(4);
 		userSession.setMyList(myList);
 		session.setAttribute("userSession", userSession);

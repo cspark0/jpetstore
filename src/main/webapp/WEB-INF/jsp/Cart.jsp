@@ -89,7 +89,7 @@
     </td>
     <td style="text-align:right;width:20%;">
       <c:if test="${!empty userSession.account.username}">
-        <c:if test="${userSession.account.listOption}">
+        <c:if test="${userSession.account.profile.listOption}">
           <%@ include file="IncludeMyList.jsp"%>
         </c:if>
       </c:if>

@@ -43,7 +43,9 @@ public class SignonController {
 		}
 		else {
 			UserSession userSession = new UserSession(account);
-			PagedListHolder<Product> myList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(account.getFavouriteCategoryId()));
+			PagedListHolder<Product> myList = new PagedListHolder<Product>(
+					this.petStore.getProductListByCategory(
+							account.getProfile().getFavouriteCategoryId()));
 			myList.setPageSize(4);
 			userSession.setMyList(myList);
 			model.addAttribute("userSession", userSession);

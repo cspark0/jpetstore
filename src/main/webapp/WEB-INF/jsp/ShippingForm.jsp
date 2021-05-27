@@ -25,33 +25,33 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td><form:input path="order.shipAddress1" /> 
-         <form:errors path="order.shipAddress1" /></td>
+      <td><form:input path="order.shippingAddress.addr1" /> 
+         <form:errors path="order.shippingAddress.addr1" /></td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td><form:input path="order.shipAddress2" /> 
-         <form:errors path="order.shipAddress2" /></td>
+      <td><form:input path="order.shippingAddress.addr2" /> 
+         <form:errors path="order.shippingAddress.addr2" /></td>
     </tr>
     <tr>
       <td>City:</td>
-      <td><form:input path="order.shipCity" /> 
-        <form:errors path="order.shipCity" /></td>
+      <td><form:input path="order.shippingAddress.city" /> 
+        <form:errors path="order.shippingAddress.city" /></td>
     </tr>
     <tr>
       <td>State:</td>
-      <td><form:input path="order.shipState" /> 
-        <form:errors path="order.shipState" /></td>
+      <td><form:input path="order.shippingAddress.state" /> 
+        <form:errors path="order.shippingAddress.state" /></td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td><form:input path="order.shipZip" /> 
-        <form:errors path="order.shipZip" /></td>
+      <td><form:input path="order.shippingAddress.zip" /> 
+        <form:errors path="order.shippingAddress.zip" /></td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td><form:input path="order.shipCountry" /> 
-        <form:errors path="order.shipCountry" /></td>
+      <td><form:input path="order.shippingAddress.country" /> 
+        <form:errors path="order.shippingAddress.country" /></td>
     </tr>
   </table>
   <p>

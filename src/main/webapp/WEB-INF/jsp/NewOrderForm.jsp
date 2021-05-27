@@ -45,33 +45,33 @@
     </tr>
     <tr>
       <td>Address 1:</td>
-      <td><form:input path="order.billAddress1" />
-        <form:errors path="order.billAddress1" /></td>
+      <td><form:input path="order.billingAddress.addr1" />
+        <form:errors path="order.billingAddress.addr1" /></td>
     </tr>
     <tr>
       <td>Address 2:</td>
-      <td><form:input path="order.billAddress2" />
-        <form:errors path="order.billAddress2" /></td>
+      <td><form:input path="order.billingAddress.addr2" />
+        <form:errors path="order.billingAddress.addr2" /></td>
     </tr>
     <tr>
       <td>City:</td>
-      <td><form:input path="order.billCity" /> 
-        <form:errors path="order.billCity" /></td>
+      <td><form:input path="order.billingAddress.city" /> 
+        <form:errors path="order.billingAddress.city" /></td>
     </tr>
     <tr>
       <td>State:</td>
-      <td><form:input path="order.billState" />
-        <form:errors path="order.billState" /></td>
+      <td><form:input path="order.billingAddress.state" />
+        <form:errors path="order.billingAddress.state" /></td>
     </tr>
     <tr>
       <td>Zip:</td>
-      <td><form:input path="order.billZip" /> 
-        <form:errors path="order.billZip" /></td>
+      <td><form:input path="order.billingAddress.zip" /> 
+        <form:errors path="order.billingAddress.zip" /></td>
     </tr>
     <tr>
       <td>Country:</td>
-      <td><form:input path="order.billCountry" /> 
-        <form:errors path="order.billCountry" /></td>
+      <td><form:input path="order.billingAddress.country" /> 
+        <form:errors path="order.billingAddress.country" /></td>
     </tr>
     <tr>
       <td colspan="2">

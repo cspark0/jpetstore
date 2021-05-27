@@ -2,30 +2,40 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SecondaryTable;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @SuppressWarnings("serial")
+@Entity
+@SecondaryTable(name="SIGNON",
+	pkJoinColumns=@PrimaryKeyJoinColumn(
+		name="username", referencedColumnName="userid"))
 public class Account implements Serializable {
 	@Id
-	@Column(name = "userId")
+	@Column(name="userid")
 	private String username;
+
+	@Column(name="password", table="SIGNON") 
 	private String password;
+	
 	private String email;
 	private String firstName;
 	private String lastName;
 	private String status;
-	
+	private String phone;
+		
 	@Embedded
 	private Address address;
 	
-	private String phone;
-	private String favouriteCategoryId;
-	private String languagePreference;
-	private boolean listOption;
-	private boolean bannerOption;
-	private String bannerName;
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn(name="userid")
+	private Profile profile;
 
 	public String getUsername() {
 		return username;
@@ -83,54 +93,6 @@ public class Account implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getFavouriteCategoryId() {
-		return favouriteCategoryId;
-	}
-
-	public void setFavouriteCategoryId(String favouriteCategoryId) {
-		this.favouriteCategoryId = favouriteCategoryId;
-	}
-
-	public String getLanguagePreference() {
-		return languagePreference;
-	}
-
-	public void setLanguagePreference(String languagePreference) {
-		this.languagePreference = languagePreference;
-	}
-
-	public boolean isListOption() {
-		return listOption;
-	}
-
-	public void setListOption(boolean listOption) {
-		this.listOption = listOption;
-	}
-
-	public int getListOptionAsInt() {
-		return listOption ? 1 : 0;
-	}
-
-	public boolean isBannerOption() {
-		return bannerOption;
-	}
-
-	public void setBannerOption(boolean bannerOption) {
-		this.bannerOption = bannerOption;
-	}
-
-	public int getBannerOptionAsInt() {
-		return bannerOption ? 1 : 0;
-	}
-
-	public String getBannerName() {
-		return bannerName;
-	}
-
-	public void setBannerName(String bannerName) {
-		this.bannerName = bannerName;
-	}
-
 	public Address getAddress() {
 		return address;
 	}
@@ -139,9 +101,11 @@ public class Account implements Serializable {
 		this.address = address;
 	}
 
-	public Object getAccount() {
-		// TODO Auto-generated method stub
-		return null;
+	public Profile getProfile() {
+		return profile;
 	}
 
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
 }
