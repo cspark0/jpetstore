@@ -6,11 +6,4 @@ import com.example.jpetstore.domain.Category;
 
 public interface CategoryRepository
         extends JpaRepository<Category, String> {
-    /*List<User> findByNameStartingWithOrderByNameAscCreateDateDesc(String name);
-
-    List<User> findByNameStartingWith(String name, Sort sort);
-
-    List<User> findByNameStartingWith(String name, Pageable pageable);
-
-    User findByName(String name);*/
 }

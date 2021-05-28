@@ -15,12 +15,4 @@ public interface ProductRepository
 	List<Product> searchProductList(String keywords);
 
 	List<Product> findByCategoryId(String categoryId);
-	
-    /*List<User> findByNameStartingWithOrderByNameAscCreateDateDesc(String name);
-
-    List<User> findByNameStartingWith(String name, Sort sort);
-
-    List<User> findByNameStartingWith(String name, Pageable pageable);
-
-    User findByName(String name);*/
 }
