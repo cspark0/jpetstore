@@ -1,9 +1,13 @@
 package com.example.jpetstore.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.repository.Repository;
 
 import com.example.jpetstore.domain.Category;
 
-public interface CategoryRepository
-        extends JpaRepository<Category, String> {
+public interface CategoryRepository extends Repository<Category, String> {
+	List<Category> findAll();
+	Optional<Category> findById(String categoryId);
 }

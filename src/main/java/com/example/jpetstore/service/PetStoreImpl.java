@@ -1,5 +1,6 @@
 package com.example.jpetstore.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,14 +9,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
-import com.example.jpetstore.dao.ItemDao;
 import com.example.jpetstore.dao.OrderDao;
 import com.example.jpetstore.domain.Account;
 import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Item;
+import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.repository.CategoryRepository;
+import com.example.jpetstore.repository.ItemRepository;
 import com.example.jpetstore.repository.ProductRepository;
 
 /**
@@ -70,7 +72,8 @@ public class PetStoreImpl implements PetStoreFacade {
 	// private ProductDao productDao;
 	
 	@Autowired
-	private ItemDao itemDao;
+	private ItemRepository itemRepository;
+	// private ItemDao itemDao;
 	
 	@Autowired	
 	@Qualifier("jpaOrderDao")
@@ -121,24 +124,34 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Product> searchProductList(String keywords) {
-		System.out.println(keywords);
-		return prodRepository.findByNameContaining(keywords);
+		return prodRepository.findByNameIgnoreCaseContaining(keywords);
 	}
 
 	public List<Item> getItemListByProduct(String productId) {
-		return itemDao.getItemListByProduct(productId);
+		return itemRepository.getByProductId(productId);
 	}
 
 	public Item getItem(String itemId) {
-		return itemDao.getItem(itemId);
+		return itemRepository.getOne(itemId);
 	}
 
 	public boolean isItemInStock(String itemId) {
-		return itemDao.isItemInStock(itemId);
+		Optional<Item> result = itemRepository.findById(itemId);
+		if (result.isPresent() && result.get().getQuantity() > 0) 
+			return true;
+		return false;	
 	}
 
 	public void insertOrder(Order order) {
-		itemDao.updateQuantity(order);	    
+//		itemDao.updateQuantity(order);	   
+		for (int i = 0; i < order.getLineItems().size(); i++) {
+			LineItem lineItem = (LineItem) order.getLineItems().get(i);
+			String itemId = lineItem.getItemId();
+			int increment = lineItem.getQuantity();		
+			Item item = itemRepository.getOne(itemId);
+			item.setQuantity(item.getQuantity() - increment);
+//			itemRepository.save(item);			
+		}
 		orderDao.insertOrder(order);
 	}
 	
