@@ -121,7 +121,8 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public List<Product> searchProductList(String keywords) {
-		return prodRepository.searchProductList(keywords);
+		System.out.println(keywords);
+		return prodRepository.findByNameContaining(keywords);
 	}
 
 	public List<Item> getItemListByProduct(String productId) {
