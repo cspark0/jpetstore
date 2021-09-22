@@ -132,6 +132,13 @@
 		    <version>${dbcp.version}</version>
 		</dependency>
                              
+		<!-- Apache Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.version}</version>
+		</dependency>
+		
 		<!-- Embedded database -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
