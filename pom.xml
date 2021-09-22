@@ -131,8 +131,15 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>${dbcp.version}</version>
+		</dependency>                             
+		
+		<!-- Apache Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>${tiles.version}</version>
 		</dependency>
-                             
+		
 		<!-- Embedded database -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -148,6 +155,7 @@
 			<version>21.3.0.0</version>			
 			<scope>runtime</scope>
 		</dependency>		
+		
 	</dependencies>
 	<build>
 		<plugins>
