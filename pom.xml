@@ -147,18 +147,17 @@
         <version>${jackson-databind.version}</version>
         </dependency>
            
-		<!-- for oracle jdbc driver -->
-		<!-- 
+		<!-- Oracle JDBC driver -->
 		<dependency>
-     		<groupId>com.oracle</groupId>
-     		<artifactId>ojdbc6</artifactId>
-     		<version>11.1.0.7.0</version>
-		</dependency>
-		 -->
-	
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>21.3.0.0</version>			
+			<scope>runtime</scope>
+		</dependency>		
+		
 		<!-- for javax.jws API -->
 		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
+		    <groupId>com.sun.xml.ws</groupId>
 		    <artifactId>jaxws-ri</artifactId>
 		    <version>2.3.2</version>
 		    <type>pom</type>
