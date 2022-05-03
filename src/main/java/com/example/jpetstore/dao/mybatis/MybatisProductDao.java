@@ -46,5 +46,23 @@ public class MybatisProductDao implements ProductDao {
 		public List<String> getKeywordList() {
 			return keywordList;
 		}
+	}
+
+	@Override
+	public void createProduct(Product product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateProduct(String prodId, Product product) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Product removeProduct(String prodId) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }

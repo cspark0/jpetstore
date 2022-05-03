@@ -14,4 +14,10 @@ public interface ProductDao {
 
 	Product getProduct(String productId) throws DataAccessException;
 
+	void createProduct(Product product);
+
+	void updateProduct(String prodId, Product product);
+
+	Product removeProduct(String prodId);
+
 }
