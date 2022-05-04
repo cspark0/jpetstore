@@ -1,26 +1,23 @@
 package com.example.jpetstore.controller.rest;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.example.jpetstore.domain.Category;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.service.ProductService;
 
@@ -30,7 +27,7 @@ import com.example.jpetstore.service.ProductService;
 
 @RestController
 @RequestMapping("/rest")
-public class ProductController {
+public class RestProductController {
 	private ProductService productSvc;
 
 	@Autowired
@@ -38,10 +35,11 @@ public class ProductController {
 		this.productSvc = productService;
 	}
 	
-	@GetMapping(value = "/product/{prodId}") //, produces = "application/json")
+	@GetMapping(value = "/product/{prodId}", produces = "application/json")
 	// @ResponseBody
 	public Product getProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
 			throws IOException {
+		System.out.println("GET /rest/product/{prodId} request accepted: {prodId} = " + prodId);
 		Product product = productSvc.getProduct(prodId);
 		System.out.println(product);
 		if (product == null) {
@@ -51,15 +49,20 @@ public class ProductController {
 		return product;
 	}
 
-	@RequestMapping(value = "/product", method = RequestMethod.POST, consumes = "application/json")
+	@PostMapping(value = "/product", consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createProduct(@RequestBody Product product, HttpServletResponse response) {
-		productSvc.createProduct(product);
+	public void createProduct(@RequestBody Product product, HttpServletResponse response) throws IOException {
+		System.out.println("POST /rest/product request accepted with a product: " + product);
+		if (productSvc.getProduct(product.getProductId()) != null) {
+			response.sendError(HttpServletResponse.SC_CONFLICT);
+			return;
+		}
+        productSvc.createProduct(product);
 		UriComponents uriComp = UriComponentsBuilder
 									.newInstance()
 									.scheme("http")
 									.host("localhost")
-									.port(8080)
+									.port(8088)
 									.path("/jpetstore/product/{prodId}")
 									.build();
 		UriComponents encodedUriComp = uriComp.expand(product.getProductId()).encode();
@@ -67,10 +70,11 @@ public class ProductController {
 		System.out.println("product " + product.getProductId() + " created.");
 	}
 
-	@RequestMapping(value = "/product/{prodId}", method = RequestMethod.PUT, consumes = "application/json")
+	@PutMapping(value = "/product/{prodId}", consumes = "application/json")
 	@ResponseStatus(HttpStatus.OK)
 	public void updateProduct(@PathVariable("prodId") String prodId, 
 			@RequestBody Product product, HttpServletResponse response) throws IOException {
+		System.out.println("PUT /rest/product/{prodId} request accepted: {prodId} = " + prodId + ", product = " + product);
 		if (productSvc.getProduct(prodId) == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
@@ -79,18 +83,18 @@ public class ProductController {
 		System.out.println("product " + prodId + " updated.");
 	}
 
-	@RequestMapping(value = "/product/{prodId}", method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/product/{prodId}")
 	@ResponseStatus(HttpStatus.OK)
 	// @ResponseBody
-	public Product deleteProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
+	public void deleteProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
 			throws IOException {
-		Product product = productSvc.removeProduct(prodId);
-		if (product == null) {
+		System.out.println("DELETE /rest/product/{prodId} request accepted: {prodId} = " + prodId);
+		if (productSvc.getProduct(prodId) == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			return null;
+			return;
 		}
-		System.out.println("product " + product.getProductId() + " deleted.");
-		return product;
+		productSvc.removeProduct(prodId);
+		System.out.println("product " + prodId + " deleted.");
 	}
 
 }

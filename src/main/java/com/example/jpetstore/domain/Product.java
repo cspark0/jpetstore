@@ -2,14 +2,25 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @SuppressWarnings("serial")
+@Entity
 public class Product implements Serializable {
 
   /* Private Fields */
-
+  @Id
+  @Column(name="productid")
   private String productId;
+  
+  @Column(name="category")
   private String categoryId;
+  
   private String name;
+  
+  @Column(name="descn")
   private String description;
 
   /* JavaBeans Properties */
@@ -26,9 +37,9 @@ public class Product implements Serializable {
   public String getDescription() { return description; }
   public void setDescription(String description) { this.description = description; }
 
-  /* Public Methods*/
-
+  @Override
   public String toString() {
-    return getName();
+	return "Product [productId=" + productId + ", categoryId=" + categoryId + ", name=" + name + ", description="
+			+ description + "]";
   }
 }

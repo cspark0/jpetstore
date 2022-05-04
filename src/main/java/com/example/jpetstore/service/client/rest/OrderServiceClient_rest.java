@@ -1,4 +1,4 @@
-package com.example.jpetstore.service.client;
+package com.example.jpetstore.service.client.rest;
 
 import java.util.Iterator;
 
@@ -19,8 +19,8 @@ public class OrderServiceClient_rest {
 
 	public static void main(String[] args) {		
 		getOrderInfo("j2ee");	
-		getOrderInfo(1000);
-		deleteOrderInfo(1000);
+		getOrderInfo(1006);
+		deleteOrderInfo(1004);
 	}
 
 	private static void getOrderInfo(int orderId) {

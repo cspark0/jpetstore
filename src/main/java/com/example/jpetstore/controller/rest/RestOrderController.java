@@ -21,7 +21,7 @@ import com.example.jpetstore.service.OrderService;
  */
 @RestController
 @RequestMapping("/rest")
-public class RestfulOrderController {
+public class RestOrderController {
 	private OrderService orderSvc;
 
 	@Autowired
