@@ -14,10 +14,10 @@ import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Item") // 생략 가능
-@SecondaryTable(name = "INVENTORY", 
-	pkJoinColumns = @PrimaryKeyJoinColumn(
-		name = "itemid", referencedColumnName = "itemid"))
+@Table(name="Item") // 생략 가능
+@SecondaryTable(name="INVENTORY", 
+	pkJoinColumns=@PrimaryKeyJoinColumn(
+		name="itemid", referencedColumnName="itemid"))
 public class Item implements Serializable {
 
 	@Id
@@ -26,13 +26,13 @@ public class Item implements Serializable {
 	private double listPrice;
 	private double unitCost;
 
-	@Column(name = "supplier")
+	@Column(name="supplier")
 	private int supplierId;
 	private String status;
 
-	@Column(name = "attr1")
+	@Column(name="attr1")
 	private String attribute1;
-	@Column(name = "attr2")
+	@Column(name="attr2")
 	private String attribute2;
 
 	@Transient
@@ -41,10 +41,10 @@ public class Item implements Serializable {
 	transient private String attribute5;
 
 	@ManyToOne
-	@JoinColumn(name = "productid")
+	@JoinColumn(name="productid")
 	private Product product;
 
-	@Column(name = "qty", table = "INVENTORY")
+	@Column(name="qty", table="INVENTORY")
 	private int quantity;
 
 	/* JavaBeans Properties */

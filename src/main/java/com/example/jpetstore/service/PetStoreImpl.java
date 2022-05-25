@@ -107,15 +107,11 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Category getCategory(String categoryId) {
-		Optional<Category> result = caRepository.findById(categoryId);
-		if (result.isPresent()) return result.get();
-		return null;			
+		return caRepository.getById(categoryId);			
 	}
 
 	public Product getProduct(String productId) {
-		Optional<Product> result = prodRepository.findById(productId);
-		if (result.isPresent()) return result.get();
-		return null;			
+		return prodRepository.getById(productId);			
 	}
 
 	public List<Product> getProductListByCategory(String categoryId) {
@@ -131,14 +127,17 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Item getItem(String itemId) {
-		return itemRepository.getOne(itemId);
+		return itemRepository.getById(itemId);
 	}
 
 	public boolean isItemInStock(String itemId) {
+		return itemRepository.existsByItemIdAndQuantityGreaterThan(itemId, 0);
+		/*
 		Optional<Item> result = itemRepository.findById(itemId);
 		if (result.isPresent() && result.get().getQuantity() > 0) 
 			return true;
-		return false;	
+		return false;
+		*/	
 	}
 
 	public void insertOrder(Order order) {
@@ -147,7 +146,7 @@ public class PetStoreImpl implements PetStoreFacade {
 			LineItem lineItem = (LineItem) order.getLineItems().get(i);
 			String itemId = lineItem.getItemId();
 			int increment = lineItem.getQuantity();		
-			Item item = itemRepository.getOne(itemId);
+			Item item = itemRepository.getById(itemId);
 			item.setQuantity(item.getQuantity() - increment);
 //			itemRepository.save(item);			
 		}

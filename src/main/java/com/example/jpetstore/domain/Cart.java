@@ -19,11 +19,11 @@ public class Cart implements Serializable {
 
   /* JavaBeans Properties */
 
-	public Cart() {
-		this.itemList.setPageSize(4);
-	}
+  public Cart() {
+	this.itemList.setPageSize(4);
+  }
 
-	public Iterator<CartItem> getAllCartItems() { return itemList.getSource().iterator(); }
+  public Iterator<CartItem> getAllCartItems() { return itemList.getSource().iterator(); }
   public PagedListHolder<CartItem> getCartItemList() { return itemList; }
   public int getNumberOfItems() { return itemList.getSource().size(); }
 
@@ -52,7 +52,7 @@ public class Cart implements Serializable {
     if (cartItem == null) {
       return null;
     }
-		else {
+	else {
       itemList.getSource().remove(cartItem);
       return cartItem.getItem();
     }

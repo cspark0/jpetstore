@@ -17,11 +17,10 @@ public interface ProductRepository
 	long countByCategoryId(String categoryId);
 	
 	long deleteByCategoryId(String categoryId);
-	
-	List<Product> findByNameIgnoreCaseContaining(String keywords);
-	
+			
 /*
 	@Query("select p from Product p where p.name like ?1")
 	List<Product> searchProductList(String keywords);
 */
+	List<Product> findByNameIgnoreCaseContaining(String keywords);
 }

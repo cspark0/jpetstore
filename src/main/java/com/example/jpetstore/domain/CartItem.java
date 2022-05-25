@@ -26,14 +26,14 @@ public class CartItem implements Serializable {
     this.quantity = quantity;
   }
 
-	public double getTotalPrice() {
-		if (item != null) {
-			return item.getListPrice() * quantity;
-		}
-		else {
-			return 0;
-		}
+  public double getTotalPrice() {
+	if (item != null) {
+		return item.getListPrice() * quantity;
 	}
+	else {
+		return 0;
+	}
+  }
 
   /* Public methods */
 

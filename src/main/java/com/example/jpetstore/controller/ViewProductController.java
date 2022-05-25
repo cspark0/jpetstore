@@ -35,7 +35,9 @@ public class ViewProductController {
 			ModelMap model) throws Exception {
 		PagedListHolder<Item> itemList = new PagedListHolder<Item>(this.petStore.getItemListByProduct(productId));
 		itemList.setPageSize(4);
-		Product product = this.petStore.getProduct(productId);
+		//Product product = this.petStore.getProduct(productId);
+		Product product = itemList.getPageList().get(0).getProduct();
+		
 		model.put("itemList", itemList);
 		model.put("product", product);
 		return "Product";
