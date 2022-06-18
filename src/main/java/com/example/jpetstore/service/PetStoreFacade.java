@@ -52,4 +52,6 @@ public interface PetStoreFacade {
 
 	List<Order> getOrdersByUsername(String username);
 
+	Category updateCategory(String id, String name);
+
 }

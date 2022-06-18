@@ -109,7 +109,12 @@ public class PetStoreImpl implements PetStoreFacade {
 	public Category getCategory(String categoryId) {
 		return caRepository.getById(categoryId);			
 	}
-
+	
+	public Category updateCategory(String id, String name) {
+		Category ca = caRepository.getById(id);
+		ca.setName(name);	// ca will be flushed into DB when a transaction commits;
+		return ca;
+	}
 	public Product getProduct(String productId) {
 		return prodRepository.getById(productId);			
 	}
@@ -160,4 +165,5 @@ public class PetStoreImpl implements PetStoreFacade {
 	public List<Order> getOrdersByUsername(String username) {
 		return orderDao.getOrdersByUsername(username);
 	}
+
 }
