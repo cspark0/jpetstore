@@ -61,8 +61,15 @@
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>oraclepki</artifactId>
-		</dependency>
-				
+		</dependency>		
+		<dependency>
+		    <groupId>com.oracle.database.security</groupId>
+		    <artifactId>osdt_cert</artifactId>
+		</dependency>		
+		<dependency>
+		    <groupId>com.oracle.database.security</groupId>
+		    <artifactId>osdt_core</artifactId>
+		</dependency>		
 		<!--
 		<dependency>
 			<groupId>com.h2database</groupId>
