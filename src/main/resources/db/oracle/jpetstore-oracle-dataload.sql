@@ -99,3 +99,6 @@ INSERT INTO inventory (itemid, qty ) VALUES ('EST-25',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-26',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-27',10000);
 INSERT INTO inventory (itemid, qty ) VALUES ('EST-28',10000);
+
+COMMIT;
+
