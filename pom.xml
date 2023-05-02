@@ -42,10 +42,13 @@
     	 	<artifactId>tomcat-embed-jasper</artifactId>
   		</dependency>	
 		
-		<!-- Oracle JDBC driver -->
+		<!-- Oracle JDBC driver & security related JARs required to access Oracle Wallets from Java -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
+			<!-- <scope>runtime</scope> -->
+			<scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>
@@ -56,20 +59,26 @@
 					<artifactId>ons</artifactId>
 				</exclusion>
 			</exclusions>
-			<scope>runtime</scope>
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>oraclepki</artifactId>
+			<scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/oraclepki.jar</systemPath>
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_cert</artifactId>
+			<scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/osdt_cert.jar</systemPath>
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_core</artifactId>
+			<scope>system</scope>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/osdt_core.jar</systemPath>
 		</dependency>		
+		
 		<!--
 		<dependency>
 			<groupId>com.h2database</groupId>

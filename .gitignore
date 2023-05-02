@@ -85,9 +85,7 @@ local.properties
 .mtj.tmp/
 
 # Package Files #
-*.jar
-!hsqldb-*.jar
-!ojdbc6.jar
+#*.jar
 *.war
 *.nar
 *.ear
