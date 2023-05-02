@@ -140,12 +140,7 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>		
-		<!--<dependency>
-			<groupId>com.oracle.ojdbc</groupId>
-			<artifactId>ucp</artifactId>
-			<version>${oracle.version}</version>
-		</dependency>		
-		--><dependency>
+		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>oraclepki</artifactId>
 		    <version>${oracle.version}</version>
