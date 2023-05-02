@@ -16,6 +16,7 @@
 	<description>JPetStore based on Spring Boot 2.7</description>
 	<properties>
 		<java.version>17</java.version>
+		<ojdbc.path>C:/Oracle/ojdbc8-full</ojdbc.path>
 	</properties>
 	
 	<dependencies>
@@ -46,9 +47,7 @@
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<!-- <scope>runtime</scope> -->
-			<scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc8.jar</systemPath>
+			<scope>runtime</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>
@@ -63,20 +62,20 @@
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>oraclepki</artifactId>
-			<scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/oraclepki.jar</systemPath>
+			<!--<scope>system</scope>
+            <systemPath>${ojdbc.path}/oraclepki.jar</systemPath>-->
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_cert</artifactId>
-			<scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/osdt_cert.jar</systemPath>
+			<!--<scope>system</scope>
+            <systemPath>${ojdbc.path}/osdt_cert.jar</systemPath>-->
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_core</artifactId>
-			<scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/osdt_core.jar</systemPath>
+			<!--<scope>system</scope>
+            <systemPath>${ojdbc.path}/osdt_core.jar</systemPath>-->
 		</dependency>		
 		
 		<!--
