@@ -1,4 +1,4 @@
-package com.example.jpetstore.service.client;
+package com.example.jpetstore.client;
 
 import java.util.Iterator;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -16,28 +16,25 @@ import com.example.jpetstore.service.OrderService;
  * e.g. for order ID 1000: 'client 1000' for a single call per service or
  * 'client 1000 10' for 10 calls each".
  *
- * <p>Reads in the application context from a "clientContext.xml" file in
- * the VM execution directory, calling all OrderService proxies defined in it.
- * See that file for details.
- *
  * @author Juergen Hoeller
  * @since 26.12.2003
- * @see org.springframework.samples.jpetstore.service.OrderService
+ * @modified by Chang-Sup Park
+ * @see com.example.jpetstore.service.OrderService
  */
-public class OrderServiceClient_rmi {
+public class OrderServiceClient_httpInvoker {
 
 	private static final String CLIENT_CONTEXT_CONFIG_LOCATION = "client/clientContext.xml";
-	private static final String orderServiceBeanName = "rmiOrderService";
+	private static final String orderServiceBeanName = "httpOrderService";
 	
 	private final ListableBeanFactory beanFactory;
-	public OrderServiceClient_rmi(ListableBeanFactory beanFactory) {
+	public OrderServiceClient_httpInvoker(ListableBeanFactory beanFactory) {
 		this.beanFactory = beanFactory;
 	}
 
 	public void invokeOrderServices(int orderId) {
 		OrderService orderService = (OrderService) beanFactory.getBean(orderServiceBeanName);
 		StopWatch stopWatch = new StopWatch(orderServiceBeanName + " call");
-		System.out.println("Calling rmiOrderService with order ID " + orderId);
+		System.out.println("Calling httpOrderService with order ID " + orderId);
 		stopWatch.start(orderServiceBeanName);
 		Order order = orderService.getOrder(orderId);
 		stopWatch.stop();
@@ -70,7 +67,7 @@ public class OrderServiceClient_rmi {
 		else {
 			int orderId = Integer.parseInt(args[0]);
 			ListableBeanFactory beanFactory = (ListableBeanFactory) new ClassPathXmlApplicationContext(CLIENT_CONTEXT_CONFIG_LOCATION);
-			OrderServiceClient_rmi client = new OrderServiceClient_rmi(beanFactory);
+			OrderServiceClient_httpInvoker client = new OrderServiceClient_httpInvoker(beanFactory);
 			client.invokeOrderServices(orderId); 
 		}
 	}

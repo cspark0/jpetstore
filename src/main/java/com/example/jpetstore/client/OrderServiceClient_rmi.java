@@ -1,4 +1,4 @@
-package com.example.jpetstore.service.client;
+package com.example.jpetstore.client;
 
 import java.util.Iterator;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -24,20 +24,20 @@ import com.example.jpetstore.service.OrderService;
  * @since 26.12.2003
  * @see org.springframework.samples.jpetstore.service.OrderService
  */
-public class OrderServiceClient_jaxws {
+public class OrderServiceClient_rmi {
 
 	private static final String CLIENT_CONTEXT_CONFIG_LOCATION = "client/clientContext.xml";
-	private static final String orderServiceBeanName = "jaxwsOrderService";
+	private static final String orderServiceBeanName = "rmiOrderService";
 	
 	private final ListableBeanFactory beanFactory;
-	public OrderServiceClient_jaxws(ListableBeanFactory beanFactory) {
+	public OrderServiceClient_rmi(ListableBeanFactory beanFactory) {
 		this.beanFactory = beanFactory;
 	}
 
 	public void invokeOrderServices(int orderId) {
 		OrderService orderService = (OrderService) beanFactory.getBean(orderServiceBeanName);
 		StopWatch stopWatch = new StopWatch(orderServiceBeanName + " call");
-		System.out.println("Calling jaxwsOrderService with order ID " + orderId);
+		System.out.println("Calling rmiOrderService with order ID " + orderId);
 		stopWatch.start(orderServiceBeanName);
 		Order order = orderService.getOrder(orderId);
 		stopWatch.stop();
@@ -70,7 +70,7 @@ public class OrderServiceClient_jaxws {
 		else {
 			int orderId = Integer.parseInt(args[0]);
 			ListableBeanFactory beanFactory = (ListableBeanFactory) new ClassPathXmlApplicationContext(CLIENT_CONTEXT_CONFIG_LOCATION);
-			OrderServiceClient_jaxws client = new OrderServiceClient_jaxws(beanFactory);
+			OrderServiceClient_rmi client = new OrderServiceClient_rmi(beanFactory);
 			client.invokeOrderServices(orderId); 
 		}
 	}

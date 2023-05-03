@@ -41,7 +41,7 @@ function printOrderDetail(orderId, td) {	// click event handler for <td> includi
 	else {	
 		$(td).append("<ul id='detail'></ul>");	// create <ul> of 'detail' in <td>	
 
-		var reqUrl = "../rest/order/" + orderId;	// REST service URL		
+		var reqUrl = "/rest/order/" + orderId;	// REST service URI		
 		$.ajax({									// Ajax call to the REST service
 			type: "GET",
 			url: reqUrl,

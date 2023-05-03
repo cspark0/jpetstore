@@ -22,6 +22,8 @@ spring:
       
 mybatis:
   type-aliases-package: com.example.jpetstore.domain
+  configuration:
+    cache-enabled: 'false'
 #  mapper-locations: com/example/jpetstore/dao/mybatis/mapper/**/*.xml
   
 logging:

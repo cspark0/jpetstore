@@ -1,4 +1,4 @@
-package com.example.jpetstore.service.client.rest;
+package com.example.jpetstore.client.rest;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -18,12 +18,10 @@ public class ProductServiceClient_rest {
 	private static String productSvcUrl = "http://" + host + ":" + port + appContext;
 
 	public static void main(String[] args) {
-		simpleGet();
-
 		// test getProduct
 		getForObjectByVariableArg("K9-BD-01", "K9-PO-02");
 		getForObjectByVariableMap("FL-DLH-02");
-
+		
 		// test createProduct
 		Product product = new Product();
 		product.setProductId("FL-DMC-03");
@@ -44,12 +42,6 @@ public class ProductServiceClient_rest {
 		
 		// test RestTemplate.exchange()
 		// exchange();				
-	}
-
-	private static void simpleGet() {
-		System.out.println("\n[simpleGet]");
-		String body = restTemplate.getForObject("https://www.dongduk.ac.kr/", String.class);
-		System.out.println(body);
 	}
 
 	private static void getForObjectByVariableArg(String prodId1, String prodId2) {
