@@ -25,7 +25,10 @@
             <font color="black"><c:out value="${product.productId}" /></font>
           </a></b></td>
         <td><c:out value="${product.name}" /></td>
-        <td onClick="deleteProduct('${product.productId}')">delete</td>
+        <td>
+        	<img border="0" src="../images/button_remove.gif" alt=""
+        		onClick="deleteProduct('${product.productId}')" />        	
+        </td>
       </tr>
     </c:forEach>
     <tr>
@@ -82,14 +85,13 @@ function registerProduct() {
 	$.ajax({								// Ajax call to the REST service
 		type: "POST",
 		url: reqUrl,
-		dataType: "json",
 		contentType: "application/json; charset=utf-8",
 		data: JSON.stringify(productData)		
 	}).done(function() {
 		alert("A product has been registered succcessfuly.");
-		window.location.replace("/shop/viewCategory.do?categoryId=" + ${category.categoryId});
-	}).fail(function(error) {
-		alert(JSON.stringify(error));
+		location.reload(true);
+	}).fail(function(jqXHR) {
+		alert("ERROR: "+ JSON.stringify(jqXHR));
 	});  
 };
 
@@ -97,16 +99,14 @@ function deleteProduct(prodId) {
 	var reqUrl = "/rest/product/" + prodId; // DeleteProduct service URI
 	
 	if (confirm("delete?")) {
-		$.ajax({								// Ajax call to the REST service
+		$.ajax({							// Ajax call to the REST service
 			type: "DELETE",
 			url: reqUrl,
-			dataType: "json",
-			contentType: "application/json; charset=utf-8"				
 		}).done(function() {
-			alert("The product has been removed succcessfuly.")		
-			window.location.replace("/shop/viewCategory.do?categoryId=" + ${category.categoryId});
-		}).fail(function(error) {
-			alert(JSON.stringify(error));
+			alert("The product has been removed succcessfuly.")
+			location.reload(true);
+		}).fail(function(jqXHR) {
+			alert("ERROR: "+ JSON.stringify(jqXHR));
 		});
 	}
 };

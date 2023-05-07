@@ -45,7 +45,6 @@ function printOrderDetail(orderId, td) {	// click event handler for <td> includi
 		$.ajax({									// Ajax call to the REST service
 			type: "GET",
 			url: reqUrl,
-			processData: false,
 			success: function(response){	// callback function: get JS object parsed from JSON response
 				// add <li> of shipping address into <ul>
 				$("#detail").append("<li>Shipping address: " + response.shipAddress1 + ", " + 
@@ -56,16 +55,17 @@ function printOrderDetail(orderId, td) {	// click event handler for <td> includi
 				$(response.lineItems).each( function(i, lineItem){	        	
 			       	content += "LineItem " + lineItem.lineNumber + ": " + lineItem.quantity +
 							" piece(s) of item " + lineItem.itemId + "<br>";
+			    
 				});
 				
 				// add <li> of lineitmes into <ul>
-				$("#detail").append ("<li>" + content + "</li>");
-				
-				$("#detail").removeAttr("id");	// remove id of <ul> for the next click event
+				$("#detail").append("<li>" + content + "</li>");	
+				// remove id of <ul> for the next click event
+				$("#detail").removeAttr("id");	
 			},
-			error: function(){
-				alert("ERROR", arguments);
-			}
+			error: function(jqXHR){
+				alert("ERROR: " + JSON.stringify(jqXHR));				
+			}			
 		});  
 	}
 };
