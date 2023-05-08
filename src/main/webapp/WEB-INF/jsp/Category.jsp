@@ -88,8 +88,10 @@ function registerProduct() {
 		contentType: "application/json; charset=utf-8",
 		data: JSON.stringify(productData)		
 	}).done(function() {
-		alert("A product has been registered succcessfuly.");
-		location.reload(true);
+		alert("A product has been registered succcessfuly!");
+		// issue a new request for getting the product list updated 
+		location.replace(document.location.origin
+				+ "/shop/viewCategory.do?categoryId=${category.categoryId}");
 	}).fail(function(jqXHR) {
 		alert("ERROR: "+ JSON.stringify(jqXHR));
 	});  
@@ -103,8 +105,10 @@ function deleteProduct(prodId) {
 			type: "DELETE",
 			url: reqUrl,
 		}).done(function() {
-			alert("The product has been removed succcessfuly.")
-			location.reload(true);
+			alert("The product has been removed succcessfuly!")
+			// issue a new request for getting the product list updated 
+			location.replace(document.location.origin
+					+ "/shop/viewCategory.do?categoryId=${category.categoryId}");	
 		}).fail(function(jqXHR) {
 			alert("ERROR: "+ JSON.stringify(jqXHR));
 		});

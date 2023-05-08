@@ -21,10 +21,11 @@
         <td><fmt:formatDate value="${order.orderDate}"
             pattern="yyyy/MM/dd hh:mm:ss" />
         </td>
-        <td onClick="printOrderDetail(${order.orderId}, this);">	<!-- add click event handler -->
-        	<fmt:formatNumber value="${order.totalPrice}"
-            pattern="$#,##0.00" />
-        </td>
+        <td>  <!-- add click event handler -->
+       		<a href="#" onclick="printOrderDetail(${order.orderId}, this);">
+        		<fmt:formatNumber value="${order.totalPrice}" pattern="$#,##0.00" />
+			</a>
+		</td>       
       </tr>
     </c:forEach>
   </table>
@@ -33,8 +34,8 @@
 <script src="<c:url value='/js/jquery-3.4.1.min.js'/>"></script>
 <!-- or <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script>
-function printOrderDetail(orderId, td) {	// click event handler for <td> including price
-
+function printOrderDetail(orderId, a) {	// click event handler for <td> including price
+	var td = $(a).parent();
 	if ($(td).children("ul").length > 0) {	// if <td> includes <ul> (and order details)
 		$(td).children("ul").remove();		// remove <ul> (and order details)
 	}

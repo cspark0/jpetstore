@@ -23,7 +23,7 @@ spring:
 mybatis:
   type-aliases-package: com.example.jpetstore.domain
   configuration:
-    cache-enabled: 'false'
+    cache-enabled: false            #true    #default    
 #  mapper-locations: com/example/jpetstore/dao/mybatis/mapper/**/*.xml
   
 logging:
