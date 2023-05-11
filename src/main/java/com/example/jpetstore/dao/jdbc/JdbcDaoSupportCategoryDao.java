@@ -9,9 +9,8 @@ import com.example.jpetstore.dao.CategoryDao;
 import com.example.jpetstore.domain.Category;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
 
-@Repository	// ���� ���Ͽ��� DataSource bean�� �����  DI ���� �ʿ�
+// @Repository	// ���� ���Ͽ��� DataSource bean�� �����  DI ���� �ʿ�
 public class JdbcDaoSupportCategoryDao extends JdbcDaoSupport implements CategoryDao {
   
 	private static final String SELECT_CATEGORY_LIST_SQL = "select CATID, NAME, DESCN from CATEGORY ";														 

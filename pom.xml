@@ -26,6 +26,11 @@
 		</dependency>
 
   		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.3.0</version>
@@ -48,7 +53,6 @@
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>runtime</scope>
-		</dependency>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>

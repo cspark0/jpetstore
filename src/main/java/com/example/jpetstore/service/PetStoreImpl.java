@@ -2,6 +2,7 @@ package com.example.jpetstore.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.jpetstore.dao.AccountDao;
@@ -57,15 +58,19 @@ public class PetStoreImpl implements PetStoreFacade {
 	@Autowired	
 	private AccountDao accountDao;
 	
-	@Autowired   
+	@Autowired @Qualifier("mybatisCategoryDao")  
 	private CategoryDao mybatisCategoryDao;	
-	@Autowired    
-	private CategoryDao jdbcTemplateCategoryDao;	
-	@Autowired    
-	private CategoryDao namedParamJdbcTemplateCategoryDao;	
-	@Autowired   
-	private CategoryDao jdbcDaoSupportCategoryDao;	
-	@Autowired 
+	
+	@Autowired @Qualifier("jdbcTemplateCategoryDao")  
+	private CategoryDao jdbcTemplateCategoryDao;
+	
+	@Autowired @Qualifier("namedParamJdbcTemplateCategoryDao")  
+	private CategoryDao namedParamJdbcTemplateCategoryDao;
+	
+	@Autowired @Qualifier("jdbcDaoSupportCategoryDao")  
+	private CategoryDao jdbcDaoSupportCategoryDao;
+	
+	@Autowired @Qualifier("pureJdbcCategoryDao")  
 	private CategoryDao pureJdbcCategoryDao;	
 	
 	@Autowired  
