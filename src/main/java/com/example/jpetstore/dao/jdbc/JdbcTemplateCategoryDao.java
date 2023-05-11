@@ -42,7 +42,7 @@ public class JdbcTemplateCategoryDao implements CategoryDao {
 
 	public Category getCategory(String categoryId) {
 		Category category = jdbcTemplate.queryForObject(
-				SELECT_CATEGORY_SQL,
+				SELECT_CATEGORY_SQL,				 
 				new RowMapper<Category>() {
 					public Category mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
