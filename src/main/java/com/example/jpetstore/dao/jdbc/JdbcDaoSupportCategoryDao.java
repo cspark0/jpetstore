@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
-@Repository	// Ό³Α¤ ΖΔΐΟΏ΅Ό­ DataSource beanΐΗ Έν½Γΐϋ  DI Ό³Α¤ ΗΚΏδ
+@Repository	// Spring μ„¤μ •μ—μ„ DataSource beanμ— λ€ν• λª…μ‹μ  DI μ„¤μ • ν•„μ”
 public class JdbcDaoSupportCategoryDao extends JdbcDaoSupport implements CategoryDao {
   
 	private static final String SELECT_CATEGORY_LIST_SQL = "select CATID, NAME, DESCN from CATEGORY ";														 
@@ -34,7 +34,7 @@ public class JdbcDaoSupportCategoryDao extends JdbcDaoSupport implements Categor
 
 	public Category getCategory(String categoryId) throws DataAccessException {
 		Category category = (Category) getJdbcTemplate().queryForObject(SELECT_CATEGORY_SQL,
-				new Object[] { categoryId }, new RowMapper<Category>() {
+				new RowMapper<Category>() {
 					public Category mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						Category category = new Category();
@@ -43,7 +43,7 @@ public class JdbcDaoSupportCategoryDao extends JdbcDaoSupport implements Categor
 						category.setDescription(rs.getString("DESCN"));
 						return category;
 					}
-				});
+				}, categoryId);
 		return category;	 
 	}
 

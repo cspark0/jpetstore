@@ -42,8 +42,7 @@ public class JdbcTemplateCategoryDao implements CategoryDao {
 
 	public Category getCategory(String categoryId) {
 		Category category = jdbcTemplate.queryForObject(
-				SELECT_CATEGORY_SQL,
-				new Object[] { categoryId }, 
+				SELECT_CATEGORY_SQL,				 
 				new RowMapper<Category>() {
 					public Category mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
@@ -53,7 +52,7 @@ public class JdbcTemplateCategoryDao implements CategoryDao {
 						category.setDescription(rs.getString("DESCN"));
 						return category;
 					}
-				});
+				}, categoryId);
 		return category;	 
 	}
 

@@ -49,7 +49,7 @@ public class NamedParamJdbcTemplateCategoryDao implements CategoryDao {
 	public Category getCategory(String categoryId) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("catId", categoryId);
-		// �Ǵ� 
+		// 또는
 		// MapSqlParameterSource params = new MapSqlParameterSource();
 		// params.addValue("categoryId", categoryId);		
 		Category category = (Category) jdbcTemplate.queryForObject(
@@ -80,14 +80,14 @@ public class NamedParamJdbcTemplateCategoryDao implements CategoryDao {
 		params.put("descn", category.getDescription());
 		jdbcTemplate.update(INSERT_SQL,	params);
 		
-		/*  // �Ǵ�
+		/*  // 위 방법 대신 아래와 같이 구현 가능
 		MapSqlParameterSource params = new MapSqlParameterSource();
 		params.addValue("catId", category.getCategoryId());		
 		params.addValue("name", category.getName());		
 		params.addValue("descn", category.getDescription());				
 		*/
 		
-		/*  // �Ǵ�
+		/*  // 위 방법 대신 아래와 같이 구현 가능
 		String INSERT_SQL2 = "insert into CATEGORY (CATID, NAME, DESCN) values (:categoryId, :name, :description)";
 		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(category);
 		jdbcTemplate.update(INSERT_SQL2, paramSource);
