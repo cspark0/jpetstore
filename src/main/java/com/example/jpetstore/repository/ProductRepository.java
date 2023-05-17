@@ -19,7 +19,7 @@ public interface ProductRepository
 	long deleteByCategoryId(String categoryId);
 			
 /*
-	@Query("select p from Product p where p.name like '%?1%'")
+	@Query("select p from Product p where p.name like '%?1%'")	// JPQL
 	List<Product> searchProductList(String keywords);
 */
 	List<Product> findByNameIgnoreCaseContaining(String keywords);

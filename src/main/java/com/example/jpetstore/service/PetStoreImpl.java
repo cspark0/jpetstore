@@ -1,7 +1,7 @@
 package com.example.jpetstore.service;
 
 import java.util.List;
-import java.util.Optional;
+//import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -107,16 +107,16 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Category getCategory(String categoryId) {
-		return caRepository.getById(categoryId);			
+		return caRepository.getReferenceById(categoryId);			
 	}
 	
 	public Category updateCategory(String id, String name) {
-		Category ca = caRepository.getById(id);
+		Category ca = caRepository.getReferenceById(id);
 		ca.setName(name);	// ca will be flushed into DB when a transaction commits;
 		return ca;
 	}
 	public Product getProduct(String productId) {
-		return prodRepository.getById(productId);			
+		return prodRepository.getReferenceById(productId);			
 	}
 
 	public List<Product> getProductListByCategory(String categoryId) {
@@ -132,7 +132,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Item getItem(String itemId) {
-		return itemRepository.getById(itemId);
+		return itemRepository.getReferenceById(itemId);
 	}
 
 	public boolean isItemInStock(String itemId) {
@@ -151,7 +151,7 @@ public class PetStoreImpl implements PetStoreFacade {
 			LineItem lineItem = (LineItem) order.getLineItems().get(i);
 			String itemId = lineItem.getItemId();
 			int increment = lineItem.getQuantity();		
-			Item item = itemRepository.getById(itemId);
+			Item item = itemRepository.getReferenceById(itemId);
 			item.setQuantity(item.getQuantity() - increment);
 //			itemRepository.save(item);			
 		}

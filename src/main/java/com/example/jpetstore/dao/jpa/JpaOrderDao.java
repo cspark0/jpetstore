@@ -37,7 +37,6 @@ public class JpaOrderDao implements OrderDao {
 	}
 	
 	public Order getOrder(int orderId) throws DataAccessException {
-        return em.find(Order.class, orderId); 
 	/*
 		Order order = orderMapper.getOrder(orderId);
 		if (order != null) {
@@ -45,16 +44,10 @@ public class JpaOrderDao implements OrderDao {
 		}
 	    return order;
 	*/
+        return em.find(Order.class, orderId); 
 	}
 	
 	public void insertOrder(Order order) throws DataAccessException {
-		int newOrderId = sequenceDao.getNextId("ordernum");
-    	order.setOrderId(newOrderId);
-    	for (int i = 0; i < order.getLineItems().size(); i++) {
-    		LineItem lineItem = (LineItem) order.getLineItems().get(i);
-    		lineItem.setOrderId(newOrderId);    		
-    	}
-        em.persist(order);
 	/*
     	orderMapper.insertOrder(order);
     	orderMapper.insertOrderStatus(order);
@@ -63,5 +56,12 @@ public class JpaOrderDao implements OrderDao {
     		lineItem.setOrderId(order.getOrderId());
     	}
     */
+		int newOrderId = sequenceDao.getNextId("ordernum");
+    	order.setOrderId(newOrderId);
+    	for (int i = 0; i < order.getLineItems().size(); i++) {
+    		LineItem lineItem = (LineItem) order.getLineItems().get(i);
+    		lineItem.setOrderId(newOrderId);    		
+    	}
+        em.persist(order);
 	}
 }
