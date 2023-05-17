@@ -1,4 +1,6 @@
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <h3>
   <font color="darkgreen">Account Information</font>
 </h3>
@@ -6,8 +8,7 @@
 <table class="n13">
   <tr>
     <td>First name:</td>
-    <td>
-    	<form:input path="account.firstName" htmlEscape="false" />
+    <td><form:input path="account.firstName" htmlEscape="false"/>
       <form:errors path="account.firstName" cssClass="error" /></td>
   </tr>
   <tr>
