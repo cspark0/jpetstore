@@ -54,15 +54,19 @@ import com.example.jpetstore.domain.Product;
 @Service
 @Transactional
 public class PetStoreImpl implements PetStoreFacade { 
-	@Autowired
+	@Autowired	
 	private AccountDao accountDao;
-	@Autowired
-	private CategoryDao categoryDao;
-	@Autowired
+	
+	@Autowired   
+	private CategoryDao categoryDao;	
+	
+	@Autowired  
 	private ProductDao productDao;
-	@Autowired
+	
+	@Autowired	
 	private ItemDao itemDao;
-	@Autowired
+	
+	@Autowired	
 	private OrderDao orderDao;
 
 	//-------------------------------------------------------------------------
@@ -94,7 +98,24 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public Category getCategory(String categoryId) {
-		return categoryDao.getCategory(categoryId);
+		Category category = null;
+		switch (categoryId) {
+			case "FISH" :
+				category = categoryDao.getCategory(categoryId);
+				break;
+			case "DOGS" :
+				category = categoryDao.getCategory(categoryId);
+				break;
+			case "REPTILES" :
+				category = categoryDao.getCategory(categoryId);
+				break;
+			case "CATS" :
+				category = categoryDao.getCategory(categoryId);
+				break;
+			case "BIRDS" :
+				category = categoryDao.getCategory(categoryId);
+		}
+		return category;
 	}
 
 	public List<Product> getProductListByCategory(String categoryId) {
