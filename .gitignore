@@ -6,7 +6,6 @@
 bin/
 tmp/
 target/
-!.mvn/wrapper/maven-wrapper.jar
 *.tmp
 *.bak
 *.swp
@@ -86,6 +85,7 @@ local.properties
 .mtj.tmp/
 
 # Package Files #
+!.mvn/wrapper/maven-wrapper.jar
 *.jar
 *.war
 *.nar
