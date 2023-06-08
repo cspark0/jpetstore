@@ -85,8 +85,8 @@ local.properties
 .mtj.tmp/
 
 # Package Files #
-!.mvn/wrapper/maven-wrapper.jar
 *.jar
+!.mvn/wrapper/maven-wrapper.jar
 *.war
 *.nar
 *.ear
