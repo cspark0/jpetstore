@@ -6,6 +6,7 @@
 bin/
 tmp/
 target/
+!.mvn/wrapper/maven-wrapper.jar
 *.tmp
 *.bak
 *.swp
