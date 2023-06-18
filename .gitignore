@@ -122,4 +122,27 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# React
+# dependencies
+/react-app/node_modules
+/react-app/.pnp
+/react-app/.pnp.js
+
+# testing
+/react-app/coverage
+
+# production
+/react-app/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 # End of https://www.gitignore.io/api/java,windows,eclipse

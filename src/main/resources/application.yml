@@ -1,10 +1,14 @@
 spring:
   datasource:         # Oracle dataSource 
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@dblab_high?TNS_ADMIN=C:/Oracle/Wallet_DBLab    # use Oracle Wallet
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@dblab_tp?TNS_ADMIN=C:/Oracle/Wallet_DBLab    # use Oracle Wallet
 #    url: jdbc:oracle:thin:@(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=...))(connect_data=(service_name=...))(security=(ssl_server_dn_match=yes)))
     username: spring
     password: Framework2023
+    hikari:          
+      maximumPoolSize: 3
+      connectionTimeout: 3000
+#      minimumIdle: 5
 #    hikari:          # HikariCP settings
 #      minimumIdle: 5
 #      maximumPoolSize: 20
@@ -37,3 +41,9 @@ logging:
   
 server:
   port: 8088
+  tomcat: 
+    additional-tld-skip-patterns: 
+      - oraclepki.jar
+      - osdt_core.jar
+      - osdt_cert.jar
+      

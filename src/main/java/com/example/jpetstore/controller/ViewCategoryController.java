@@ -3,9 +3,12 @@ package com.example.jpetstore.controller;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -32,15 +35,20 @@ public class ViewCategoryController {
 	public String handleRequest(
 			@RequestParam("categoryId") String categoryId,
 			ModelMap model
-			) throws Exception {
-		Category category = this.petStore.getCategory(categoryId);
-		PagedListHolder<Product> productList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(categoryId));
+			) throws Exception {	    
+	    Category category = this.petStore.getCategory(categoryId);
+	    
+        /*
+	    PagedListHolder<Product> productList = new PagedListHolder<Product>(this.petStore.getProductListByCategory(categoryId));
 		productList.setPageSize(4);
+        model.put("productList", productList);
+        */
+	    
 		model.put("category", category);
-		model.put("productList", productList);
 		return "Category";
 	}
 
+	/*
 	@RequestMapping("/shop/viewCategory2.do")
 	public String handleRequest2(
 			@RequestParam("page") String page,
@@ -54,4 +62,5 @@ public class ViewCategoryController {
 		else if ("previous".equals(page)) { productList.previousPage(); }
 		return "Category";
 	}
+	*/
 }

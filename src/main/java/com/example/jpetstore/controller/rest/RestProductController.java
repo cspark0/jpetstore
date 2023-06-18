@@ -2,6 +2,7 @@ package com.example.jpetstore.controller.rest;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,6 +41,19 @@ public class RestProductController {
 		this.productSvc = productService;
 	}
 	
+	@GetMapping(value = "/category/{cateId}/products", produces = "application/json")
+	public List<Product> getProductListByCategory(@PathVariable String cateId, HttpServletResponse response)
+			throws IOException {
+		System.out.println("GET /category/{cateId}/products request accepted: {cateId} = " + cateId);
+		List<Product> productList = productSvc.getProductListByCategory(cateId);
+		System.out.println(productList);
+		if (productList == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return productList;
+	}
+
 	@GetMapping(value = "/product/{prodId}", produces = "application/json")
 	// @ResponseBody
 	public Product getProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)

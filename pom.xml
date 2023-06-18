@@ -9,14 +9,13 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>	
 	<groupId>com.example</groupId>
-	<artifactId>jpetstore-boot-rest</artifactId>
+	<artifactId>jpetstore-boot-rest-react</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jpetstore.boot</name>
-	<description>JPetStore with REST services based on Spring Boot 2.7</description>
+	<name>jpetstore-boot-rest-react</name>
+	<description>JPetStore with REST services and React on Spring Boot 2.7</description>
 	<properties>
 		<java.version>17</java.version>
-		<ojdbc.path>C:/Oracle/ojdbc8-full</ojdbc.path>
 	</properties>
 	
 	<dependencies>
@@ -63,25 +62,23 @@
 					<groupId>com.oracle.database.ha</groupId>
 					<artifactId>ons</artifactId>
 				</exclusion>
+				<exclusion>
+                    <groupId>com.oracle.database.jdbc</groupId>
+                    <artifactId>ucp</artifactId>
+                </exclusion>
 			</exclusions>
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>oraclepki</artifactId>
-			<!--<scope>system</scope>
-            <systemPath>${ojdbc.path}/oraclepki.jar</systemPath>-->
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_cert</artifactId>
-			<!--<scope>system</scope>
-            <systemPath>${ojdbc.path}/osdt_cert.jar</systemPath>-->
 		</dependency>		
 		<dependency>
 		    <groupId>com.oracle.database.security</groupId>
 		    <artifactId>osdt_core</artifactId>
-			<!--<scope>system</scope>
-            <systemPath>${ojdbc.path}/osdt_core.jar</systemPath>-->
 		</dependency>		
 		
 		<!--
@@ -104,13 +101,36 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+	</dependencies>	
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/target/classes/static/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/react-app/build</directory>
+                                    <excludes>
+                                        <exclude>index.html</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
