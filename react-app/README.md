@@ -1,16 +1,16 @@
 
-ÀÌ ÇÁ·ÎÁ§Æ®´Â create-react-appÀ» ÅëÇØ »ı¼ºµÈ ÈÄ
-`npm run eject` ½ÇÇàÀ» ÅëÇØ ³»ºÎ ¼³Á¤ ¹× ½ºÅ©¸³Æ® ÆÄÀÏµéÀÌ ÃßÃâµÊ  
+ì´ í”„ë¡œì íŠ¸ëŠ” create-react-appì„ í†µí•´ ìƒì„±ëœ í›„
+`npm run eject` ì‹¤í–‰ì„ í†µí•´ ë‚´ë¶€ ì„¤ì • ë° ìŠ¤í¬ë¦½íŠ¸ íŒŒì¼ë“¤ì´ ì¶”ì¶œë¨  
 
-### ¼öÁ¤ »çÇ×
+### ìˆ˜ì • ì‚¬í•­
 - package.json 
-    - "proxy": "http://localhost:8088" ¼Ó¼º Ãß°¡ (back-end server ÁÖ¼Ò ÁöÁ¤)
+    - "proxy": "http://localhost:8088" ì†ì„± ì¶”ê°€ (back-end server ì£¼ì†Œ ì§€ì •)
   
 - config/webpack.config.js    
-    - 203~208Çà : °¢ ÆäÀÌÁö¸¦ »ı¼ºÇÏ±â À§ÇÑ js ÆÄÀÏ°ú ÀÌ¸§ ÁöÁ¤ --> °¢°¢ build/static/js ¾Æ·¡¿¡ bundle ÆÄÀÏ »ı¼º  
-    - 217,221Çà : bundle ÆÄÀÏ°ú chunk ÆÄÀÏÀÇ ÀÌ¸§ ÁöÁ¤ (ÇØ½¬ °ª »ı·«)   
+    - 203~208í–‰ : view í˜ì´ì§€ë¥¼ ìƒì„±í•˜ê¸° ìœ„í•œ js íŒŒì¼ê³¼ ì´ë¦„ ì§€ì • --> ê°ê° build/static/js ì•„ë˜ì— bundle íŒŒì¼ ìƒì„±  
+    - 217,221í–‰ : bundle íŒŒì¼ê³¼ chunk íŒŒì¼ì˜ ì´ë¦„ ì§€ì • (í•´ì‰¬ ê°’ ìƒëµ)   
     
-### production build »ı¼º ¹æ¹ı
+### production build ìƒì„± ë°©ë²•
  `npm install`  
  `npm run build`
  

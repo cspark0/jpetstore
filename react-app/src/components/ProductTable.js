@@ -1,18 +1,21 @@
 import { BsTrash } from 'react-icons/bs';
-export default function TOC({entries, curContId, onClickProductId, onClickTrash}) {  
-  console.log('==> TOC render');
+
+export default function ProductTable({entries, curProdId, onClickId, onClickTrash}) {  
+  console.log('ProductTable render');
   
   const trList = entries.map(entry => 
     <tr key={entry.productId} bgcolor="#FF8888">
       <td>
-        <a href={"/content/" + entry.productId}
+        <a href={"/product/" + entry.productId}
           onClick={e => {
+            console.log(entry.productId);          
             console.log(e);
             e.preventDefault();
-            onClickProductId(entry.productId);
-          }
-        }><font color="black">
-          {(entry.id === curContId) ? <em>{entry.productId}</em> : entry.productId }</font>
+            onClickId(entry.productId);
+          }}>
+          <font color="black">
+            {(entry.productId === curProdId) ? <em>{entry.productId}</em> : entry.productId}
+          </font>
         </a>
       </td>
       <td>{entry.name}</td>

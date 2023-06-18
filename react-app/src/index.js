@@ -9,13 +9,10 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
 root.render(
-//  <React.StrictMode>
-//  { 
-    <div>      
-      <CategoryApp categoryId='K9-BD-01'/>        
-    </div>
-//  }    
-//  </React.StrictMode>
+  <React.StrictMode>
+  { 
+  }    
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
