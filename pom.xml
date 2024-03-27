@@ -1,66 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>	
+	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
 	<artifactId>jpetstore</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>	
+	<packaging>war</packaging>
 	<name>jpetstore</name>
-	<description>Sample project for Spring and Mybatis</description>	
+	<description>Sample project for Spring and Mybatis</description>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<spring.version>5.3.27</spring.version>
+		<spring-framework.version>5.3.32</spring-framework.version>
 		<mybatis.version>3.5.6</mybatis.version>
-		<mybatis-spring.version>2.0.4</mybatis-spring.version>
+		<mybatis-spring-framework.version>2.0.4</mybatis-spring-framework.version>
 		<dbcp.version>2.9.0</dbcp.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp.version>2.3.3</jsp.version>
 		<jstl.version>1.2</jstl.version>
-		<logback-classic.version>1.2.6</logback-classic.version>
+		<logback-classic.version>1.2.13</logback-classic.version>
 		<aspectj.version>1.6.10</aspectj.version>
 		<hsqldb.version>2.7.1</hsqldb.version>
-		<oracle.version>19.3.0.0</oracle.version>	
+		<oracle.version>19.3.0.0</oracle.version>
 		<junit.version>4.13.2</junit.version>
 		<commons-fileupload.version>1.5</commons-fileupload.version>
 		<urlrewrite.version>3.1.0</urlrewrite.version>
-	</properties>	
-	<dependencies>	
+	</properties>
+	<dependencies>
 		<!-- Spring Framework modules -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-framework.version}</version>
 			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${spring.version}</version>
-			<exclusions>
-				<exclusion>
-					<groupId>quartz</groupId>
-					<artifactId>quartz</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>		           
-		
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>${jstl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj.version}</version>
-		</dependency>	
-	
+		</dependency>
+
 		<!-- Servlet Container-provided dependencies-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -73,7 +58,12 @@
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>${jsp.version}</version>
 			<scope>provided</scope>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
 		
 		<!-- Clean URLs with JSPs -->
 		<dependency>
@@ -81,40 +71,40 @@
 			<artifactId>urlrewritefilter</artifactId>
 			<version>${urlrewrite.version}</version>
 		</dependency>
-			
+
 		<!-- MyBatis -->
 		<dependency>
-     		<groupId>org.mybatis</groupId>
-      		<artifactId>mybatis</artifactId>
-      		<version>${mybatis.version}</version>
-    	</dependency>
-    	<dependency>
-      		<groupId>org.mybatis</groupId>
-      		<artifactId>mybatis-spring</artifactId>
-      		<version>${mybatis-spring.version}</version>
-    	</dependency>
-     
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring-framework.version}</version>
+		</dependency>
+
 		<!-- Logging (logback) -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback-classic.version}</version>
 		</dependency>
-				
+
 		<!-- File upload API -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons-fileupload.version}</version>
 		</dependency>
-		
+
 		<!-- Database Connection Pool -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-dbcp2</artifactId>
-		    <version>${dbcp.version}</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${dbcp.version}</version>
 		</dependency>
-	         
+
 		<!-- Embedded database -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -122,12 +112,12 @@
 			<version>${hsqldb.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-            
+
 		<!-- Oracle JDBC driver -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<version>${oracle.version}</version>			
+			<version>${oracle.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>
@@ -139,36 +129,36 @@
 				</exclusion>
 			</exclusions>
 			<scope>runtime</scope>
-		</dependency>		
+		</dependency>
 		<dependency>
-		    <groupId>com.oracle.database.security</groupId>
-		    <artifactId>oraclepki</artifactId>
-		    <version>${oracle.version}</version>
-		</dependency>		
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+			<version>${oracle.version}</version>
+		</dependency>
 		<dependency>
-		    <groupId>com.oracle.database.security</groupId>
-		    <artifactId>osdt_cert</artifactId>
-		    <version>${oracle.version}</version>
-		</dependency>		
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+			<version>${oracle.version}</version>
+		</dependency>
 		<dependency>
-		    <groupId>com.oracle.database.security</groupId>
-		    <artifactId>osdt_core</artifactId>
-		    <version>${oracle.version}</version>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+			<version>${oracle.version}</version>
 		</dependency>
 
 		<!-- for javax.jaxws API -->
 		<dependency>
-    		<groupId>com.sun.xml.ws</groupId>
-    		<artifactId>jaxws-ri</artifactId>
-    		<version>2.3.2</version>
-    		<type>pom</type>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-ri</artifactId>
+			<version>2.3.2</version>
+			<type>pom</type>
 		</dependency>
-		
+
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
+			<version>${spring-framework.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -176,26 +166,27 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <version>2.5.1</version>
-			    <configuration>
-			        <source>${java.version}</source>
-			        <target>${java.version}</target>
-			        <compilerArgument>-Xlint:all</compilerArgument>
-			        <showWarnings>true</showWarnings>
-			        <showDeprecation>true</showDeprecation>
-			    </configuration>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
 			</plugin>
 			<plugin>
-          		<artifactId>maven-war-plugin</artifactId>
-          		<version>3.2.2</version>
-        	</plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+			</plugin>			
 		</plugins>
-	</build> 
+	</build>
 </project>

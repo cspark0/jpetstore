@@ -28,20 +28,9 @@
 		
 	<!-- Configurer that replaces ${...} placeholders with values from properties files -->
 	<!-- (in this case, mail and JDBC related properties) -->
-	<context:property-placeholder location="classpath:jdbc.oracle.cloud.properties" />	
-	
+	<context:property-placeholder location="classpath:jdbc.oracle.properties" />	
 	<!-- <context:property-placeholder location="classpath:jdbc.hsqldb.properties" /> -->
-	<!-- 
-	<bean id="propertyConfigurer" 
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:jdbc.hsqldb.properties</value> 				
-			</list>
-		</property>
-	</bean> 
-	 -->
-	 
+	
 	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
 
 	<!-- Local Apache Commons DBCP2 DataSource that refers to a combined database -->
