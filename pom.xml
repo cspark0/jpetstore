@@ -14,7 +14,7 @@
 		<java.version>17</java.version>
 		<spring-framework.version>5.3.32</spring-framework.version>
 		<mybatis.version>3.5.6</mybatis.version>
-		<mybatis-spring-framework.version>2.0.4</mybatis-spring-framework.version>
+		<mybatis-spring.version>2.0.4</mybatis-spring.version>
 		<dbcp.version>2.9.0</dbcp.version>
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp.version>2.3.3</jsp.version>
@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>${mybatis-spring-framework.version}</version>
+			<version>${mybatis-spring.version}</version>
 		</dependency>
 
 		<!-- Logging (logback) -->

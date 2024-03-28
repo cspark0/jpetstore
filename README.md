@@ -8,8 +8,8 @@ Sample project based on Spring Framework (Spring MVC) for the SSD class
 1. File >> Import... >> Git - Projects from Git (with smart import) >> Clone URI 선택
 2. URI 입력(예: https://github.com/cspark0/jpetstore.git 또는 fork한 repository의 URI), username & password 입력
 3. master branch 선택 (필요 시 Browse 버튼을 클릭하여 local repository를 저장할 다른 폴더 선택) 
-4. Git repository 생성 및 프로젝트 import 진행 확인
-5. import된 프로젝트를 빌드 후 사용
+4. Git repository 생성 및 프로젝트 import 진행
+5. Project Explorer 창에 import된 프로젝트를 빌드 후 사용
 6. Window >> Perspective >> Open Perspective >> Other... >> Git 선택, 생성된 repository 확인
    
 ### 프로젝트 실행 방법
