@@ -13,7 +13,7 @@ JPetStore project based on Spring Boot 2.7
 9. src/main/webapp/META-INF 삭제
 10. src/main/webapp/WEB-INF/*.xml 삭제
  
-####실행
+####실행 및 테스트
 * Eclipse: com.example.jpetstore.JpetstoreBootApplication 선택 > Run As > Java Application  
 * Maven: mvnw spring-boot:run
 * http://localhost:8088/ 
