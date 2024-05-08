@@ -40,7 +40,7 @@ public class RestProductController {
 		this.productSvc = productService;
 	}
 	
-	@GetMapping(value = "/product/{prodId}", produces = "application/json")
+	@GetMapping(value="/product/{prodId}", produces="application/json")
 	// @ResponseBody
 	public Product getProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
 			throws IOException {
@@ -54,7 +54,7 @@ public class RestProductController {
 		return product;
 	}
 
-	@PostMapping(value = "/product", consumes = "application/json")
+	@PostMapping(value="/product", consumes="application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createProduct(@RequestBody Product product, HttpServletResponse response) throws IOException {
 		System.out.println("POST /rest/product request accepted with a product: " + product);		
@@ -72,7 +72,7 @@ public class RestProductController {
 									.scheme("http")
 									.host(ipAddr)
 									.port(serverPort)
-									.path("/jpetstore/product/{prodId}")
+									.path("/rest/product/{prodId}")
 									.build();
 		UriComponents encodedUriComp = uriComp.expand(product.getProductId()).encode();
 		response.setHeader("Location", encodedUriComp.toUriString());
@@ -80,7 +80,7 @@ public class RestProductController {
 		System.out.println("product " + product.getProductId() + " created.");
 	}
 
-	@PutMapping(value = "/product/{prodId}", consumes = "application/json")
+	@PutMapping(value="/product/{prodId}", consumes="application/json")
 	@ResponseStatus(HttpStatus.OK)
 	public void updateProduct(@PathVariable("prodId") String prodId, 
 			@RequestBody Product product, HttpServletResponse response) throws IOException {
@@ -93,7 +93,7 @@ public class RestProductController {
 		System.out.println("product " + prodId + " updated.");
 	}
 
-	@DeleteMapping(value = "/product/{prodId}")
+	@DeleteMapping(value="/product/{prodId}")
 	@ResponseStatus(HttpStatus.OK)
 	// @ResponseBody
 	public void deleteProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
