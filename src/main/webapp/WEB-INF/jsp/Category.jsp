@@ -72,7 +72,9 @@
 
 <script src="<c:url value='/js/jquery-3.4.1.min.js'/>"></script>
 <!-- or <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+
 function registerProduct() {	
 	var productData = {
 		productId: $("#prodId").val(),
@@ -81,7 +83,9 @@ function registerProduct() {
 		categoryId: "${category.categoryId}"
 	};
 	
-	var reqUrl = "/rest/product";			// CreateProduct service URI 		
+	var reqUrl = "/rest/product";			// CreateProduct service URI
+	
+	/*
 	$.ajax({								// Ajax call to the REST service
 		type: "POST",
 		url: reqUrl,
@@ -94,25 +98,50 @@ function registerProduct() {
 				+ "/shop/viewCategory.do?categoryId=${category.categoryId}");
 	}).fail(function(jqXHR) {
 		alert("ERROR: "+ JSON.stringify(jqXHR));
-	});  
+	});
+	*/
+	
+	// Ajax 호출을 위해 Axios library 이용
+	axios.post(reqUrl, productData)
+		.then(() => {
+			alert("A product has been registered succcessfuly!");
+			// issue a new request for getting the product list updated 
+			location.replace(document.location.origin
+				+ "/shop/viewCategory.do?categoryId=${category.categoryId}");
+		})
+		.catch(error => { 
+			alert("ERROR", error); console.error(error);
+		});
 };
 
 function deleteProduct(prodId) {	
 	var reqUrl = "/rest/product/" + prodId; // DeleteProduct service URI
 	
 	if (confirm("delete?")) {
-		$.ajax({							// Ajax call to the REST service
+	/*	$.ajax({				// Ajax call to the REST service
 			type: "DELETE",
 			url: reqUrl,
 		}).done(function() {
 			alert("The product has been removed succcessfuly!")
 			// issue a new request for getting the product list updated 
 			location.replace(document.location.origin
-					+ "/shop/viewCategory.do?categoryId=${category.categoryId}");	
+				+ "/shop/viewCategory.do?categoryId=${category.categoryId}");	
 		}).fail(function(jqXHR) {
 			alert("ERROR: "+ JSON.stringify(jqXHR));
 		});
+	*/
+		axios.delete(reqUrl)
+		.then(() => {
+			alert("The product has been removed succcessfuly!")
+			// issue a new request for getting the product list updated 
+			location.replace(document.location.origin
+				+ "/shop/viewCategory.do?categoryId=${category.categoryId}");
+		})
+		.catch(error => { 
+			alert("ERROR", error); console.error(error);
+		});
 	}
+	
 };
 
 function toggleForm() {

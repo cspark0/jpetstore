@@ -33,6 +33,7 @@
 
 <script src="<c:url value='/js/jquery-3.4.1.min.js'/>"></script>
 <!-- or <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 function printOrderDetail(orderId, a) {	// click event handler for <td> including price
 	var td = $(a).parent();
@@ -43,6 +44,8 @@ function printOrderDetail(orderId, a) {	// click event handler for <td> includin
 		$(td).append("<ul id='detail'></ul>");	// create <ul> of 'detail' in <td>	
 
 		var reqUrl = "/rest/order/" + orderId;	// REST service URI		
+		
+		/*
 		$.ajax({									// Ajax call to the REST service
 			type: "GET",
 			url: reqUrl,
@@ -67,7 +70,33 @@ function printOrderDetail(orderId, a) {	// click event handler for <td> includin
 			error: function(jqXHR){
 				alert("ERROR: " + JSON.stringify(jqXHR));				
 			}			
-		});  
+		});
+		*/
+		// Ajax 호출을 위해 Axios library 이용
+		axios.get(reqUrl)
+			.then(response => {
+				var order = response.data;
+				
+				// add <li> of shipping address into <ul>
+				$("#detail").append("<li>Shipping address: " + order.shipAddress1 + ", " + 
+						order.shipAddress2 + ", " + order.shipCity + "</li>");
+				
+				// collect lineitem infos from the response
+				var content = "";
+				$(order.lineItems).each( function(i, lineItem){	        	
+			       	content += "LineItem " + lineItem.lineNumber + ": " + lineItem.quantity +
+							" piece(s) of item " + lineItem.itemId + "<br>";
+			    
+				});
+				
+				// add <li> of lineitmes into <ul>
+				$("#detail").append("<li>" + content + "</li>");	
+				// remove id of <ul> for the next click event
+				$("#detail").removeAttr("id");	
+			})
+			.catch(error => { 
+				alert("ERROR", error); console.error(error);
+			});
 	}
 };
 </script>
