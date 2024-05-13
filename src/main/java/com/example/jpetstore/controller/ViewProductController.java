@@ -38,7 +38,7 @@ public class ViewProductController {
 		Product product = this.petStore.getProduct(productId);
 		model.put("itemList", itemList);
 		model.put("product", product);
-		return "Product";
+		return "thyme/Product";
 	}
 	
 	@RequestMapping("/shop/viewProduct2.do")
@@ -55,6 +55,6 @@ public class ViewProductController {
 		}
 		model.put("itemList", itemList);
 		model.put("product", product);
-		return "Product";
+		return "thyme/Product";
 	}
 }
