@@ -1,10 +1,11 @@
 spring:
   datasource:  # Oracle dataSource 
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@dblab_high?TNS_ADMIN=C:/Oracle/Wallet_DBLab    # use Oracle Wallet
+    url: jdbc:oracle:thin:@dblab.dongduk.ac.kr:1521/orclpdb
+#    url: jdbc:oracle:thin:@dblab_high?TNS_ADMIN=C:/Oracle/Wallet_DBLab    # use Oracle Wallet
 #    url: jdbc:oracle:thin:@(description=(retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1521)(host=...))(connect_data=(service_name=...))(security=(ssl_server_dn_match=yes)))
-    username: spring
-    password: Framework2023   
+    username: jpetstore
+    password: spring2024
 #    hikari:   # HikariCP settings
 #      minimumIdle: 5
 #      maximumPoolSize: 20
