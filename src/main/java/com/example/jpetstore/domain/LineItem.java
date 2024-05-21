@@ -8,9 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name="LINEITEM") // 생략 가능
 @IdClass(LineItemPK.class)		// composite key class
 public class LineItem implements Serializable {
 
@@ -27,7 +29,7 @@ public class LineItem implements Serializable {
 	private String itemId;
 
 	@ManyToOne
-	@JoinColumn(name="itemId")
+	@JoinColumn(name="itemId", insertable=false, updatable=false)
 	private Item item;
 
 	/* Constructors */

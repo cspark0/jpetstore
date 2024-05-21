@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="Item") // 생략 가능
+@Table(name="ITEM") // 생략 가능
 @SecondaryTable(name="INVENTORY", 
 	pkJoinColumns=@PrimaryKeyJoinColumn(
 		name="itemid", referencedColumnName="itemid"))

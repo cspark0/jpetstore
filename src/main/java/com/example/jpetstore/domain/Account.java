@@ -9,10 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SecondaryTable;
+import javax.persistence.Table;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name="ACCOUNT")  // 생략 가능
 @SecondaryTable(name="SIGNON",
 	pkJoinColumns=@PrimaryKeyJoinColumn(
 		name="username", referencedColumnName="userid"))

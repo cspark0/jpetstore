@@ -14,7 +14,8 @@ public class Banner implements Serializable {
 	@Id
 	@Column(name="favcategory")
 	private String categoryId;
-	@Column(name="bannername")
+	
+	@Column(name="bannername")	// 생략 가능
 	private String bannerName;
 	
 	public String getCategoryId() {

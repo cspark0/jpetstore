@@ -7,24 +7,29 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
+@Table(name="PROFILE")  // 생략 가능
 public class Profile implements Serializable {
 	@Id
 	private String userid;
 
 	@Column(name="favcategory") 
 	private String favouriteCategoryId;
+	
 	@Column(name="langpref") 
 	private String languagePreference;
+	
 	@Column(name="mylistopt") 
 	private boolean listOption;
+	
 	@Column(name="banneropt") 
 	private boolean bannerOption;
 	
 	@ManyToOne
-	@JoinColumn(name="favcategory")	
+	@JoinColumn(name="favcategory", insertable=false, updatable=false)	
 	private Banner banner;
 
 	public String getUserid() {
