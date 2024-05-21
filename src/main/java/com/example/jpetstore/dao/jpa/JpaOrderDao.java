@@ -30,8 +30,9 @@ public class JpaOrderDao implements OrderDao {
 	public List<Order> getOrdersByUsername(String username) 
 			throws DataAccessException {
 		TypedQuery<Order> query = em.createQuery(
-                "select order from Order order "
-                + "where order.username=?1", Order.class);
+                "select order from Order order " +
+                "where order.username=?1",
+                Order.class);
 		query.setParameter(1, username);	
         return query.getResultList();
 	}

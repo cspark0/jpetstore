@@ -24,7 +24,7 @@ public class Profile implements Serializable {
 	private boolean bannerOption;
 	
 	@ManyToOne
-	@JoinColumn(name="favcategory", insertable=false, updatable=false)	
+	@JoinColumn(name="favcategory")	
 	private Banner banner;
 
 	public String getUserid() {

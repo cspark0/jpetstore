@@ -29,9 +29,9 @@ public class JpaAccountDao implements AccountDao {
 	public Account getAccount(String username, String password) 
 			throws DataAccessException {
 		TypedQuery<Account> query = em.createQuery(
-                                "select a from Account a "
-                                + "where a.username=:id and a.password=:pw",
-                                Account.class);
+                "select a from Account a " +
+                "where a.username=:id and a.password=:pw",
+                Account.class);
         query.setParameter("id", username);
         query.setParameter("pw", password);
         Account account = null;
@@ -58,8 +58,9 @@ public class JpaAccountDao implements AccountDao {
     }
 	
 	/*
-	public void remove(Account account) {
-        em.remove(account);
+	public void deleteAccount(Account account) {
+		Account managedAccount = em.merge(account);
+        em.remove(managedAccount);
     }
 	*/
 }

@@ -66,7 +66,9 @@ create table profile (
     favcategory varchar(30),
     mylistopt int,
     banneropt int,
-    constraint pk_profile primary key (userid)
+    constraint pk_profile primary key (userid),
+    constraint fk_profile foreign key (favcategory)
+           references bannerdata (favcategory)
 );
 
 grant all on profile to public;
@@ -108,7 +110,7 @@ create table orders (
       locale varchar(80) not null,
       constraint pk_orders primary key (orderid),
       constraint fk_orders_1 foreign key (userid)
-	references account (userid)
+	       references account (userid)
 );
 
 create sequence ordernum increment by 1 cache 10000;
@@ -122,7 +124,7 @@ create table orderstatus (
       status varchar(2) not null,
       constraint pk_orderstatus primary key (orderid, linenum),
       constraint fk_orderstatus_1 foreign key (orderid)
-	references orders (orderid)
+	       references orders (orderid)
 );
 
 grant all on orderstatus to public;
@@ -143,7 +145,7 @@ create table product (
     name varchar(80) null,
     descn varchar(255) null,
     constraint pk_product primary key (productid),
-        constraint fk_product_1 foreign key (category)
+    constraint fk_product_1 foreign key (category)
         references category (catid)
 );
 
@@ -164,9 +166,9 @@ create table item (
     attr4 varchar(80) null,
     attr5 varchar(80) null,
     constraint pk_item primary key (itemid),
-        constraint fk_item_1 foreign key (productid)
+    constraint fk_item_1 foreign key (productid)
         references product (productid),
-        constraint fk_item_2 foreign key (supplier)
+    constraint fk_item_2 foreign key (supplier)
         references supplier (suppid)
 );
 
@@ -176,7 +178,9 @@ create index itemProd on item (productid);
 create table inventory (
     itemid varchar(10) not null,
     qty int not null,
-    constraint pk_inventory primary key (itemid)
+    constraint pk_inventory primary key (itemid),
+    constraint fk_inventory foreign key (itemid)
+           references item (itemid)
 );
 
 grant all on inventory to public;
@@ -189,7 +193,9 @@ create table lineitem (
       unitprice number(10,2) not null,
       constraint pk_lineitem primary key (orderid, linenum),
       constraint fk_lineitem_1 foreign key (orderid)
-	references orders (orderid)
+	       references orders (orderid),
+	  constraint fk_lineitem_2 foreign key (itemid)
+           references item (itemid)
 );
 
 grant all on lineitem to public;

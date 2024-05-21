@@ -27,7 +27,7 @@ public class LineItem implements Serializable {
 	private String itemId;
 
 	@ManyToOne
-	@JoinColumn(name="itemId", insertable=false, updatable=false)
+	@JoinColumn(name="itemId")
 	private Item item;
 
 	/* Constructors */
