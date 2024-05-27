@@ -135,9 +135,11 @@ public class PetStoreImpl implements PetStoreFacade {
 		return itemRepository.getReferenceById(itemId);
 	}
 
-	public boolean isItemInStock(String itemId) {
+	public boolean isItemInStock(String itemId) {		
+		// return itemDao.isItemInStock(itemId);
 		return itemRepository.existsByItemIdAndQuantityGreaterThan(itemId, 0);
-		/*
+		
+		/* 또는 아래와 같이 구현 가능
 		Optional<Item> result = itemRepository.findById(itemId);
 		if (result.isPresent() && result.get().getQuantity() > 0) 
 			return true;
@@ -146,15 +148,17 @@ public class PetStoreImpl implements PetStoreFacade {
 	}
 
 	public void insertOrder(Order order) {
-//		itemDao.updateQuantity(order);	   
+		// itemDao.updateQuantity(order); --> 아래에서 로직 구현 	
 		for (int i = 0; i < order.getLineItems().size(); i++) {
 			LineItem lineItem = (LineItem) order.getLineItems().get(i);
 			String itemId = lineItem.getItemId();
 			int increment = lineItem.getQuantity();		
+			
 			Item item = itemRepository.getReferenceById(itemId);
 			item.setQuantity(item.getQuantity() - increment);
-//			itemRepository.save(item);			
+			itemRepository.save(item);			
 		}
+		
 		orderDao.insertOrder(order);
 	}
 	
