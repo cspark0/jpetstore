@@ -154,10 +154,10 @@ public class PetStoreImpl implements PetStoreFacade {
 			String itemId = lineItem.getItemId();
 			int increment = lineItem.getQuantity();		
 			
-			Item item = itemRepository.getReferenceById(itemId);
+			Item item = itemRepository.getReferenceById(itemId);	// item entity는 managed 상태
 			item.setQuantity(item.getQuantity() - increment);
-			itemRepository.save(item);			
-		}
+			// itemRepository.save(item);  --> 트랜잭션 commit 시 item entity의 변경 사항을 자동 반영하므로 불필요 
+		}		
 		
 		orderDao.insertOrder(order);
 	}

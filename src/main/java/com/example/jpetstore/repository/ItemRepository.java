@@ -7,8 +7,7 @@ import com.example.jpetstore.domain.Item;
 
 import java.util.List;
 
-public interface ItemRepository
-        extends JpaRepository<Item, String> {
+public interface ItemRepository extends JpaRepository<Item, String> {
 
 	// public List<Item> getItemListByProduct(String productId) --> 아래의 query method 이용
 	List<Item> getByProductId(String productId);
@@ -21,7 +20,7 @@ public interface ItemRepository
 	boolean existsByItemIdAndQuantityGreaterThan(String itemId, int qty);
 
 	// public void updateQuantity(Order order) 
-	// --> service class인 PetStoreImpl의 insertOrder()에서 세부 로직 구현 
-	// --> JpaRepository#getReferenceByID(), CRUDRepository#save() 이용
+		// --> service class인 PetStoreImpl의 insertOrder()에서 세부 로직 구현 
+		// --> JpaRepository#getReferenceByID(), CRUDRepository#save() 이용
 	
 }
