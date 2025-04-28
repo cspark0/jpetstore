@@ -1,5 +1,5 @@
 # JPetStore (boot)
-JPetStore project based on Spring Boot 2.7
+JPetStore project based on Spring Boot 3.4
 
 ####변경 사항 (from master)  
 1. pom.xml: Spring Boot Starter Dependencies 사용 
