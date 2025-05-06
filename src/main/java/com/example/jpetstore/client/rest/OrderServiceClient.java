@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
 
-public class OrderServiceClient_rest {
+public class OrderServiceClient {
 
 	private static RestTemplate restTemplate = new RestTemplate();
 	private static String host = "localhost";
@@ -19,8 +19,8 @@ public class OrderServiceClient_rest {
 
 	public static void main(String[] args) {		
 		getOrderInfo("j2ee");	
-		getOrderInfo(1002);
-		deleteOrderInfo(1007);
+		getOrderInfo(1000);
+		deleteOrderInfo(1003);
 	}
 
 	private static void getOrderInfo(int orderId) {

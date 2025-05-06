@@ -3,7 +3,7 @@ package com.example.jpetstore.controller.rest;
 import java.io.IOException;
 import java.net.InetAddress;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -59,7 +59,7 @@ public class RestProductController {
 	public void createProduct(@RequestBody Product product, HttpServletResponse response) throws IOException {
 		System.out.println("POST /rest/product request accepted with a product: " + product);		
 
-		product.setProductId(product.getProductId().toLowerCase());
+		product.setProductId(product.getProductId());
 		
 		if (productSvc.getProduct(product.getProductId()) != null) {
 			response.sendError(HttpServletResponse.SC_CONFLICT);
@@ -93,20 +93,18 @@ public class RestProductController {
 		System.out.println("product " + prodId + " updated.");
 	}
 
-	@DeleteMapping(value="/product/{prodId}")
+	@DeleteMapping("/product/{prodId}")
 	@ResponseStatus(HttpStatus.OK)
 	// @ResponseBody
 	public void deleteProduct(@PathVariable("prodId") String prodId, HttpServletResponse response)
 			throws IOException {
 		System.out.println("DELETE /rest/product/{prodId} request accepted: {prodId} = " + prodId);
 
-		String prodId2 = prodId.toLowerCase();
-
-		if (productSvc.getProduct(prodId2) == null) {
+		if (productSvc.getProduct(prodId) == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
-		productSvc.removeProduct(prodId2);
-		System.out.println("product " + prodId2 + " deleted.");
+		productSvc.removeProduct(prodId);
+		System.out.println("product " + prodId + " deleted.");
 	}
 }

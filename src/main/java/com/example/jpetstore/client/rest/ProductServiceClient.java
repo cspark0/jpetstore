@@ -1,15 +1,22 @@
 package com.example.jpetstore.client.rest;
 
 import java.net.URI;
+//import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+//import org.springframework.http.HttpEntity;
+//import org.springframework.http.HttpHeaders;
+//import org.springframework.http.HttpMethod;
+//import org.springframework.http.MediaType;
+//import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+//import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.jpetstore.domain.Product;
 
-public class ProductServiceClient_rest {
+public class ProductServiceClient {
 
 	private static RestTemplate restTemplate = new RestTemplate();
 	private static String host = "localhost";
@@ -24,7 +31,7 @@ public class ProductServiceClient_rest {
 		
 		// test createProduct
 		Product product = new Product();
-		product.setProductId("fl-doc-03");
+		product.setProductId("FL-DOC-03");
 		product.setCategoryId("CATS");
 		product.setName("Maine Coon");
 		product.setDescription("메인 쿤");
@@ -34,13 +41,13 @@ public class ProductServiceClient_rest {
 		System.out.println("get the product by URI: " + product);
 		
 		// test updateProduct
-		put("fl-doc-03", "CATS", "Korean Shorthair", "한국 고양이");
+		put("FL-DOC-03", "CATS", "Korean Shorthair", "<image src=\"../images/koreanCat.gif\">한국 고양이");
 		
 		product = restTemplate.getForObject(newProductUri, Product.class);
 		System.out.println("get the product by URI: " + product);
 		
 		// test deleteProduct
-		delete("fl-doc-03");
+		delete("FL-DOC-03");
 		
 		// test RestClientException
 		catchException();
@@ -101,7 +108,7 @@ public class ProductServiceClient_rest {
 	
 	private static void catchException() {
 		System.out.println("\n[catchException]");
-		System.out.println("Product [productId=K9-BD-11] 요청");
+		System.out.println("Product [productId=K9-BD-11] 요청 (false ID)");
 
 		try {
 			restTemplate.getForObject(
@@ -112,8 +119,7 @@ public class ProductServiceClient_rest {
 			// e.printStackTrace();
 		}
 	}
-
-	/*
+/*	
 	private static void exchange() {
 		System.out.println("\n[exchange]");
 
@@ -126,34 +132,33 @@ public class ProductServiceClient_rest {
 				.build()
 				.expand("K9-BD-01").encode()
 				.toUri();
-
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("AUTHKEY", "mykey");
-		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-		HttpEntity<Void> requestEntity = new HttpEntity<>((Void) null, headers);
-
+		
 		ResponseEntity<Product> itemResponse = restTemplate.exchange(
-				uri, HttpMethod.GET, requestEntity, Product.class);
+				uri, 
+				HttpMethod.GET, 
+				null, 
+				Product.class);
+		
 		Product product = itemResponse.getBody();
 		System.out.println("Response as an object: " + product);
 
 		// postForLocation을 exchange를 이용해서 구현한 코드
 		Product product2 = new Product();
-		product.setProductId("FL-DRD-04");
-		product.setCategoryId("CATS");
-		product.setName("Ragdoll");
-		product.setDescription("렉돌");
+		product2.setProductId("FL-DRD-04");
+		product2.setCategoryId("CATS");
+		product2.setName("Ragdoll");
+		product2.setDescription("렉돌");		
+		HttpEntity<Product> requestEntity = new HttpEntity<Product>(product2);
 		
-		HttpEntity<Product> requestEntity2 =
-				new HttpEntity<>(product2, headers);
-
 		ResponseEntity<Void> postResponse = restTemplate.exchange(
 				productSvcUrl,
-				HttpMethod.POST, requestEntity2, Void.class);
+				HttpMethod.POST, 
+				requestEntity, 
+				Void.class);
+		
 		URI newProductUri = postResponse.getHeaders().getLocation();
 		System.out.println(product2 + " created.");
 		System.out.println("New Product URI: " + newProductUri);
 	}
-	*/
-
+*/	
 }

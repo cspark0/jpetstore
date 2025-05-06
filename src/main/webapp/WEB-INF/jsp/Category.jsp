@@ -83,10 +83,10 @@ function registerProduct() {
 		categoryId: "${category.categoryId}"
 	};
 	
-	var reqUrl = "/rest/product";			// CreateProduct service URI
+	var reqUrl = "/rest/product";		// CreateProduct service URI
 	
 	/*
-	$.ajax({								// Ajax call to the REST service
+	$.ajax({							// Ajax call to the REST service
 		type: "POST",
 		url: reqUrl,
 		contentType: "application/json; charset=utf-8",
@@ -101,7 +101,7 @@ function registerProduct() {
 	});
 	*/
 	
-	// Ajax 호출을 위해 Axios library 이용
+	// Ajax를 통해 REST service 호출
 	axios.post(reqUrl, productData)
 		.then(() => {
 			alert("A product has been registered succcessfuly!");
@@ -130,6 +130,7 @@ function deleteProduct(prodId) {
 			alert("ERROR: "+ JSON.stringify(jqXHR));
 		});
 	*/
+		// Ajax를 통해 REST service 호출
 		axios.delete(reqUrl)
 		.then(() => {
 			alert("The product has been removed succcessfuly!")

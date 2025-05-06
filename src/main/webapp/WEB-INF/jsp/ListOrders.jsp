@@ -46,7 +46,7 @@ function printOrderDetail(orderId, a) {	// click event handler for <td> includin
 		var reqUrl = "/rest/order/" + orderId;	// REST service URI		
 		
 		/*
-		$.ajax({									// Ajax call to the REST service
+		$.ajax({								// Ajax call to the REST service
 			type: "GET",
 			url: reqUrl,
 			success: function(response){	// callback function: get JS object parsed from JSON response
@@ -72,11 +72,11 @@ function printOrderDetail(orderId, a) {	// click event handler for <td> includin
 			}			
 		});
 		*/
-		// Ajax 호출을 위해 Axios library 이용
+		
+		// Ajax를 통해 REST service 호출
 		axios.get(reqUrl)
-			.then(response => {
-				var order = response.data;
-				
+			.then(response => response.data)
+			.then(order => {				
 				// add <li> of shipping address into <ul>
 				$("#detail").append("<li>Shipping address: " + order.shipAddress1 + ", " + 
 						order.shipAddress2 + ", " + order.shipCity + "</li>");
