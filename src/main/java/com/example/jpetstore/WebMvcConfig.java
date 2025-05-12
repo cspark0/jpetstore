@@ -2,6 +2,7 @@ package com.example.jpetstore;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-
 	@Autowired
 	@Qualifier(value = "signonInterceptor")
 	private HandlerInterceptor interceptor;
@@ -28,4 +28,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 					"/shop/viewOrder.do", "/shop/newOrder.do");		
 	}
 	
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**")
+				.allowedOrigins("*")
+				.allowedMethods("GET","POST","PUT","DELETE","HEAD","OPTIONS")
+				.allowedHeaders("*")
+				.maxAge(600);
+	}
 }
