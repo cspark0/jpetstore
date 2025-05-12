@@ -1,5 +1,5 @@
 # JPetStore (boot-thymeleaf branch)
-JPetStore project using both JSP and Thymeleaf as view templates on Spring Boot 2.4
+JPetStore project using both JSP and Thymeleaf as view templates on Spring Boot 3
 
 ### boot branch에서 변경된 사항(차이점)     
 1. pom.xml에 spring-boot-starter-thymeleaf dependencies 추가
