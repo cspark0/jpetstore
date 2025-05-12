@@ -1,10 +1,11 @@
 import { BsTrash } from 'react-icons/bs';
+import './components.css';
 
 export default function ProductTable({entries, curProdId, onClickId, onClickTrash}) {  
   console.log('ProductTable render');
   
   const trList = entries.map(entry => 
-    <tr key={entry.productId} bgcolor="#FF8888">
+    <tr key={entry.productId}>
       <td>
         <a href={"/product/" + entry.productId}
           onClick={e => {
@@ -13,9 +14,7 @@ export default function ProductTable({entries, curProdId, onClickId, onClickTras
             e.preventDefault();
             onClickId(entry.productId);
           }}>
-          <font color="black">
-            {(entry.productId === curProdId) ? <em>{entry.productId}</em> : entry.productId}
-          </font>
+          {(entry.productId === curProdId) ? <em>{entry.productId}</em> : entry.productId}  
         </a>
       </td>
       <td>{entry.name}</td>
@@ -29,12 +28,17 @@ export default function ProductTable({entries, curProdId, onClickId, onClickTras
   );     
   
   return (
-    <table class="n23">
-      <tr bgcolor="#CCCCCC">
-        <td><b>Product ID</b></td>
-        <td><b>Name</b></td>
-      </tr>
-      {trList}
+    <table>
+      <thead>
+        <tr>
+          <th><b>Product ID</b></th>
+          <th><b>Name</b></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {trList}
+      </tbody>
     </table>
   );
 }

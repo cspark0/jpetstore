@@ -1,4 +1,5 @@
 import {useState } from 'react';
+import './components.css';
 
 export default function UpdateProduct({product, onNewProduct}) {
   console.log('UpdateProduct render');
@@ -7,25 +8,31 @@ export default function UpdateProduct({product, onNewProduct}) {
   const [desc, setDesc] = useState(product.description);
   
   return ( 
-    <form action="/update"      
+    <form action="/update" 
       onSubmit={e => {
         e.preventDefault();
         onNewProduct(name, desc);
       }}>                           {/* 수정 form */}
-      <p>Product ID: 
+      <div>
+        <div>Product ID:</div>
         <input type="text" name="id" 
-              value={product.productId} readOnly /></p>
-      <p>Name: 
+              value={product.productId} readOnly />
+      </div>
+      <div>
+        <div>Name:</div>
         <input type="text" name="name"  
               placeholder="input product name..."
               value={name}
-              onChange={e => setName(e.target.value)}/></p>   
-      <p>Description: 
+              onChange={e => setName(e.target.value)}/>
+       </div>
+      <div>
+        <div>Description:</div>
         <textarea name="desc" rows="5" cols="50"
               placeholder="input product description..."
               value={desc}
-              onChange={e => setDesc(e.target.value)}/></p> 
-      <p><input type="submit" value="Update"/></p>
+              onChange={e => setDesc(e.target.value)}/>
+      </div>
+      <div><input type="submit" value="Update"/></div>    
     </form>        
   );
 }

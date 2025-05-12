@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ProductTable from './components/ProductTable';
 import CreateProduct from './components/CreateProduct';
 import UpdateProduct from './components/UpdateProduct';
-import './App.css';
+import './ProductApp.css';
 
-export default function CategoryApp({categoryId}) {
+export default function ProductApp({categoryId}) {
   const [productList, setProductList] = useState([]);   // list of products in the category
   const [curProduct, setCurProduct] = useState(null);   // 현재 선택된 product 
   const [curProdId, setCurProdId] = useState(0);        // 현재 선택된 product의 ID
@@ -87,6 +87,7 @@ export default function CategoryApp({categoryId}) {
                     .catch(error => console.error(error));             
                 }}
               /> : null} 
+            <br/>
             <a href="/product/create" 
               onClick={e => {
                 e.preventDefault();  
