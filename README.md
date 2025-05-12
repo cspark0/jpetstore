@@ -3,7 +3,7 @@ Spring boot를 기반으로 RESTful Service 및 React view 구현
 
 ### 변경 사항
 - /react-app 구현
-     * /src/category.js, CategoryApp.js, /components/*.js 
+     * react-app/src/{index.js, category.js, ProductApp.js, components/*.js}  
      * react-app/README.md 설명 참조
 - controller.rest.{RestCategoryController, RestProductController} 
 - controller.ViewCategoryController, webapp/WEB-INF/jsp/Category.jsp 수정
