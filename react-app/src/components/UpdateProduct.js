@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import { useState } from 'react';
 import './components.css';
 
 export default function UpdateProduct({product, onNewProduct}) {
@@ -8,7 +8,7 @@ export default function UpdateProduct({product, onNewProduct}) {
   const [desc, setDesc] = useState(product.description);
   
   return ( 
-    <form action="/update" 
+    <form className="prodForm" action="/update" 
       onSubmit={e => {
         e.preventDefault();
         onNewProduct(name, desc);

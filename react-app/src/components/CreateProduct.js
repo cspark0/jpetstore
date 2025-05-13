@@ -12,7 +12,7 @@ export default function CreateProduct({onNewProduct}) {
   };
 
   return (  
-    <form action="/create" onSubmit={submit}>   {/* 생성 form */} 
+    <form className="prodForm" action="/create" onSubmit={submit}>   {/* 생성 form */} 
       <div>
         <div>Product ID:</div>
         <input type="text" name="id" 

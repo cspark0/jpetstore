@@ -28,7 +28,7 @@ export default function ProductTable({entries, curProdId, onClickId, onClickTras
   );     
   
   return (
-    <table>
+    <table className="prodTbl">
       <thead>
         <tr>
           <th><b>Product ID</b></th>

@@ -14,7 +14,7 @@ export default function ProductApp({categoryId}) {
     fetch(`/rest/category/${categoryId}/products`)
       .then(response => response.json())      
       .then(list => {
-        setProductList(list);
+        setProductList(list);        
         setCurProduct(null);
         setCurProdId(0);
         setMode('list');
@@ -47,57 +47,55 @@ export default function ProductApp({categoryId}) {
               .catch(error => console.error(error));                          
           }
         }}
-      />                        
-      <div>        
-        <br/>
-        {/* 현재 mode에 따라 CreateProduct, UpdateProduct, Create link 생성 */}
-        {(mode === 'create') ?
-          <CreateProduct 
-            onNewProduct={(productId, name, description) => {  // 새로 입력된 product data 
-              console.log(productId, name, description);                      
-              fetch('/rest/product', 
-                {
-                  method: "POST",
-                  headers: {"Content-Type": "application/json"},
-                  body: JSON.stringify({
-                    productId, categoryId, name, description,                
-                  })
+      />                                 
+      <br/>
+      {/* 현재 mode에 따라 CreateProduct, UpdateProduct, Create link 생성 */}
+      {(mode === 'create') ?
+        <CreateProduct 
+          onNewProduct={(productId, name, description) => {  // 새로 입력된 product data 
+            console.log(productId, name, description);                      
+            fetch('/rest/product', 
+              {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                  productId, categoryId, name, description,                
                 })
-                .then(() => alert('Created!'))
-                .then(() => updateList())
-                .catch(error => console.error(error));      // ID 중복 오류 처리 필요!              
-            }}
-          /> : 
-          <>
-            {(mode === 'update') ?
-              <UpdateProduct key={curProdId} product={curProduct} 
-                onNewProduct={(name, description) => {    // update된 product data 
-                  console.log(name, description);                     
-                  fetch(`/rest/product/${curProdId}`, 
-                    {
-                      method: "PUT",
-                      headers: {"Content-Type": "application/json"},
-                      body: JSON.stringify({
-                        productId: curProdId,       
-                        categoryId, name, description                
-                      })
-                    })    
-                    .then(() => alert('Updated!'))
-                    .then(() => updateList())
-                    .catch(error => console.error(error));             
-                }}
-              /> : null} 
-            <br/>
-            <a href="/product/create" 
-              onClick={e => {
-                e.preventDefault();  
-                setCurProduct(null);
-                setCurProdId(0);
-                setMode('create');
-              }}>Create</a>
-          </>  
-        }           
-      </div> 
-    </div>
+              })
+              .then(() => alert('Created!'))
+              .then(() => updateList())
+              .catch(error => console.error(error));      // ID 중복 오류 처리 필요!              
+          }}
+        /> : 
+        <>
+          {(mode === 'update') ?
+            <UpdateProduct key={curProdId} product={curProduct} 
+              onNewProduct={(name, description) => {    // update된 product data 
+                console.log(name, description);                     
+                fetch(`/rest/product/${curProdId}`, 
+                  {
+                    method: "PUT",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                      productId: curProdId,       
+                      categoryId, name, description                
+                    })
+                  })    
+                  .then(() => alert('Updated!'))
+                  .then(() => updateList())
+                  .catch(error => console.error(error));             
+              }}
+            /> : null} 
+          <br/>
+          <a href="/product/create" 
+            onClick={e => {
+              e.preventDefault();  
+              setCurProduct(null);
+              setCurProdId(0);
+              setMode('create');
+            }}>Create</a>
+        </>  
+      }           
+    </div> 
   );
 }
