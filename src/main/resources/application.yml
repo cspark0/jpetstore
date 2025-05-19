@@ -19,7 +19,10 @@ spring:
       suffix: .jsp
   jpa:
     database: oracle
-    database-platform: org.hibernate.dialect.Oracle10gDialect
+#    database-platform: org.hibernate.dialect.Oracle10gDialect (deprecated)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect      
     show-sql: true
     generate-ddl: false
     hibernate:

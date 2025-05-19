@@ -16,6 +16,7 @@ import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.repository.CategoryRepository;
+import com.example.jpetstore.repository.querydsl.ItemRepository2;
 import com.example.jpetstore.repository.ItemRepository;
 import com.example.jpetstore.repository.ProductRepository;
 
@@ -72,6 +73,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	// private ItemRepository2 itemRepository;	
 	// private ItemDao itemDao;
 	
 	@Autowired	
@@ -129,6 +131,9 @@ public class PetStoreImpl implements PetStoreFacade {
 
 	public List<Item> getItemListByProduct(String productId) {
 		return itemRepository.getByProductId(productId);
+		
+		// for testing ItemRepository2 based on QueryDSL
+		//return itemRepository.findFemaleItemsWithPriceInRange(0, 100);  
 	}
 
 	public Item getItem(String itemId) {
