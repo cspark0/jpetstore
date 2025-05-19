@@ -2,7 +2,7 @@ package com.example.jpetstore.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @SuppressWarnings("serial")
 @Embeddable

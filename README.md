@@ -1,5 +1,5 @@
 # JPetStore (boot-spring-data-jpa branch)
-JPetStore project using JPA and Spring Data JPA on Spring Boot 2.7
+JPetStore project using JPA, Spring Data JPA, and QueryDSL on Spring Boot 3
 
 ####변경 사항     
 1. pom.xml: spring-boot-starter-data-jpa 설정 추가

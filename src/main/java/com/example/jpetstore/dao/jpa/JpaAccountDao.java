@@ -2,10 +2,10 @@ package com.example.jpetstore.dao.jpa;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
