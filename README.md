@@ -11,7 +11,7 @@ JPetStore project using JPA, Spring Data JPA, and QueryDSL on Spring Boot 3
 7. service.PetStoreImpl: 위 DAO 및 Repository를 이용하도록 수정
 8. controller.UpdateCategoryController: Category 이름 변경을 위한 controller 정의 (JPA에 의한 자동 update 테스트)
 9. repository.querydsl.{ItemRepository2, ItemRepositoryCustom, ItemRepositoryCustomImpl}: QueryDSL을 이용한 repository 인터페이스 정의 및 클래스 구현 
-	* Query type 클래스들은 target/generated-sources/annotations 폴더 밑에 생성됨)
+	* Query type 클래스들은 target/generated-sources/annotations 폴더 밑에 생성됨
 10. src/main/test 아래에 ItemRepository2Test 클래스 정의 
 	* Run As > JUnit Test 메뉴로 실행
  

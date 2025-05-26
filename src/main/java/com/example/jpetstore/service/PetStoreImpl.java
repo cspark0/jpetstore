@@ -16,9 +16,13 @@ import com.example.jpetstore.domain.LineItem;
 import com.example.jpetstore.domain.Order;
 import com.example.jpetstore.domain.Product;
 import com.example.jpetstore.repository.CategoryRepository;
-import com.example.jpetstore.repository.querydsl.ItemRepository2;
 import com.example.jpetstore.repository.ItemRepository;
 import com.example.jpetstore.repository.ProductRepository;
+
+//import com.example.jpetstore.repository.querydsl.ItemRepository2;
+//import com.example.jpetstore.domain.QItem;
+//import com.querydsl.core.types.OrderSpecifier;
+//import com.querydsl.core.types.Predicate;
 
 /**
  * JPetStore primary business object.
@@ -73,7 +77,7 @@ public class PetStoreImpl implements PetStoreFacade {
 	
 	@Autowired
 	private ItemRepository itemRepository;
-	// private ItemRepository2 itemRepository;	
+	// private ItemRepository2 itemRepository2;		// based on QueryDSL
 	// private ItemDao itemDao;
 	
 	@Autowired	
@@ -132,8 +136,20 @@ public class PetStoreImpl implements PetStoreFacade {
 	public List<Item> getItemListByProduct(String productId) {
 		return itemRepository.getByProductId(productId);
 		
-		// for testing ItemRepository2 based on QueryDSL
-		//return itemRepository.findFemaleItemsWithPriceInRange(0, 100);  
+		// for testing ItemRepository2 based on a custom method implemented by QueryDSL 
+		/*
+			return itemRepository2.findFemaleItemsWithPriceInRange(0, 100);  
+		*/
+		
+		// for testing ItemRepository2 based on QuerydslPredicateExecutor 
+		/*
+			QItem qItem = QItem.item;
+	        Predicate predicate = qItem.attribute1.containsIgnoreCase("female")
+	                .and(qItem.listPrice.between(0, 100));
+	        OrderSpecifier<Double> orderSpecifier = new OrderSpecifier<>(
+	        		com.querydsl.core.types.Order.ASC, qItem.listPrice);
+	        return (List<Item>)itemRepository2.findAll(predicate, orderSpecifier);
+        */
 	}
 
 	public Item getItem(String itemId) {
@@ -145,10 +161,10 @@ public class PetStoreImpl implements PetStoreFacade {
 		return itemRepository.existsByItemIdAndQuantityGreaterThan(itemId, 0);
 		
 		/* 또는 아래와 같이 구현 가능
-		Optional<Item> result = itemRepository.findById(itemId);
-		if (result.isPresent() && result.get().getQuantity() > 0) 
-			return true;
-		return false;
+			Optional<Item> result = itemRepository.findById(itemId);
+			if (result.isPresent() && result.get().getQuantity() > 0) 
+				return true;
+			return false;
 		*/	
 	}
 

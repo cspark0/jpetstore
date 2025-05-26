@@ -10,15 +10,17 @@ import com.example.jpetstore.domain.Item;
 import com.example.jpetstore.domain.QItem;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+//import jakarta.persistence.EntityManager;
+//import jakarta.persistence.PersistenceContext;
 
 @Repository
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
-	@PersistenceContext
-    private EntityManager em;
+	
+	//@PersistenceContext
+    //private EntityManager em;
 
 	//JPAQueryFactory jpaQueryFactory = new JPAQueryFactory(em);
+	
 	@Autowired JPAQueryFactory jpaQueryFactory;    // JPAQueryFactory bean 설정 및 이용 시
 
 	@Override

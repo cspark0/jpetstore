@@ -23,4 +23,5 @@ public interface ItemRepository extends JpaRepository<Item, String> {
 		// --> service class인 PetStoreImpl의 insertOrder()에서 세부 로직 구현 
 		// --> JpaRepository#getReferenceByID(), CRUDRepository#save() 이용
 	
+	// List<Item> findByAttribute1ContainingIgnoreCaseAndListPriceBetweenOrderByListPriceAsc(String female, Double min, Double max);
 }
