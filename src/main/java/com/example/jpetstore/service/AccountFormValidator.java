@@ -41,8 +41,9 @@ public class AccountFormValidator implements Validator {
 					 "Passwords did not match or were not provided. Matching passwords are required.");
 			}
 		}
-		else if (account.getPassword() != null && account.getPassword().length() > 0) {
-			if (!account.getPassword().equals(accountForm.getRepeatedPassword())) {
+		else {
+			if (account.getPassword() == null || account.getPassword().length() < 1 ||
+					!account.getPassword().equals(accountForm.getRepeatedPassword())) {
 				errors.reject("PASSWORD_MISMATCH", "Passwords did not match. Matching passwords are required.");
 			}
 		}
